@@ -138,8 +138,8 @@ public class GameUi : MonoBehaviour
 
     void OnQuizTileActivated()
     {
-        // TODO: Launch quiz UI
         Debug.Log("Launching quiz UI...");
+        SceneManager.LoadScene("DifficultySelection", LoadSceneMode.Additive);
     }
 
     void OnEventTileActivated()
