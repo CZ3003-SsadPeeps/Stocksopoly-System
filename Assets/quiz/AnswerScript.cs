@@ -1,68 +1,68 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class AnswerScript : MonoBehaviour
 {
-    public bool isCorrect = false;
-    public QuizManager quizMgr;
-    public Button button;
-    public GameObject quitButton;
+    public Text questionText;
+    public Button confirmButton, closeButton;
+    public Toggle[] optionToggles;
 
+    QuizManager quizManager = new QuizManager();
 
-    public void verifyAnswer()
+    void Start()
     {
-        button.GetComponent<Button>().onClick.AddListener(Answer);
-    }
+        // Generate question
+        QuestionsNAnswers question = quizManager.LoadQuestion();
 
-    public void Answer()
-    {
-        Toggle tg = this.GetComponent<Toggle>();
-        ColorBlock cb = tg.colors;
-        Vector3 pos = quitButton.transform.position;
-        pos.x -= 500f;
-        quitButton.transform.position = pos;
-
-        if (this.GetComponent<Toggle>().isOn == true)
+        // Display question details
+        questionText.text = question.Question;
+        Toggle optionToggle;
+        for (int i = 0; i < optionToggles.Length; i++)
         {
-            if (isCorrect)
-            {
-                Debug.Log("Correct Answer");
-                cb.normalColor = Color.green;
-                tg.colors = cb;
-                quizMgr.correct();
-
-            }
-            else
-            {
-                Debug.Log("Wrong Answer");
-                cb.normalColor = Color.red;
-                tg.colors = cb;
-                wrong();
-            }
+            optionToggle = optionToggles[i];
+            optionToggle.GetComponentInChildren<Text>().text = question.AnswerSelections[i];
         }
-        Destroy(button.gameObject);
-        quitButton.GetComponent<Button>().onClick.AddListener(quizMgr.quitQuiz);
-
     }
 
-    public void showCorrectAsnwer(GameObject Gobj)
+    public void OnConfirmButtonClick()
     {
-        Toggle tg = Gobj.GetComponentInParent<Toggle>();
-        ColorBlock cb = tg.colors;
-        cb.normalColor = Color.green;
-        tg.colors = cb;
-    }
-    public void wrong()
-    {
-
-        for (int i = 0; i < quizMgr.options.Length; i++)
+        // Check if there are any toggles that are selected
+        int selectedOption = -1;
+        for (int i = 0; i < optionToggles.Length; i++)
         {
-            if (quizMgr.options[i].GetComponent<AnswerScript>().isCorrect == true)
-            {
-                showCorrectAsnwer(quizMgr.options[i]);
-            }
+            if (!optionToggles[i].isOn) continue;
+
+            selectedOption = i;
+            break;
         }
+
+        if (selectedOption == -1)
+        {
+            // TODO: Display error message
+            Debug.LogError("No options selected");
+            return;
+        }
+
+        // Disable option selection
+        closeButton.gameObject.SetActive(true);
+        confirmButton.enabled = false;
+        foreach (Toggle optionToggle in optionToggles)
+        {
+            optionToggle.enabled = false;
+        }
+
+        // Mark correct answer
+        optionToggles[quizManager.CorrectAnswer].image.color = Color.green;
+
+        // Verify answer
+        if (!quizManager.VerifyAnswer(selectedOption))
+        {
+            optionToggles[selectedOption].image.color = Color.red;
+        }
+    }
+
+    public void OnQuitButtonClick()
+    {
+        // TODO: Unload this scene
     }
 }

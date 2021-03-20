@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -228,7 +228,7 @@ RectTransform:
   - {fileID: 491214858}
   - {fileID: 1519255680}
   m_Father: {fileID: 1735335037}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -333,7 +333,6 @@ GameObject:
   m_Component:
   - component: {fileID: 410568331}
   - component: {fileID: 410568332}
-  - component: {fileID: 410568333}
   m_Layer: 5
   m_Name: ChoiceB
   m_TagString: Untagged
@@ -407,35 +406,8 @@ MonoBehaviour:
   m_Group: {fileID: 204723831}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 410568333}
-        m_MethodName: verifyAnswer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
---- !u!114 &410568333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 410568330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f65c8f9913d1c2d4a94d7d518fbdb3a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isCorrect: 0
-  quizMgr: {fileID: 1697989951}
-  button: {fileID: 1851255094}
-  quitButton: {fileID: 1346367854}
 --- !u!1 &418467320
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,7 +493,6 @@ GameObject:
   m_Component:
   - component: {fileID: 491214858}
   - component: {fileID: 491214859}
-  - component: {fileID: 491214860}
   m_Layer: 5
   m_Name: ChoiceC
   m_TagString: Untagged
@@ -595,35 +566,8 @@ MonoBehaviour:
   m_Group: {fileID: 204723831}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 491214860}
-        m_MethodName: verifyAnswer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
---- !u!114 &491214860
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 491214857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f65c8f9913d1c2d4a94d7d518fbdb3a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isCorrect: 0
-  quizMgr: {fileID: 1697989951}
-  button: {fileID: 1851255094}
-  quitButton: {fileID: 1346367854}
 --- !u!1 &539865589
 GameObject:
   m_ObjectHideFlags: 0
@@ -809,7 +753,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1735335037}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -943,10 +887,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: -287.5, y: 150, z: 0}
+  m_LocalPosition: {x: -488.5, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1697989952}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &755422506
@@ -1187,7 +1131,6 @@ GameObject:
   m_Component:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
-  - component: {fileID: 963194226}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1195,14 +1138,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &963194226
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
 --- !u!20 &963194227
 Camera:
   m_ObjectHideFlags: 0
@@ -1253,11 +1188,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 420.04, y: 1, z: -698.6}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 219.04001, y: -148, z: -698.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1697989952}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &999271898
@@ -1345,7 +1280,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1150878359}
   - component: {fileID: 1150878360}
-  - component: {fileID: 1150878361}
   m_Layer: 5
   m_Name: ChoiceA
   m_TagString: Untagged
@@ -1419,35 +1353,8 @@ MonoBehaviour:
   m_Group: {fileID: 204723831}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1150878361}
-        m_MethodName: verifyAnswer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
---- !u!114 &1150878361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1150878358}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f65c8f9913d1c2d4a94d7d518fbdb3a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isCorrect: 0
-  quizMgr: {fileID: 1697989951}
-  button: {fileID: 1851255094}
-  quitButton: {fileID: 1346367854}
 --- !u!1 &1159840054
 GameObject:
   m_ObjectHideFlags: 0
@@ -1696,7 +1603,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1346367855
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1710,7 +1617,7 @@ RectTransform:
   m_Children:
   - {fileID: 1342450354}
   m_Father: {fileID: 1735335037}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1867,11 +1774,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1412030940}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1751, y: -2051, z: 4378}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1952, y: -2200, z: 4378}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1697989952}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1504966721
@@ -1964,7 +1871,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1519255680}
   - component: {fileID: 1519255681}
-  - component: {fileID: 1519255682}
   m_Layer: 5
   m_Name: ChoiceD
   m_TagString: Untagged
@@ -2038,35 +1944,8 @@ MonoBehaviour:
   m_Group: {fileID: 204723831}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1519255682}
-        m_MethodName: verifyAnswer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
---- !u!114 &1519255682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1519255679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f65c8f9913d1c2d4a94d7d518fbdb3a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isCorrect: 0
-  quizMgr: {fileID: 1697989951}
-  button: {fileID: 1851255094}
-  quitButton: {fileID: 1346367854}
 --- !u!1 &1697989950
 GameObject:
   m_ObjectHideFlags: 0
@@ -2078,7 +1957,7 @@ GameObject:
   - component: {fileID: 1697989952}
   - component: {fileID: 1697989951}
   m_Layer: 0
-  m_Name: QuizManager
+  m_Name: AnswerQuestionUi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2093,30 +1972,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1697989950}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d22ff4b9236ca964da5f484743798c11, type: 3}
+  m_Script: {fileID: 11500000, guid: ba85f275b612c2141828d8cce447dfdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  qna:
-  - QuizID: 0
-    Question: What is hard?
-    AnswerSelections:
-    - apple
-    - banana
-    - coconut
-    - durian
-    CorrectAnswer: 2
-    Credit: 0
-    Difficulty: 
-  options:
-  - {fileID: 1150878358}
-  - {fileID: 410568330}
-  - {fileID: 491214857}
-  - {fileID: 1519255679}
-  currentQuestion: 0
-  AScript: {fileID: 0}
-  quitButton: {fileID: 1346367854}
-  QuestionTxt: {fileID: 1979470877}
-  title: {fileID: 647916286}
+  questionText: {fileID: 1979470877}
+  confirmButton: {fileID: 1851255094}
+  closeButton: {fileID: 1346367856}
+  optionToggles:
+  - {fileID: 1150878360}
+  - {fileID: 410568332}
+  - {fileID: 491214859}
+  - {fileID: 1519255681}
 --- !u!4 &1697989952
 Transform:
   m_ObjectHideFlags: 0
@@ -2125,11 +1991,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1697989950}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -422.5, y: -177.5, z: 0}
+  m_LocalPosition: {x: 201, y: 149, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1735335037}
-  m_RootOrder: 3
+  m_Children:
+  - {fileID: 963194228}
+  - {fileID: 705507995}
+  - {fileID: 1735335037}
+  - {fileID: 1412030943}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1735335033
 GameObject:
@@ -2224,11 +2094,10 @@ RectTransform:
   - {fileID: 1979470876}
   - {fileID: 1159840055}
   - {fileID: 1851255093}
-  - {fileID: 1697989952}
   - {fileID: 204723830}
   - {fileID: 647916285}
   - {fileID: 1346367855}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1697989952}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2323,7 +2192,7 @@ GameObject:
   - component: {fileID: 1851255095}
   - component: {fileID: 1851255094}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Confirm Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2392,8 +2261,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: verifyAnswer
+      - m_Target: {fileID: 1697989951}
+        m_MethodName: OnConfirmButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
