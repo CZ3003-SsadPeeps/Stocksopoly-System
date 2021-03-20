@@ -6,10 +6,10 @@ public class QuestionsNAnswers
     public string Question;
     public string[] AnswerSelections;
     public int CorrectAnswer;
-    public float Credit;
+    public int Credit;
     public string Difficulty;
 
-    public QuestionsNAnswers(int QuizID,string Question,string[] AnswerSelections,int CorrectAnswer,float Credit,string Difficulty)
+    public QuestionsNAnswers(int QuizID,string Question,string[] AnswerSelections,int CorrectAnswer,int Credit,string Difficulty)
     {
         this.QuizID = QuizID;
         this.Question = Question;

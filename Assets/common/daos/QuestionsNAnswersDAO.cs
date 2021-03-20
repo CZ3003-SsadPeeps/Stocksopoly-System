@@ -25,17 +25,17 @@ namespace Database
         {
             IDbCommand dbcmd = getDbCommand();
             dbcmd.CommandText = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ( " +
-                KEY_QuizID + " INT PRIMARY KEY, " +
+                KEY_QuizID + " INTEGER PRIMARY KEY, " +
                 KEY_Question + " TEXT NOT NULL, " +
-                KEY_CorrectOptionIndex + " INT NOT NULL, " +
-                KEY_Credit + " REAL NOT NULL, " +
+                KEY_CorrectOptionIndex + " INTEGER NOT NULL, " +
+                KEY_Credit + " INTEGER NOT NULL, " +
                 KEY_Difficulty + " TEXT NOT NULL)";
             dbcmd.ExecuteNonQuery();
 
             dbcmd.CommandText = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME2 + " ( " +
-                KEY_QuizID + " INT, " +
+                KEY_QuizID + " INTEGER, " +
                 KEY_Content + " TEXT NOT NULL, " +
-                KEY_OptionIndex + " INT NOT NULL, " +
+                KEY_OptionIndex + " INTEGER NOT NULL, " +
                 "FOREIGN KEY(" + KEY_QuizID + ") REFERENCES " + TABLE_NAME + "(" + KEY_QuizID + "))";
             dbcmd.ExecuteNonQuery();
         }
@@ -89,6 +89,13 @@ namespace Database
 
         }
 
+        public void StoreQNARecords(List<QuestionsNAnswers> qnas)
+        {
+            foreach (QuestionsNAnswers qna in qnas)
+            {
+                addData(qna);
+            }
+        }
 
         public List<QuestionsNAnswers> RetrieveQuestionsNAnswers()
         {
@@ -107,7 +114,7 @@ namespace Database
                 {
                     answerSelection[Convert.ToInt32(reader2[2])] = reader2[1].ToString();
                 }
-                res.Add(new QuestionsNAnswers(Convert.ToInt32(reader[0]), reader[1].ToString(), answerSelection,Convert.ToInt32(reader[2]),float.Parse(reader[3].ToString()), reader[4].ToString()));
+                res.Add(new QuestionsNAnswers(Convert.ToInt32(reader[0]), reader[1].ToString(), answerSelection,Convert.ToInt32(reader[2]), Convert.ToInt32(reader[3]), reader[4].ToString()));
             }
             return res;
         }

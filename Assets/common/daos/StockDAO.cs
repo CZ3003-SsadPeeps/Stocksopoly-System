@@ -24,7 +24,7 @@ namespace Database
                 KEY_Total+ " INT NOT NULL, "+
                 KEY_Shares + " INT NOT NULL, " +
                 KEY_Day + " INT NOT NULL, " +
-                KEY_Price + " REAL NOT NULL, "+
+                KEY_Price + " INT NOT NULL, "+
                 "PRIMARY KEY ("+  KEY_CompanyName +" , " +  KEY_Day +" )) ";
             dbcmd.ExecuteNonQuery();
         }
@@ -104,7 +104,7 @@ namespace Database
             List<Stock> res = new List<Stock>();
             while(reader.Read())
             {
-                res.Add(new Stock(reader[0].ToString(),Convert.ToInt32(reader[1]),Convert.ToInt32(reader[2]),Convert.ToInt32(reader[3]),(float)Convert.ToDecimal(reader[4])));
+                res.Add(new Stock(reader[0].ToString(),Convert.ToInt32(reader[1]),Convert.ToInt32(reader[2]),Convert.ToInt32(reader[3]), Convert.ToInt32(reader[4])));
             }
             return res ;
         }

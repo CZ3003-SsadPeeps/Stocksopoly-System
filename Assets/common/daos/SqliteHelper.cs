@@ -1,4 +1,8 @@
-﻿using Mono.Data.Sqlite;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Mono.Data.Sqlite;
 using UnityEngine;
 using System.Data;
 
@@ -102,9 +106,9 @@ namespace Database
             return reader;
         }
 
-        public void close()
+	public void close ()
         {
-            db_connection.Close();
-        }
+            db_connection.Close ();
+	}
     }
 }

@@ -20,9 +20,9 @@ namespace Database
         {
             IDbCommand dbcmd = getDbCommand();
             dbcmd.CommandText = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ( " +
-                KEY_EventID + " INT PRIMARY KEY, " +
+                KEY_EventID + " INTEGER PRIMARY KEY, " +
                 KEY_Content + " TEXT NOT NULL, " +
-                KEY_Amount + " INT NOT NULL)";
+                KEY_Amount + " INTEGER NOT NULL)";
             dbcmd.ExecuteNonQuery();
         }
 
@@ -34,12 +34,12 @@ namespace Database
                 dbcmd.CommandText =
                     "INSERT INTO " + TABLE_NAME
                     + " ( "
-                    + KEY_EventID + ", "
+                    //+ KEY_EventID + ", "
                     + KEY_Content + ", "
                     + KEY_Amount + " ) "
 
                     + "VALUES ( '"
-                    + eventRecord.EventID + "', '"
+                    //+ eventRecord.EventID + "', '"
                     + eventRecord.Content + "', '"
                     + eventRecord.Amount + "' )";
                 dbcmd.ExecuteNonQuery();
@@ -50,6 +50,14 @@ namespace Database
 
             }
 
+        }
+
+        public void StoreEventRecords(List<EventRecord> eventRecords)
+        {
+            foreach (EventRecord eventRecord in eventRecords)
+            {
+                addData(eventRecord);
+            }
         }
 
         public List<EventRecord> RetrieveEventRecords()

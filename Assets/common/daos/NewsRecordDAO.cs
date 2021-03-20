@@ -21,11 +21,10 @@ namespace Database
         {
             IDbCommand dbcmd = getDbCommand();
             dbcmd.CommandText = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ( " +
-                KEY_NewsID + " INT NOT NULL, " +
+                KEY_NewsID + " INTEGER PRIMARY KEY, " +
                 KEY_CompanyName + " TEXT NOT NULL, " +
                 KEY_Content + " TEXT NOT NULL, " +
-                KEY_FluctuationRate + " REAL NOT NULL,"+
-                "PRIMARY KEY("+ KEY_NewsID+", "+ KEY_CompanyName+")";
+                KEY_FluctuationRate + " INTEGER NOT NULL)";
             dbcmd.ExecuteNonQuery();
         }
 
@@ -37,13 +36,13 @@ namespace Database
                 dbcmd.CommandText =
                     "INSERT INTO " + TABLE_NAME
                     + " ( "
-                    + KEY_NewsID + ", "
+                    //+ KEY_NewsID + ", "
                     + KEY_CompanyName + ", "
                     + KEY_Content + ", "
                     + KEY_FluctuationRate + " ) "
 
                     + "VALUES ( '"
-                    + news.NewsID + "', '"
+                    //+ news.NewsID + "', '"
                     + news.CompanyName + "', '"
                     + news.Content + "', '"
                     + news.FluctuationRate + "' )";
@@ -57,6 +56,14 @@ namespace Database
 
         }
 
+        public void StoreNewsRecords(List<NewsRecord> newsRecords)
+        {
+            foreach (NewsRecord news in newsRecords)
+            {
+                addData(news);
+            }
+        }
+
         public List<NewsRecord> RetrieveNewsRecords()
         {
             IDbCommand dbcmd = getDbCommand();
@@ -66,7 +73,7 @@ namespace Database
             List<NewsRecord> res = new List<NewsRecord>();
             while (reader.Read())
             {
-                res.Add(new NewsRecord(Convert.ToInt32(reader[0]), reader[1].ToString(), reader[2].ToString(),float.Parse(reader[3].ToString())));
+                res.Add(new NewsRecord(Convert.ToInt32(reader[0]), reader[1].ToString(), reader[2].ToString(), Convert.ToInt32(reader[3])));
             }
             return res;
         }
