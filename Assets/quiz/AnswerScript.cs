@@ -7,7 +7,7 @@ public class AnswerScript : MonoBehaviour
     public Button confirmButton, closeButton;
     public Toggle[] optionToggles;
 
-    QuizManager quizManager = new QuizManager();
+    readonly QuizManager quizManager = new QuizManager();
 
     void Start()
     {
