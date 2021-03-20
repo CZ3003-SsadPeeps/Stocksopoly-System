@@ -9,6 +9,7 @@ namespace Database
 {
     public class QuestionsNAnswersDAO : SqliteHelper
     {
+        static readonly int NUM_OPTIONS = 4;
 
         private const String TABLE_NAME = "QuestionsNAnswers";
         private const String KEY_QuizID = "QuizID";
@@ -85,8 +86,6 @@ namespace Database
             {
                 Debug.Log("Duplicate ID!!");
             }
-            
-
         }
 
         public void StoreQNARecords(List<QuestionsNAnswers> qnas)
@@ -97,27 +96,38 @@ namespace Database
             }
         }
 
-        public List<QuestionsNAnswers> RetrieveQuestionsNAnswers()
+        public List<QuestionsNAnswers> RetrieveQuestions(string difficulty)
         {
-            IDbCommand dbcmd = getDbCommand();
-            dbcmd.CommandText =
-                "SELECT * FROM " + TABLE_NAME;
-            System.Data.IDataReader reader = dbcmd.ExecuteReader();
+            // Execute SQL statement to retrieve questions of a certain difficulty
+            IDbCommand selectQuestionsCommand = getDbCommand();
+            selectQuestionsCommand.CommandText = $"SELECT * FROM {TABLE_NAME} WHERE {KEY_Difficulty} = '{difficulty}'";
+            IDataReader questionReader = selectQuestionsCommand.ExecuteReader();
+
             List<QuestionsNAnswers> res = new List<QuestionsNAnswers>();
-            while (reader.Read())
+            IDbCommand selectOptionsCommand;
+            IDataReader optionReader;
+            while (questionReader.Read())
             {
-                IDbCommand dbcmd2 = getDbCommand();
-                dbcmd2.CommandText = "SELECT * FROM " + TABLE_NAME2 + " WHERE " + KEY_QuizID + " = '" + reader[0].ToString() + "'";
-                System.Data.IDataReader reader2 = dbcmd2.ExecuteReader();
-                string[] answerSelection = new string[4];
-                while (reader2.Read())
+                // Get options for the question
+                int quizID = questionReader.GetInt32(0);
+
+                // Execute SQL statement to retrieve optios of a question
+                selectOptionsCommand = getDbCommand();
+                selectOptionsCommand.CommandText = $"SELECT {KEY_OptionIndex}, {KEY_Content} FROM {TABLE_NAME2} WHERE {KEY_QuizID} = {quizID} LIMIT {NUM_OPTIONS}";
+                optionReader = selectOptionsCommand.ExecuteReader();
+
+                string[] answerSelection = new string[NUM_OPTIONS];
+                while (optionReader.Read())
                 {
-                    answerSelection[Convert.ToInt32(reader2[2])] = reader2[1].ToString();
+                    answerSelection[optionReader.GetInt32(0)] = optionReader.GetString(1);
                 }
-                res.Add(new QuestionsNAnswers(Convert.ToInt32(reader[0]), reader[1].ToString(), answerSelection,Convert.ToInt32(reader[2]), Convert.ToInt32(reader[3]), reader[4].ToString()));
+                res.Add(new QuestionsNAnswers(quizID, questionReader.GetString(1), answerSelection, questionReader.GetInt32(2), questionReader.GetInt32(3), questionReader.GetString(4)));
+
+                optionReader.Close();
             }
+
+            questionReader.Close();
             return res;
         }
-
     }
 }
