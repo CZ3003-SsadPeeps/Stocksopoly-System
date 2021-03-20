@@ -69,6 +69,6 @@ public class AnswerScript : MonoBehaviour
 
     public void OnQuitButtonClick()
     {
-        // TODO: Unload this scene
+        SceneManager.UnloadSceneAsync("QuizScene");
     }
 }
