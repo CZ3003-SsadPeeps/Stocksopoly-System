@@ -26,6 +26,8 @@ public class AnswerScript : MonoBehaviour
 
     public void OnConfirmButtonClick()
     {
+        messageText.gameObject.SetActive(false);
+
         // Check if there are any toggles that are selected
         int selectedOption = -1;
         for (int i = 0; i < optionToggles.Length; i++)
@@ -38,8 +40,9 @@ public class AnswerScript : MonoBehaviour
 
         if (selectedOption == -1)
         {
-            // TODO: Display error message
-            Debug.LogError("No options selected");
+            messageText.gameObject.SetActive(true);
+            messageText.color = Color.red;
+            messageText.text = "You must select an option!";
             return;
         }
 
