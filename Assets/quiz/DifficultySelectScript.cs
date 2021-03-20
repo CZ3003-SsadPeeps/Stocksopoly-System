@@ -21,6 +21,6 @@ public class DifficultySelectScript : MonoBehaviour
     void ShowQuizUi(string difficulty)
     {
         Difficulty.difficulty = difficulty;
-        SceneManager.LoadScene("QuizScene");
+        SceneManager.LoadScene("QuizScene", LoadSceneMode.Additive);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class AnswerScript : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class AnswerScript : MonoBehaviour
 
     void Start()
     {
+        SceneManager.UnloadSceneAsync("DifficultySelection");
+
         // Generate question
         QuestionsNAnswers question = quizManager.LoadQuestion();
 
