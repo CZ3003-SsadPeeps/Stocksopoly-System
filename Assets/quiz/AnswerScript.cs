@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class AnswerScript : MonoBehaviour
 {
-    public Text questionText;
+    public Text questionText, messageText;
     public Button confirmButton, closeButton;
     public Toggle[] optionToggles;
 
