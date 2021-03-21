@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4b7164f70e8e8043abf253c541cb1e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextPrefab: {fileID: 0}
+  TextPrefab: {fileID: 711178466}
   content: {fileID: 915234929}
 --- !u!1 &333701848
 GameObject:
@@ -385,11 +385,11 @@ MonoBehaviour:
   m_Inertia: 1
   m_DecelerationRate: 0.135
   m_ScrollSensitivity: 1
-  m_Viewport: {fileID: 0}
+  m_Viewport: {fileID: 915234929}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 2124015770}
   m_HorizontalScrollbarVisibility: 0
-  m_VerticalScrollbarVisibility: 0
+  m_VerticalScrollbarVisibility: 1
   m_HorizontalScrollbarSpacing: 0
   m_VerticalScrollbarSpacing: 0
   m_OnValueChanged:
@@ -1288,7 +1288,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 842, y: 0}
-  m_SizeDelta: {x: 25, y: 600}
+  m_SizeDelta: {x: 25, y: 780}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2124015770
 MonoBehaviour:
