@@ -10,7 +10,7 @@ public class LeaderboardUi : MonoBehaviour
     static readonly string DATETIME_FORMAT = "d/M/yyyy hh:mm";
     static readonly string[] HEADERS = { "Name", "ID", "Date", "Credit" };
 
-    // Start is called before the first frame update
+    public ScrollRect scrollView;
     public Text TextPrefab;
     public Transform content;
 
@@ -58,6 +58,9 @@ public class LeaderboardUi : MonoBehaviour
             textObject.text = playerRecord.CreditEarned.ToString();
             textObject.transform.localScale = new Vector3(1, 1, 1);
         }
+
+        // Scroll layout by default scrolls to the middle of the list, so must scroll back to top
+        scrollView.normalizedPosition = new Vector2(0, 1);
     }
 
     public void backTopPreviousScene()
