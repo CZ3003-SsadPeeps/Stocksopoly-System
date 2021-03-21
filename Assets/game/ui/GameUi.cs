@@ -26,7 +26,7 @@ public class GameUi : MonoBehaviour
 
     // TODO: Replace with actual StockTrader & PlayerRecordDAO classes from stock system
     GameController controller;
-    List<PlayerCardSmall> smallPlayerCards = new List<PlayerCardSmall>(4);
+    readonly List<PlayerCardSmall> smallPlayerCards = new List<PlayerCardSmall>(4);
 
     bool shouldUpdateStock = false;
 
@@ -238,14 +238,14 @@ public class GameUi : MonoBehaviour
         }
     }
 
-    IEnumerator MovePopupToPos(RectTransform goPopupTransform, Vector2 targetPos)
+    IEnumerator MovePopupToPos(RectTransform popupTransform, Vector2 targetPos)
     {
         do
         {
             // Current position must be passed using RectTransform property. Otherwise popup will keep jumping back & forth between current & target positions
-            goPopupTransform.anchoredPosition = Vector2.MoveTowards(goPopupTransform.anchoredPosition, targetPos, 10f);
+            popupTransform.anchoredPosition = Vector2.MoveTowards(popupTransform.anchoredPosition, targetPos, 10f);
             yield return null;
-        } while (goPopupTransform.anchoredPosition != targetPos);
+        } while (popupTransform.anchoredPosition != targetPos);
         yield break;
     }
 }

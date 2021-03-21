@@ -1,15 +1,13 @@
-﻿using UnityEngine;
+﻿using Random = UnityEngine.Random;
 using System;
 using System.Collections.Generic;
 
 class GameController
 {
     static readonly int GO_PAYOUT = 150;
-    // [Note] Must specify System namespace to avoid clash with Unity's Random class
-    static readonly System.Random RANDOM = new System.Random();
 
-    IStockTrader stockTrader;
-    IPlayerRecordDAO playerRecordDAO;
+    readonly IStockTrader stockTrader;
+    readonly IPlayerRecordDAO playerRecordDAO;
 
     public GameController(IStockTrader stockTrader, IPlayerRecordDAO playerRecordDAO)
     {
@@ -25,7 +23,7 @@ class GameController
     public int GenerateDiceValue()
     {
         // [Note] Upper bound is exclusive
-        return RANDOM.Next(1, 7);
+        return Random.Range(1, 7);
     }
 
     public void IssueGoPayout()
@@ -50,7 +48,6 @@ class GameController
             records[i] = new PlayerRecord(player.Name, player.Credit, (long)(DateTime.Now - new DateTime(1970, 1, 1)).TotalMilliseconds);
         }
 
-        Debug.Log("Storing credits to database...");
         playerRecordDAO.StorePlayerRecords(records);
     }
 }
