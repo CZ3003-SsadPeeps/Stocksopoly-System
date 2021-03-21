@@ -7,6 +7,7 @@ using Database;
 
 public class GameUi : MonoBehaviour
 {
+    static readonly Vector2 popupHiddenPos = new Vector2(0, -760);
     static readonly Color32[] CARD_COLORS = new Color32[] {
         new Color32(240, 98, 146, 255),
         new Color32(186, 102, 199, 255),
@@ -121,6 +122,11 @@ public class GameUi : MonoBehaviour
         Debug.Log("Ending game...");
     }
 
+    public void OnEventConfirmButtonClick()
+    {
+        StartCoroutine(MovePopupToPos(eventPopup.PosTransform, popupHiddenPos));
+    }
+
     void LoadCurrentPlayerDetails()
     {
         Player currentPlayer = GameStore.CurrentPlayer;
@@ -188,7 +194,7 @@ public class GameUi : MonoBehaviour
 
             yield return StartCoroutine(MovePopupToPos(goPopupTransform, Vector2.zero));
             yield return new WaitForSeconds(3f);
-            yield return StartCoroutine(MovePopupToPos(goPopupTransform, new Vector2(0f, -760f)));
+            yield return StartCoroutine(MovePopupToPos(goPopupTransform, popupHiddenPos));
 
             Debug.Log("Received GO payout");
         }
