@@ -15,8 +15,12 @@ public class PlayerCardBig : PlayerCard
 
     internal void SetStockDetails(List<PlayerStock> stocks)
     {
-       //Remove existing stock info
-        content.DetachChildren();
+        //Remove existing stock info
+        int numChildren = content.childCount;
+        for (int i = 0; i < numChildren; i++)
+        {
+            GameObject.Destroy(content.GetChild(i).gameObject);
+        }
 
         GameObject textObject;
         Text headerText;
