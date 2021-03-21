@@ -1,13 +1,45 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using Database;
+using System.Collections.Generic;
 
 public class LeaderboardUi : MonoBehaviour
 {
     public ScrollRect scrollView;
     public Transform scrollViewContent;
-    public Text textPrefab;
+    public Text contentTextPrefab;
 
-    readonly LeaderboardController controller;
+    LeaderboardController controller;
+
+    void Start()
+    {
+        controller = new LeaderboardController(new PlayerRecordDAO());
+        List<PlayerRecord> playerRecords = controller.GetLeaderboard();
+
+        Text contentText;
+        foreach(PlayerRecord playerRecord in playerRecords)
+        {
+            // Display ID
+            contentText = Instantiate(contentTextPrefab);
+            contentText.transform.SetParent(scrollViewContent, false);
+            contentText.text = playerRecord.PlayerID.ToString();
+
+            // Display name
+            contentText = Instantiate(contentTextPrefab);
+            contentText.transform.SetParent(scrollViewContent, false);
+            contentText.text = playerRecord.Name;
+
+            // Display date achieved
+            contentText = Instantiate(contentTextPrefab);
+            contentText.transform.SetParent(scrollViewContent, false);
+            contentText.text = controller.ConvertToDateTimeString(playerRecord.DateAchieved);
+
+            // Display credit earned
+            contentText = Instantiate(contentTextPrefab);
+            contentText.transform.SetParent(scrollViewContent, false);
+            contentText.text = playerRecord.CreditEarned.ToString();
+        }
+    }
 
     public void OnBackButtonClick()
     {
