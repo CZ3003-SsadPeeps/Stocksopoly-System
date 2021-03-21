@@ -5,9 +5,14 @@ public class EventUi : MonoBehaviour
 {
     public Text contentText, creditText;
 
-    EventManager manager = new EventManager();
+    public RectTransform PosTransform
+    {
+        get { return GetComponent<RectTransform>(); }
+    }
 
-    void Start()
+    readonly EventManager manager = new EventManager();
+
+    public void LoadNewEvent()
     {
         EventRecord eventRecord = manager.GetEvent();
         contentText.text = eventRecord.Content;
