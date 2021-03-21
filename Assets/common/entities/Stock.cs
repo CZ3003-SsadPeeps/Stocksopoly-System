@@ -1,21 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 
 public class Stock
 {
-    public string companyName;
-    public int total;
-    public int shares;
-    public int price;
-    public int day;
+    static readonly System.Random random = new System.Random();
 
-    public Stock(string companyName, int total, int shares, int day,int price)
+    public string Name { get; }
+    public List<int> StockPriceHistory { get; set; } = new List<int>(10);
+
+    public List<StockPurchaseRecord> BuyRecord = new List<StockPurchaseRecord>();
+    public List<StockPurchaseRecord> SellRecord = new List<StockPurchaseRecord>();
+
+    // class in charge of the stock name and price list, edit this with db
+    public Stock(string name, int initialPrice)
     {
-        this.companyName=companyName;
-        this.total=total;
-        this.shares=shares;
-        this.day =day;
-        this.price=price;
+        Name = name;
+        for (int i = 0; i < 9; i++)
+        {
+            StockPriceHistory.Add(random.Next(initialPrice - 10, initialPrice + 10));
+        }
+
+        StockPriceHistory.Add(initialPrice);
     }
 }
