@@ -20,9 +20,4 @@ public class EventUi : MonoBehaviour
             creditText.text = $"-${Mathf.Abs(creditAmount)}";
         }
     }
-
-    public void OnConfirmButtonClick()
-    {
-
-    }
 }

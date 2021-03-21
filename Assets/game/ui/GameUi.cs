@@ -21,6 +21,7 @@ public class GameUi : MonoBehaviour
     public Image endGameBackground;
     public PlayerCardBig bigPlayerCard;
     public GameObject passedGoPopup, PlayerCardSmallPrefab;
+    public RectTransform eventPopupTransform;
 
     // TODO: Replace with actual StockTrader & PlayerRecordDAO classes from stock system
     GameController controller;
@@ -38,6 +39,7 @@ public class GameUi : MonoBehaviour
 
         // Ensures popup is displayed on top of everything else. Must be done after player cards are generated
         passedGoPopup.transform.SetAsLastSibling();
+        eventPopupTransform.SetAsLastSibling();
 
         LoadCurrentPlayerDetails();
     }
@@ -144,8 +146,8 @@ public class GameUi : MonoBehaviour
 
     void OnEventTileActivated()
     {
-        // TODO: Launch event UI
         Debug.Log("Launching event UI...");
+        StartCoroutine(MovePopupToPos(eventPopupTransform, Vector2.zero));
     }
 
     void DisplayNews()
