@@ -7,6 +7,7 @@ using Database;
 
 public class GameUi : MonoBehaviour
 {
+    static readonly Vector2 popupHiddenPos = new Vector2(0, -760);
     static readonly Color32[] CARD_COLORS = new Color32[] {
         new Color32(240, 98, 146, 255),
         new Color32(186, 102, 199, 255),
@@ -20,6 +21,7 @@ public class GameUi : MonoBehaviour
     public Text endGameText;
     public Image endGameBackground;
     public PlayerCardBig bigPlayerCard;
+    public EventUi eventPopup;
     public GameObject passedGoPopup, PlayerCardSmallPrefab;
 
     // TODO: Replace with actual StockTrader & PlayerRecordDAO classes from stock system
@@ -38,6 +40,7 @@ public class GameUi : MonoBehaviour
 
         // Ensures popup is displayed on top of everything else. Must be done after player cards are generated
         passedGoPopup.transform.SetAsLastSibling();
+        eventPopup.transform.SetAsLastSibling();
 
         LoadCurrentPlayerDetails();
     }
@@ -119,6 +122,11 @@ public class GameUi : MonoBehaviour
         Debug.Log("Ending game...");
     }
 
+    public void OnEventConfirmButtonClick()
+    {
+        StartCoroutine(MovePopupToPos(eventPopup.PosTransform, popupHiddenPos));
+    }
+
     void LoadCurrentPlayerDetails()
     {
         Player currentPlayer = GameStore.CurrentPlayer;
@@ -144,8 +152,9 @@ public class GameUi : MonoBehaviour
 
     void OnEventTileActivated()
     {
-        // TODO: Launch event UI
         Debug.Log("Launching event UI...");
+        eventPopup.LoadNewEvent();
+        StartCoroutine(MovePopupToPos(eventPopup.PosTransform, Vector2.zero));
     }
 
     void DisplayNews()
@@ -185,7 +194,7 @@ public class GameUi : MonoBehaviour
 
             yield return StartCoroutine(MovePopupToPos(goPopupTransform, Vector2.zero));
             yield return new WaitForSeconds(3f);
-            yield return StartCoroutine(MovePopupToPos(goPopupTransform, new Vector2(0f, -760f)));
+            yield return StartCoroutine(MovePopupToPos(goPopupTransform, popupHiddenPos));
 
             Debug.Log("Received GO payout");
         }
