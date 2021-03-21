@@ -6,47 +6,31 @@ using UnityEngine.UI;
 
 public class LeaderboardUi : MonoBehaviour
 {
+    static readonly string[] HEADERS = { "Name", "ID", "Date", "Credit" };
+
     // Start is called before the first frame update
     public Text TextPrefab;
     public Transform content;
 
+    LeaderboardController controller;
+
     void Start()
     {
-        SetLeaderboardDetails();
-    }
+        controller = new LeaderboardController(new PlayerRecordDAO());
+        List<PlayerRecord> playerRecords = controller.GetLeaderboard();
 
-    internal void SetLeaderboardDetails()
-    {
-        //Remove existing stock info
-        content.DetachChildren();
-
+        // Load headers
         Text textObject;
-
-        string[] headers = { "Name", "ID", "Date", "Credit" };
-        for (int i = 0; i < 4; i++)
+        foreach (string header in HEADERS)
         {
-            textObject = Instantiate(TextPrefab) as Text;
+            textObject = Instantiate(TextPrefab);
             textObject.transform.SetParent(content, false);
             textObject.fontStyle = FontStyle.Bold;
-            textObject.text = headers[i];
+            textObject.text = header;
             textObject.transform.localScale = new Vector3(1, 1, 1);
         }
-       
 
-        PlayerRecordDAO playerRecordDAO = new PlayerRecordDAO();
-
-        //add testdata
-        //PlayerRecord[] testplayers = new PlayerRecord[30];
-        //string testplayername = "xiaoming";
-        //for (int i = 0; i < 30; i++)
-        //{
-        //    testplayers[i] = new PlayerRecord(i, testplayername + i.ToString(), i + 100, i);
-        //}
-        //playerRecordDAO.StorePlayerRecords(testplayers);
-
-
-
-        List<PlayerRecord> playerRecords = playerRecordDAO.RetrievePlayerRecords();
+        // Load player details
         foreach (PlayerRecord playerRecord in playerRecords)
         {
             textObject = Instantiate(TextPrefab);
@@ -68,14 +52,11 @@ public class LeaderboardUi : MonoBehaviour
             textObject.transform.SetParent(content, false);
             textObject.text = playerRecord.CreditEarned.ToString();
             textObject.transform.localScale = new Vector3(1, 1, 1);
-
         }
-
-
     }
 
     public void backTopPreviousScene()
     {
-        SceneManager.UnloadSceneAsync("Leaderboard");
+        SceneManager.UnloadSceneAsync("Leaderboard", UnloadSceneOptions.UnloadAllEmbeddedSceneObjects);
     }
 }
