@@ -7,6 +7,8 @@ public class LeaderboardUi : MonoBehaviour
     public Transform scrollViewContent;
     public Text textPrefab;
 
+    readonly LeaderboardController controller;
+
     public void OnBackButtonClick()
     {
 
