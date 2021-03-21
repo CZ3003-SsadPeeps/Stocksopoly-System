@@ -20,9 +20,11 @@ public class EventUi : MonoBehaviour
         if (creditAmount >= 0)
         {
             creditText.text = $"+${creditAmount}";
+            creditText.color = Color.green;
         } else
         {
             creditText.text = $"-${Mathf.Abs(creditAmount)}";
+            creditText.color = Color.red;
         }
     }
 }
