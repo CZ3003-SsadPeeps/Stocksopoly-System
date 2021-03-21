@@ -20,7 +20,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/quiz/QuizScene.unity
     guid: e92d5f9c8279afb49ae62b1f27f7af31
-  - enabled: 1
-    path: Assets/leaderboard/Leaderboard.unity
-    guid: 49251e94b69724a45a027d54148c0b7d
   m_configObjects: {}
