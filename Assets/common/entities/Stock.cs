@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class Stock
 {
-    static readonly System.Random random = new System.Random();
-
     public string Name { get; }
-    public List<int> StockPriceHistory { get; set; } = new List<int>(10);
+    public Queue<int> StockPriceHistory { get; set; } = new Queue<int>(9);
+    public int CurrentStockPrice { get; private set; }
 
     public List<StockPurchaseRecord> BuyRecord = new List<StockPurchaseRecord>();
     public List<StockPurchaseRecord> SellRecord = new List<StockPurchaseRecord>();
@@ -16,9 +16,18 @@ public class Stock
         Name = name;
         for (int i = 0; i < 9; i++)
         {
-            StockPriceHistory.Add(random.Next(initialPrice - 10, initialPrice + 10));
+            StockPriceHistory.Enqueue(Random.Range(initialPrice - 10, initialPrice + 10));
         }
 
-        StockPriceHistory.Add(initialPrice);
+        CurrentStockPrice = initialPrice;
+    }
+
+    public void ChangePrice(int fluctuationRate)
+    {
+        int newStockPrice = CurrentStockPrice + fluctuationRate;
+
+        StockPriceHistory.Dequeue();
+        StockPriceHistory.Enqueue(CurrentStockPrice);
+        CurrentStockPrice = newStockPrice;
     }
 }
