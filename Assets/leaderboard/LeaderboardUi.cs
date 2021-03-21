@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using Database;
-using System.Collections.Generic;
 
 public class LeaderboardUi : MonoBehaviour
 {
@@ -43,6 +44,6 @@ public class LeaderboardUi : MonoBehaviour
 
     public void OnBackButtonClick()
     {
-
+        SceneManager.UnloadSceneAsync("Leaderboard");
     }
 }
