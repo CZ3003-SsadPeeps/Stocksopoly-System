@@ -455,6 +455,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1060334976}
+  - component: {fileID: 1060334977}
   m_Layer: 0
   m_Name: LeaderboardUi
   m_TagString: Untagged
@@ -479,6 +480,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1060334977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1060334975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4b7164f70e8e8043abf253c541cb1e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollView: {fileID: 656752}
+  scrollViewContent: {fileID: 1131127368}
+  textPrefab: {fileID: 1809474589516310273, guid: 9e56d952e69aa9c4bb298d72b823de03,
+    type: 3}
 --- !u!1 &1108442271
 GameObject:
   m_ObjectHideFlags: 0
@@ -1168,7 +1185,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2022338093}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1060334977}
+        m_MethodName: OnBackButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2022338093
 MonoBehaviour:
   m_ObjectHideFlags: 0
