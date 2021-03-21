@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class EventUi : MonoBehaviour
 {
-    public Text contentText;
+    public Text contentText, creditText;
 
     EventManager manager = new EventManager();
 
