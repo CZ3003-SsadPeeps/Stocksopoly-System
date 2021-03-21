@@ -1,11 +1,13 @@
-﻿using Database;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Database;
 
 public class LeaderboardUi : MonoBehaviour
 {
+    static readonly string DATETIME_FORMAT = "d/M/yyyy hh:mm";
     static readonly string[] HEADERS = { "Name", "ID", "Date", "Credit" };
 
     // Start is called before the first frame update
@@ -31,8 +33,11 @@ public class LeaderboardUi : MonoBehaviour
         }
 
         // Load player details
+        DateTime dateTime;
         foreach (PlayerRecord playerRecord in playerRecords)
         {
+            dateTime = new DateTime(1970, 1, 1).AddMilliseconds(playerRecord.DateAchieved);
+
             textObject = Instantiate(TextPrefab);
             textObject.transform.SetParent(content, false);
             textObject.text = playerRecord.Name;
@@ -45,7 +50,7 @@ public class LeaderboardUi : MonoBehaviour
 
             textObject = Instantiate(TextPrefab);
             textObject.transform.SetParent(content, false);
-            textObject.text = playerRecord.DateAchieved.ToString();
+            textObject.text = dateTime.ToString(DATETIME_FORMAT);
             textObject.transform.localScale = new Vector3(1, 1, 1);
 
             textObject = Instantiate(TextPrefab);
