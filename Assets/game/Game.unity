@@ -163,7 +163,7 @@ Transform:
   m_Children:
   - {fileID: 1132405833}
   m_Father: {fileID: 604905983}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &177717103
 GameObject:
@@ -207,7 +207,7 @@ Transform:
   m_Children:
   - {fileID: 1909378570}
   m_Father: {fileID: 604905983}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &193495898
 GameObject:
@@ -906,13 +906,13 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1134043461}
   - {fileID: 2060646577}
   - {fileID: 1770511846}
   - {fileID: 177717105}
   - {fileID: 1874405521}
   - {fileID: 22396646}
   - {fileID: 990237215}
-  - {fileID: 1134043461}
   - {fileID: 963194228}
   - {fileID: 705507995}
   m_Father: {fileID: 0}
@@ -1815,7 +1815,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 604905983}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &996213880
 GameObject:
@@ -2560,7 +2560,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!224 &1134043461
 RectTransform:
@@ -2583,7 +2583,7 @@ RectTransform:
   - {fileID: 1042853062}
   - {fileID: 1010555690}
   m_Father: {fileID: 604905983}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3372,7 +3372,7 @@ Transform:
   m_Children:
   - {fileID: 996213881}
   m_Father: {fileID: 604905983}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1787750876
 GameObject:
@@ -3708,7 +3708,7 @@ Transform:
   m_Children:
   - {fileID: 849715537}
   m_Father: {fileID: 604905983}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1909378569
 GameObject:
@@ -4228,7 +4228,7 @@ Transform:
   - {fileID: 495194575}
   - {fileID: 708827054}
   m_Father: {fileID: 604905983}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2060646578
 MonoBehaviour:

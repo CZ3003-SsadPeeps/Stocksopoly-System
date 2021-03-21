@@ -110,8 +110,7 @@ public class GameUi : MonoBehaviour
 
     public void ShowLeaderBoard()
     {
-        // TODO: Show leaderboard UI
-        Debug.Log("Launching leaderboard Ui...");
+        SceneManager.LoadScene("Leaderboard", LoadSceneMode.Additive);
     }
 
     // [NOTE] This function corresponds to clicking the end game button. This is NOT the same as
