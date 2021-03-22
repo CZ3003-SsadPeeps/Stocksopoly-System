@@ -1,4 +1,4 @@
-﻿class PlayerStock
+﻿public class PlayerStock
 {
     public string CompanyName { get; }
 
