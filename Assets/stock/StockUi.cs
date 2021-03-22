@@ -15,6 +15,6 @@ public class StockUi : MonoBehaviour
 
     public void OnBackButtonClick()
     {
-
+        SceneManager.UnloadSceneAsync("Stock");
     }
 }
