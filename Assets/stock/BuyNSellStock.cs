@@ -9,7 +9,7 @@ public class BuyNSellStock : IStockTrader
     {
         List<PlayerStock> temp = new List<PlayerStock>();
          
-        for (int i=0; i< StockStore.Stocks.Length; i++)
+        for (int i=0; i< StockStore.Stocks.Count; i++)
         {
             int PlayerShare = 0;
             int PurchasePrice = 0;
