@@ -12,9 +12,9 @@ public class Demo : MonoBehaviour
         GameObject buttonTemplate = transform.GetChild(0).gameObject;
         GameObject g;
 
-        for (int i = 0; i < StockStore.stocks.Length; i++)
+        for (int i = 0; i < StockStore.Stocks.Length; i++)
         {
-            Stock stock = StockStore.stocks[i];
+            Stock stock = StockStore.Stocks[i];
             g = Instantiate(buttonTemplate, transform);
             g.GetComponent<StockRow>().RowPos = i;
             g.transform.GetChild(0).GetComponent<Text>().text = stock.Name;

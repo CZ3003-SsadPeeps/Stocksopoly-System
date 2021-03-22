@@ -1,16 +1,10 @@
-﻿public class StockStore
+﻿using System.Collections.Generic;
+using Database;
+
+public class StockStore
 {
     //initializes the list of stocks and stores here
-    //StockDAO a= new StockDAO();
-    //list<Stock> re = a.RetrieveStocks();
-    // comment bottom out when done
-    public static readonly Stock[] stocks = new Stock[]
-    {
-        new Stock("Tesla", 56),
-        new Stock("NIO Inc", 20),
-        new Stock("GME", 50),
-        new Stock("AMC",20),
-    };
+    public static List<Stock> Stocks { get; } = new List<Stock>();
 
     // initializes the stock pointer to -1
     public static int SelectedStockPos = -1;
@@ -20,7 +14,18 @@
     {
         get
         {
-            return stocks[SelectedStockPos];
+            return Stocks[SelectedStockPos];
         }
+    }
+
+    public static bool IsStockLoaded()
+    {
+        return Stocks.Count > 0;
+    }
+
+    public static void LoadStocks()
+    {
+        StockDAO dao = new StockDAO();
+        Stocks.AddRange(dao.RetrieveStocks());
     }
 }

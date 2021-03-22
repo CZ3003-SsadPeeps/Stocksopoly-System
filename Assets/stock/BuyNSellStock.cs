@@ -9,11 +9,11 @@ public class BuyNSellStock : IStockTrader
     {
         List<PlayerStock> temp = new List<PlayerStock>();
          
-        for (int i=0; i< StockStore.stocks.Length; i++)
+        for (int i=0; i< StockStore.Stocks.Length; i++)
         {
             int PlayerShare = 0;
             int PurchasePrice = 0;
-            Stock stock = StockStore.stocks[i];
+            Stock stock = StockStore.Stocks[i];
 
             //Count total share the player had bought for a stock
             for (int j=0; j < stock.BuyRecord.Count; j++)
