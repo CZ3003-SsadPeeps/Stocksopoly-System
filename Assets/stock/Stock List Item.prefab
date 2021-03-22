@@ -88,6 +88,7 @@ GameObject:
   m_Component:
   - component: {fileID: 262755680413092402}
   - component: {fileID: 262755680413092403}
+  - component: {fileID: 310990095831464754}
   m_Layer: 5
   m_Name: Stock List Item
   m_TagString: Untagged
@@ -124,6 +125,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 262755680413092413}
   m_CullTransparentMesh: 0
+--- !u!114 &310990095831464754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262755680413092413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61ebe98dd8d3bc74c8385012d2540498, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stockNameText: {fileID: 262755681137397606}
+  tradeButton: {fileID: 262755681216536322}
 --- !u!1 &262755681137397600
 GameObject:
   m_ObjectHideFlags: 0
