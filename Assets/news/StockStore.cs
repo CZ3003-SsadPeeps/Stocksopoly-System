@@ -1,6 +1,5 @@
 ﻿public class StockStore
-{   
-    
+{
     //initializes the list of stocks and stores here
     //StockDAO a= new StockDAO();
     //list<Stock> re = a.RetrieveStocks();
@@ -9,7 +8,7 @@
     {
         new Stock("Tesla", 56),
         new Stock("NIO Inc", 20),
-        new Stock("GME", 50),   
+        new Stock("GME", 50),
         new Stock("AMC",20),
     };
 
@@ -17,11 +16,11 @@
     public static int SelectedStockPos = -1;
 
     // throws the stock obj to window to display when selected
-    public static Stock SelectedStock {
+    public static Stock SelectedStock
+    {
         get
         {
             return stocks[SelectedStockPos];
         }
     }
-    
 }
