@@ -96,9 +96,7 @@ public class GameUi : MonoBehaviour
 
     public void ShowStockMarket()
     {
-        GameStore.ShouldUpdatePlayerStock = true;
-        // TODO: Show view stock market UI
-        Debug.Log("Launching stock market UI...");
+        SceneManager.LoadScene("Stock", LoadSceneMode.Additive);
     }
 
     public void OnHomeButtonClick()
