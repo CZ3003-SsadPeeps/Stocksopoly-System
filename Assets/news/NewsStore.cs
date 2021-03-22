@@ -5,7 +5,7 @@ using Database;
 public class NewsStore
 {
     //stores the list of news objects
-    public static readonly List<News> news = new List<News>();
+    private static readonly List<News> news = new List<News>();
 
     public static bool IsNewsLoaded() { return news.Count > 0; }
 
