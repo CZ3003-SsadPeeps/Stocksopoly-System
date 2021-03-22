@@ -5,12 +5,16 @@ public class StockUi : MonoBehaviour
 {
     public StockListUi stockList;
 
+    readonly StockListManager manager = new StockListManager();
+
     void Start()
     {
         stockList.SetItemClickListener(pos => {
             StockStore.SelectedStockPos = pos;
             SceneManager.LoadScene("Tesla");
         });
+
+        stockList.SetList(manager.GetAllStocks());
     }
 
     public void OnBackButtonClick()
