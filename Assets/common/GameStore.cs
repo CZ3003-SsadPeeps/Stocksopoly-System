@@ -32,4 +32,6 @@
         CurrentPlayerPos = (CurrentPlayerPos + 1) % Players.Length;
         return CurrentPlayerPos == 0;
     }
+
+    public static bool ShouldUpdatePlayerStock { get; set; } = false;
 }
