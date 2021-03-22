@@ -12,7 +12,8 @@ public class NewsUi : MonoBehaviour
     {
         manager = new NewsManager();
         News news = manager.GetNews();
-        newsContentText.text = news.Content;
+
+        newsContentText.text = $"{news.CompanyName}: {news.Content}";
     }
 
     public void OnBackButtonClick()
