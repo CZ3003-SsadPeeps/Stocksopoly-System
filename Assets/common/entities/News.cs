@@ -1,9 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-// class to store the news objects when brought over from db
-public class News : MonoBehaviour
+﻿// class to store the news objects when brought over from db
+public class News
 {
     public string CompanyName;
     public string Content;
