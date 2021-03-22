@@ -1,21 +1,33 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class Stock
 {
-    public string companyName;
-    public int total;
-    public int shares;
-    public int price;
-    public int day;
+    public string Name { get; }
+    public Queue<int> StockPriceHistory { get; set; } = new Queue<int>(9);
+    public int CurrentStockPrice { get; private set; }
 
-    public Stock(string companyName, int total, int shares, int day,int price)
+    public List<StockPurchaseRecord> BuyRecord = new List<StockPurchaseRecord>();
+    public List<StockPurchaseRecord> SellRecord = new List<StockPurchaseRecord>();
+
+    // class in charge of the stock name and price list, edit this with db
+    public Stock(string name, int initialPrice)
     {
-        this.companyName=companyName;
-        this.total=total;
-        this.shares=shares;
-        this.day =day;
-        this.price=price;
+        Name = name;
+        for (int i = 0; i < 9; i++)
+        {
+            StockPriceHistory.Enqueue(Random.Range(initialPrice - 10, initialPrice + 10));
+        }
+
+        CurrentStockPrice = initialPrice;
+    }
+
+    public void ChangePrice(int fluctuationRate)
+    {
+        int newStockPrice = CurrentStockPrice + fluctuationRate;
+
+        StockPriceHistory.Dequeue();
+        StockPriceHistory.Enqueue(CurrentStockPrice);
+        CurrentStockPrice = newStockPrice;
     }
 }

@@ -158,8 +158,7 @@ public class GameUi : MonoBehaviour
 
     void DisplayNews()
     {
-        // TODO: Show news UI
-        Debug.Log("Launching news UI...");
+        SceneManager.LoadScene("News", LoadSceneMode.Additive);
     }
 
     void DisplayFinalScores()

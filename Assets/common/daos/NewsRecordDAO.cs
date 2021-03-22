@@ -9,13 +9,11 @@ namespace Database
 {
     public class NewsRecordDAO : SqliteHelper
     {
-
-        private const String TABLE_NAME = "News";
-        private const String KEY_NewsID = "NewsID";
-        private const String KEY_CompanyName = "CompanyName";
-        private const String KEY_Content = "Content";
-        private const String KEY_FluctuationRate = "FluctuationRate";
-
+        static readonly string TABLE_NAME = "News";
+        static readonly string KEY_NewsID = "NewsID";
+        static readonly string KEY_CompanyName = "CompanyName";
+        static readonly string KEY_Content = "Content";
+        static readonly string KEY_FluctuationRate = "FluctuationRate";
 
         public NewsRecordDAO() : base()
         {
@@ -28,7 +26,7 @@ namespace Database
             dbcmd.ExecuteNonQuery();
         }
 
-        public void addData(NewsRecord news)
+        public void addData(News news)
         {
             try
             {
@@ -36,13 +34,11 @@ namespace Database
                 dbcmd.CommandText =
                     "INSERT INTO " + TABLE_NAME
                     + " ( "
-                    //+ KEY_NewsID + ", "
                     + KEY_CompanyName + ", "
                     + KEY_Content + ", "
                     + KEY_FluctuationRate + " ) "
 
                     + "VALUES ( '"
-                    //+ news.NewsID + "', '"
                     + news.CompanyName + "', '"
                     + news.Content + "', '"
                     + news.FluctuationRate + "' )";
@@ -56,24 +52,23 @@ namespace Database
 
         }
 
-        public void StoreNewsRecords(List<NewsRecord> newsRecords)
+        public void StoreNewsRecords(List<News> newsRecords)
         {
-            foreach (NewsRecord news in newsRecords)
+            foreach (News news in newsRecords)
             {
                 addData(news);
             }
         }
 
-        public List<NewsRecord> RetrieveNewsRecords()
+        public List<News> RetrieveNewsRecords()
         {
             IDbCommand dbcmd = getDbCommand();
-            dbcmd.CommandText =
-                "SELECT * FROM " + TABLE_NAME;
-            System.Data.IDataReader reader = dbcmd.ExecuteReader();
-            List<NewsRecord> res = new List<NewsRecord>();
+            dbcmd.CommandText = $"SELECT {KEY_CompanyName}, {KEY_Content}, {KEY_FluctuationRate} FROM {TABLE_NAME}";
+            IDataReader reader = dbcmd.ExecuteReader();
+            List<News> res = new List<News>();
             while (reader.Read())
             {
-                res.Add(new NewsRecord(Convert.ToInt32(reader[0]), reader[1].ToString(), reader[2].ToString(), Convert.ToInt32(reader[3])));
+                res.Add(new News(reader.GetString(0), reader.GetString(1), reader.GetInt32(2)));
             }
             return res;
         }
