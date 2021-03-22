@@ -19,7 +19,7 @@ namespace Database
         {
             IDbCommand dbcmd = getDbCommand();
             dbcmd.CommandText = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ( " +
-                KEY_NewsID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                KEY_NewsID + " INTEGER PRIMARY KEY, " +
                 KEY_CompanyName + " TEXT NOT NULL, " +
                 KEY_Content + " TEXT NOT NULL, " +
                 KEY_FluctuationRate + " INTEGER NOT NULL)";
