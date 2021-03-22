@@ -660,7 +660,7 @@ MonoBehaviour:
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 0
-    m_HorizontalOverflow: 1
+    m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: HELLO THIS IS NEWS
@@ -684,7 +684,6 @@ GameObject:
   - component: {fileID: 2096662429}
   - component: {fileID: 2096662428}
   - component: {fileID: 2096662427}
-  - component: {fileID: 2096662430}
   m_Layer: 0
   m_Name: NewsCanvas
   m_TagString: Untagged
@@ -774,18 +773,3 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &2096662430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2096662425}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eadba4a8c2c7474468b9d4ebcf05c654, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NewsDisplayed: {fileID: 0}
-  newscontent: 
-  BackGround: {fileID: 0}
