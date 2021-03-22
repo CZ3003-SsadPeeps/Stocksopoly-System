@@ -17,8 +17,8 @@ public class Window_Graph : MonoBehaviour
         labelTemplateY = graphContainer.Find("LabelTemplateY").GetComponent<RectTransform>();
 
         // change this value when the price changes
-        List<int> valueList = StockStore.SelectedStock.StockPriceHistory;
-        ShowGraph(valueList);
+        Queue<int> valueList = StockStore.SelectedStock.StockPriceHistory;
+        ShowGraph(valueList.ToArray());
     }
 
     //creates the circles that you see on the graph
@@ -38,14 +38,14 @@ public class Window_Graph : MonoBehaviour
     }
 
     //generates the graoh
-    public void ShowGraph(List<int> valueList)
+    public void ShowGraph(int[] valueList)
     {
         float graphHeight = graphContainer.sizeDelta.y;
         // change yMaximum if your max price is diff i.e. 10 dollar means y max is 10, change xSize to change how wide the graph is
         float yMaximum = 100f;
         float xSize = 150f;
         GameObject lastCircleGameObject = null;
-        for(int i =0; i < valueList.Count; i++)
+        for(int i = 0; i < valueList.Length; i++)
         {
             float xPosition = 250f + (i * xSize);
             float yPosition =  (valueList[i] / yMaximum) * graphHeight;

@@ -6,19 +6,6 @@ using UnityEngine.UI;
 
 public class EditQuantity : MonoBehaviour
 {
-
-    public class Stocks
-    {
-        public string Name;
-        public double Price;
-        public Stocks(string name, double price)
-        {
-            Name = name;
-            Price = price;
-        }
-        // Other properties, methods, events...
-    }
-
     public Text StockNameText;
     public Text StockPriceText;  
     public Text QuantityText;  
@@ -30,7 +17,7 @@ public class EditQuantity : MonoBehaviour
 
 
    // Stocks tesla = new Stocks("Tesla" , 500);
-    Stocks tesla = new Stocks(StockStore.SelectedStock.Name,StockStore.SelectedStock.StockPriceHistory[9]);
+    Stock tesla = StockStore.SelectedStock;
 
     // Start is called before the first frame update
     void Start()
@@ -42,7 +29,7 @@ public class EditQuantity : MonoBehaviour
     void Update()
     {
         StockNameText.text = tesla.Name.ToString();
-        StockPriceText.text = tesla.Price.ToString();
+        StockPriceText.text = tesla.CurrentStockPrice.ToString();
         QuantityText.text = quantity.ToString();
         AmountText.text = amount.ToString();
     }
@@ -50,7 +37,7 @@ public class EditQuantity : MonoBehaviour
     public void addQuantity()
     {
         quantity++;
-        amount += tesla.Price;
+        amount += tesla.CurrentStockPrice;
     }
 
     public void minusQuantity()
@@ -58,7 +45,7 @@ public class EditQuantity : MonoBehaviour
         if (quantity > 0) 
         { 
             quantity--;
-            amount -= tesla.Price;
+            amount -= tesla.CurrentStockPrice;
         }
     }
 
