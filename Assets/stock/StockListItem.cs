@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class StockListItem : MonoBehaviour
@@ -11,8 +12,8 @@ public class StockListItem : MonoBehaviour
         stockNameText.text = name;
     }
 
-    public void SetClickListener(Button.ButtonClickedEvent clickEvent)
+    public void SetClickListener(UnityAction listener)
     {
-        tradeButton.onClick = clickEvent;
+        tradeButton.onClick.AddListener(listener);
     }
 }
