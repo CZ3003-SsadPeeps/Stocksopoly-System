@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-
 public class EditQuantity : MonoBehaviour
 {
     public Text QuantityText;
