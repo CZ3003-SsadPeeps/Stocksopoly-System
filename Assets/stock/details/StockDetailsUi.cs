@@ -14,13 +14,11 @@ public class StockDetailsUi : MonoBehaviour
     void Start()
     {
         Stock stock = manager.Stock;
-        Player player = manager.Player;
         StockPurchaseRecord purchaseRecord = manager.PurchaseRecord;
 
         stockNameText.text = stock.Name;
         quantityEditor.SetQuantity(purchaseRecord.Quantity);
         quantityEditor.SetStockPrice(stock.CurrentStockPrice);
-        playerDetails.text = $"{player.Name} - ${player.Credit}";
         graph.ShowGraph(stock.StockPriceHistory.ToArray());
 
         quantityEditor.SetQuantityChangeListener(quantity =>
@@ -44,6 +42,12 @@ public class StockDetailsUi : MonoBehaviour
 
             manager.QuantityChange = quantity;
         });
+    }
+
+    void Update()
+    {
+        Player player = manager.Player;
+        playerDetails.text = $"{player.Name} - ${player.Credit}";
     }
 
     public void OnBackButtonClick()
