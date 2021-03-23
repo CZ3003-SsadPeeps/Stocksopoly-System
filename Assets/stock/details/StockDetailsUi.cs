@@ -14,6 +14,8 @@ public class StockDetailsUi : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameStore.ShouldUpdatePlayerStock = true;
+
         Stock stock = manager.Stock;
         StockPurchaseRecord purchaseRecord = manager.PurchaseRecord;
 
@@ -53,6 +55,7 @@ public class StockDetailsUi : MonoBehaviour
 
     public void OnBackButtonClick()
     {
+        GameStore.ShouldUpdatePlayerStock = false;
         SceneManager.UnloadSceneAsync("Tesla");
     }
 
