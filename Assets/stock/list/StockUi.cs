@@ -11,7 +11,7 @@ public class StockUi : MonoBehaviour
     {
         stockList.SetItemClickListener(pos => {
             StockStore.SelectedStockPos = pos;
-            SceneManager.LoadScene("Tesla");
+            SceneManager.LoadScene("Tesla", LoadSceneMode.Additive);
         });
 
         stockList.SetList(manager.GetAllStocks());
