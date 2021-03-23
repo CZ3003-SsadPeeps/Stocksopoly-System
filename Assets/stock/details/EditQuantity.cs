@@ -41,5 +41,7 @@ public class EditQuantity : MonoBehaviour
     {
         this.currentQuantity = currentQuantity;
         QuantityChange = 0;
+
+        QuantityText.text = currentQuantity.ToString();
     }
 }
