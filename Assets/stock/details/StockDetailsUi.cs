@@ -59,6 +59,11 @@ public class StockDetailsUi : MonoBehaviour
     public void OnBuySellButtonClick()
     {
         manager.SaveQuantityChange();
+
         quantityEditor.SetQuantity(manager.PurchaseRecord.Quantity);
+        buyAmountText.text = string.Empty;
+        sellAmountText.text = string.Empty;
+        buyButton.interactable = false;
+        sellButton.interactable = false;
     }
 }
