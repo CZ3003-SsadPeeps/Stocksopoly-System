@@ -971,7 +971,6 @@ GameObject:
   - component: {fileID: 1053997089}
   - component: {fileID: 1053997088}
   - component: {fileID: 1053997087}
-  - component: {fileID: 1053997086}
   m_Layer: 5
   m_Name: Sell Button
   m_TagString: Untagged
@@ -999,18 +998,6 @@ RectTransform:
   m_AnchoredPosition: {x: -90, y: -275}
   m_SizeDelta: {x: 120, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1053997086
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1053997084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0beee7b154e401a49a3cf4783180d166, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1053997087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1054,7 +1041,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1053997086}
+      - m_Target: {fileID: 0}
         m_MethodName: OpenPanel
         m_Mode: 1
         m_Arguments:
@@ -1240,7 +1227,6 @@ GameObject:
   - component: {fileID: 1270123191}
   - component: {fileID: 1270123190}
   - component: {fileID: 1270123189}
-  - component: {fileID: 1270123192}
   m_Layer: 5
   m_Name: Buy Button
   m_TagString: Untagged
@@ -1311,7 +1297,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1270123192}
+      - m_Target: {fileID: 0}
         m_MethodName: OpenPanel
         m_Mode: 1
         m_Arguments:
@@ -1370,19 +1356,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1270123187}
   m_CullTransparentMesh: 0
---- !u!114 &1270123192
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1270123187}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0beee7b154e401a49a3cf4783180d166, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Panel: {fileID: 0}
 --- !u!1 &1294120336
 GameObject:
   m_ObjectHideFlags: 0
