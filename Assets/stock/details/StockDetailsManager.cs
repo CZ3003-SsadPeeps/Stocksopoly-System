@@ -15,5 +15,6 @@
     internal void SaveQuantityChange()
     {
         PurchaseRecord.AddQuantity(QuantityChange, Stock.CurrentStockPrice);
+        Player.AddCredit(-(QuantityChange * Stock.CurrentStockPrice));
     }
 }
