@@ -7,7 +7,8 @@ public class EditQuantity : MonoBehaviour
     public Text QuantityText;
     public Text StockPriceText;
 
-    public int Quantity { get; private set; }
+    int currentQuantity;
+    public int QuantityChange { get; private set; } = 0;
 
     Action<int> QuantityChangeListener;
 
@@ -15,21 +16,15 @@ public class EditQuantity : MonoBehaviour
     {
         if (isIncrease)
         {
-            Quantity++;
+            QuantityChange++;
         }
         else
         {
-            Quantity--;
+            if (-QuantityChange < currentQuantity)  QuantityChange--;
         }
 
-        QuantityText.text = Quantity.ToString();
-        QuantityChangeListener.Invoke(Quantity);
-    }
-
-    public void SetQuantity(int quantity)
-    {
-        Quantity = quantity;
-        QuantityText.text = Quantity.ToString();
+        QuantityText.text = (currentQuantity - QuantityChange).ToString();
+        QuantityChangeListener.Invoke(QuantityChange);
     }
 
     public void SetStockPrice(int stockPrice)
@@ -40,5 +35,11 @@ public class EditQuantity : MonoBehaviour
     public void SetQuantityChangeListener(Action<int> changeListener)
     {
         QuantityChangeListener = changeListener;
+    }
+
+    public void SetQuantity(int currentQuantity)
+    {
+        this.currentQuantity = currentQuantity;
+        QuantityChange = 0;
     }
 }
