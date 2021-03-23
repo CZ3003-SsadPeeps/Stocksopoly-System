@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class NewsUi : MonoBehaviour
+public class NewsPopupUi : MonoBehaviour
 {
     public Text newsContentText;
 

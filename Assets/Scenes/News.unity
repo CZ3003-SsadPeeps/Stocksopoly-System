@@ -620,7 +620,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 393626329}
+      - m_Target: {fileID: 0}
         m_MethodName: OnBackButtonClick
         m_Mode: 1
         m_Arguments:
