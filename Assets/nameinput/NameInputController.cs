@@ -30,12 +30,13 @@ class NameInputController
             }
         }
 
-        if (results.Count == 0)
-        {
-            GameStore.InitPlayers(names);
-        }
-
         return results;
+    }
+
+    internal void InitializeGame(string[] names)
+    {
+        GameStore.InitPlayers(names);
+        NewsStore.ResetNews();
     }
 
     bool ValidateName(string name)

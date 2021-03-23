@@ -1,15 +1,23 @@
 ﻿public class StockPurchaseRecord
 {
-    public string PlayerName { get; }
+    public string StockName { get; }
 
-    public int TotalShare { get; }
+    public int Quantity { get; private set;  } = 0;
 
-    public int Price { get; }
+    public int AverageStockPrice { get; private set; } = 0;
 
-    public StockPurchaseRecord(string playerName, int totalShare, int price)
+    public StockPurchaseRecord(string stockName)
     {
-        this.PlayerName = playerName;
-        this.TotalShare = totalShare;
-        this.Price = price;
+        StockName = stockName;
+    }
+
+    public void AddQuantity(int quantity, int currentStockPrice)
+    {
+        if (quantity > 0)
+        {
+            AverageStockPrice = ((Quantity * AverageStockPrice) + (quantity * currentStockPrice)) / (Quantity + quantity);
+        }
+
+        Quantity += quantity;
     }
 }

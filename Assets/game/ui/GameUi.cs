@@ -28,8 +28,6 @@ public class GameUi : MonoBehaviour
     GameController controller;
     readonly List<PlayerCardSmall> smallPlayerCards = new List<PlayerCardSmall>(4);
 
-    bool shouldUpdateStock = false;
-
     void Start()
     {
         // Uncomment when testing Game UI only
@@ -52,7 +50,7 @@ public class GameUi : MonoBehaviour
 
         bigPlayerCard.SetCredit(currentPlayerCredit);
         // This operation is pretty expensive, so will only be done when while user is in stock market UI
-        if (shouldUpdateStock)
+        if (GameStore.ShouldUpdatePlayerStock)
         {
             List<PlayerStock> stocks = controller.GetPlayerStocks();
             bigPlayerCard.SetStockDetails(stocks);
@@ -98,9 +96,7 @@ public class GameUi : MonoBehaviour
 
     public void ShowStockMarket()
     {
-        shouldUpdateStock = true;
-        // TODO: Show view stock market UI
-        Debug.Log("Launching stock market UI...");
+        SceneManager.LoadScene("Stock", LoadSceneMode.Additive);
     }
 
     public void OnHomeButtonClick()

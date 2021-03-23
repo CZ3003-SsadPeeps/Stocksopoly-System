@@ -1,16 +1,11 @@
-﻿public class StockStore
+﻿using System.Collections.Generic;
+using Database;
+
+public class StockStore
 {
     //initializes the list of stocks and stores here
-    //StockDAO a= new StockDAO();
-    //list<Stock> re = a.RetrieveStocks();
-    // comment bottom out when done
-    public static readonly Stock[] stocks = new Stock[]
-    {
-        new Stock("Tesla", 56),
-        new Stock("NIO Inc", 20),
-        new Stock("GME", 50),
-        new Stock("AMC",20),
-    };
+    public static List<Stock> Stocks { get; } = new List<Stock>();
+    public static Dictionary<string, List<StockPurchaseRecord>> purchaseRecords = new Dictionary<string, List<StockPurchaseRecord>>();
 
     // initializes the stock pointer to -1
     public static int SelectedStockPos = -1;
@@ -18,9 +13,34 @@
     // throws the stock obj to window to display when selected
     public static Stock SelectedStock
     {
-        get
+        get { return Stocks[SelectedStockPos]; }
+    }
+
+    public static bool IsStockLoaded()
+    {
+        return Stocks.Count > 0;
+    }
+
+    public static void LoadStocks()
+    {
+        StockDAO dao = new StockDAO();
+        Stocks.AddRange(dao.RetrieveStocks());
+
+        List<StockPurchaseRecord> stockPurchaseRecords;
+        foreach (Player player in GameStore.Players)
         {
-            return stocks[SelectedStockPos];
+            stockPurchaseRecords = new List<StockPurchaseRecord>();
+            foreach(Stock stock in Stocks)
+            {
+                stockPurchaseRecords.Add(new StockPurchaseRecord(stock.Name));
+            }
+
+            purchaseRecords.Add(player.Name, stockPurchaseRecords);
         }
+    }
+
+    public static StockPurchaseRecord GetPurchaseRecord(string playerName, string stockName)
+    {
+        return purchaseRecords[playerName].Find(record => record.StockName == stockName);
     }
 }

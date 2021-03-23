@@ -7,9 +7,6 @@ public class Stock
     public Queue<int> StockPriceHistory { get; set; } = new Queue<int>(9);
     public int CurrentStockPrice { get; private set; }
 
-    public List<StockPurchaseRecord> BuyRecord = new List<StockPurchaseRecord>();
-    public List<StockPurchaseRecord> SellRecord = new List<StockPurchaseRecord>();
-
     // class in charge of the stock name and price list, edit this with db
     public Stock(string name, int initialPrice)
     {

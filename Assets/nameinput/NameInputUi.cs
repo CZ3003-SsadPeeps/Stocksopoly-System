@@ -53,6 +53,7 @@ public class NameInputUi : MonoBehaviour
             return;
         }
 
+        controller.InitializeGame(nameInputs);
         SceneManager.LoadScene("Game");
     }
 }
