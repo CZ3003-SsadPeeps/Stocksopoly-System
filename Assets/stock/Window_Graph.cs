@@ -10,17 +10,6 @@ public class Window_Graph : MonoBehaviour
     public RectTransform labelTemplateX;
     public RectTransform labelTemplateY;
 
-    void Awake()
-    {
-        graphContainer = transform.Find("graphContainer").GetComponent<RectTransform>();
-        labelTemplateX = graphContainer.Find("LabelTemplateX").GetComponent<RectTransform>();
-        labelTemplateY = graphContainer.Find("LabelTemplateY").GetComponent<RectTransform>();
-
-        // change this value when the price changes
-        Queue<int> valueList = StockStore.SelectedStock.StockPriceHistory;
-        ShowGraph(valueList.ToArray());
-    }
-
     //creates the circles that you see on the graph
     public GameObject CreateCircle(Vector2 anchoredPosition)
     {

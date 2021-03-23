@@ -21,6 +21,7 @@ public class StockDetailsUi : MonoBehaviour
         quantityEditor.SetQuantity(purchaseRecord.Quantity);
         quantityEditor.SetStockPrice(stock.CurrentStockPrice);
         playerDetails.text = $"{player.Name} - ${player.Credit}";
+        graph.ShowGraph(stock.StockPriceHistory.ToArray());
 
         quantityEditor.SetQuantityChangeListener(quantity =>
         {
