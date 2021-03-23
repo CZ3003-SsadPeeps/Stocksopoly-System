@@ -16,9 +16,15 @@ public class StockStore
         get { return Stocks[SelectedStockPos]; }
     }
 
-    public void ResetPurchaseRecords()
+    public static void ResetPurchaseRecords()
     {
-        purchaseRecords.Clear();
+        foreach (List<StockPurchaseRecord> purchaseRecords in purchaseRecords.Values)
+        {
+            foreach (StockPurchaseRecord purchaseRecord in purchaseRecords)
+            {
+                purchaseRecord.Reset();
+            }
+        }
     }
 
     public static bool IsStockLoaded()
@@ -35,7 +41,7 @@ public class StockStore
         foreach (Player player in GameStore.Players)
         {
             stockPurchaseRecords = new List<StockPurchaseRecord>();
-            foreach(Stock stock in Stocks)
+            foreach (Stock stock in Stocks)
             {
                 stockPurchaseRecords.Add(new StockPurchaseRecord(stock.Name));
             }
@@ -47,5 +53,15 @@ public class StockStore
     public static StockPurchaseRecord GetPurchaseRecord(string playerName, string stockName)
     {
         return purchaseRecords[playerName].Find(record => record.StockName == stockName);
+    }
+
+    public static List<StockPurchaseRecord> GetPlayerPurchaseRecord(string playerName)
+    {
+        return purchaseRecords[playerName];
+    }
+
+    public static int GetPriceOfStock(string name)
+    {
+        return Stocks.Find(stock => stock.Name == name).CurrentStockPrice;
     }
 }

@@ -20,4 +20,10 @@
 
         Quantity += quantity;
     }
+
+    public void Reset()
+    {
+        Quantity = 0;
+        AverageStockPrice = 0;
+    }
 }
