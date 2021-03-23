@@ -16,17 +16,6 @@ public class StockStore
         get { return Stocks[SelectedStockPos]; }
     }
 
-    public static void ResetPurchaseRecords()
-    {
-        foreach (List<StockPurchaseRecord> purchaseRecords in purchaseRecords.Values)
-        {
-            foreach (StockPurchaseRecord purchaseRecord in purchaseRecords)
-            {
-                purchaseRecord.Reset();
-            }
-        }
-    }
-
     public static bool IsStockLoaded()
     {
         return Stocks.Count > 0;
@@ -36,6 +25,11 @@ public class StockStore
     {
         StockDAO dao = new StockDAO();
         Stocks.AddRange(dao.RetrieveStocks());
+    }
+
+    public static void LoadPurchaseRecords()
+    {
+        purchaseRecords.Clear();
 
         List<StockPurchaseRecord> stockPurchaseRecords;
         foreach (Player player in GameStore.Players)

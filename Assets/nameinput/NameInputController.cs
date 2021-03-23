@@ -43,7 +43,7 @@ class NameInputController
             StockStore.LoadStocks();
         }
 
-        StockStore.ResetPurchaseRecords();
+        StockStore.LoadPurchaseRecords();
     }
 
     bool ValidateName(string name)
