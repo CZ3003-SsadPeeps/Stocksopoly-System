@@ -37,6 +37,7 @@ class NameInputController
     {
         GameStore.InitPlayers(names);
         NewsStore.ResetNews();
+        StockStore.ResetPurchaseRecords();
     }
 
     bool ValidateName(string name)

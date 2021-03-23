@@ -16,6 +16,11 @@ public class StockStore
         get { return Stocks[SelectedStockPos]; }
     }
 
+    public void ResetPurchaseRecords()
+    {
+        purchaseRecords.Clear();
+    }
+
     public static bool IsStockLoaded()
     {
         return Stocks.Count > 0;
