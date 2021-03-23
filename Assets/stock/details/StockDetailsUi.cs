@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class StockDetailsUi : MonoBehaviour
 {
@@ -52,7 +53,7 @@ public class StockDetailsUi : MonoBehaviour
 
     public void OnBackButtonClick()
     {
-
+        SceneManager.UnloadSceneAsync("Tesla");
     }
 
     public void OnBuySellButtonClick()
