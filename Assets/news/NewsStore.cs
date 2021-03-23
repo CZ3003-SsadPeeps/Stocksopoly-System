@@ -5,7 +5,9 @@ using Database;
 public class NewsStore
 {
     //stores the list of news objects
-    private static readonly List<News> news = new List<News>();
+    static readonly List<News> news = new List<News>();
+
+    public static List<News> issuedNews { get; } = new List<News>();
 
     public static bool IsNewsLoaded() { return news.Count > 0; }
 
@@ -15,5 +17,14 @@ public class NewsStore
         news.AddRange(dao.RetrieveNewsRecords());
     }
 
-    public static News GetRandomNews() { return news[Random.Range(0, news.Count)]; }
+    public static void ResetNews()
+    {
+        issuedNews.Clear();
+    }
+
+    public static News GetRandomNews() {
+        News randomNews = news[Random.Range(0, news.Count)];
+        issuedNews.Add(randomNews);
+        return randomNews;
+    }
 }
