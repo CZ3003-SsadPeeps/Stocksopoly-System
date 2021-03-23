@@ -8,7 +8,7 @@ public class EditQuantity : MonoBehaviour
     public Text QuantityText;
     public Text StockPriceText;
 
-    public int Quantity { get; private set; };
+    public int Quantity { get; private set; }
 
     Action<int> QuantityChangeListener;
 
@@ -31,6 +31,11 @@ public class EditQuantity : MonoBehaviour
     {
         Quantity = quantity;
         QuantityText.text = Quantity.ToString();
+    }
+
+    public void SetStockPrice(int stockPrice)
+    {
+        StockPriceText.text = stockPrice.ToString();
     }
 
     public void SetQuantityChangeListener(Action<int> changeListener)
