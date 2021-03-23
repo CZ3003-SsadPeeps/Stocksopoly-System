@@ -24,8 +24,9 @@ public class StockListUi : MonoBehaviour
             stockObject.transform.SetParent(content, false);
 
             stockListItem = stockObject.GetComponent<StockListItem>();
+            stockListItem.SetPos(i);
             stockListItem.SetStockName(stocks[i].Name);
-            stockListItem.SetClickListener(delegate { itemClickListener.Invoke(i); });
+            stockListItem.SetClickListener(itemClickListener);
         }
     }
 }
