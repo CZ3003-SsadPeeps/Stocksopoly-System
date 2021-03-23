@@ -29,7 +29,7 @@ public class EditQuantity : MonoBehaviour
 
     public void SetStockPrice(int stockPrice)
     {
-        StockPriceText.text = stockPrice.ToString();
+        StockPriceText.text = $"@ ${stockPrice} per stock";
     }
 
     public void SetQuantityChangeListener(Action<int> changeListener)
