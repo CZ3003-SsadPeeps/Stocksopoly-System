@@ -23,7 +23,7 @@ public class EditQuantity : MonoBehaviour
             if (-QuantityChange < currentQuantity)  QuantityChange--;
         }
 
-        QuantityText.text = (currentQuantity - QuantityChange).ToString();
+        QuantityText.text = (currentQuantity + QuantityChange).ToString();
         QuantityChangeListener.Invoke(QuantityChange);
     }
 
