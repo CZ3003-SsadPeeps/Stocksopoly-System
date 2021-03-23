@@ -1,15 +1,13 @@
 ﻿public class StockPurchaseRecord
 {
-    public string PlayerName { get; }
+    public string StockName { get; }
 
-    public int TotalShare { get; }
+    public int Quantity { get; } = 0;
 
-    public int Price { get; }
+    public int AverageStockPrice { get; } = 0;
 
-    public StockPurchaseRecord(string playerName, int totalShare, int price)
+    public StockPurchaseRecord(string stockName)
     {
-        this.PlayerName = playerName;
-        this.TotalShare = totalShare;
-        this.Price = price;
+        StockName = stockName;
     }
 }
