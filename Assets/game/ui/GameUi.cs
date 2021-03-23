@@ -24,7 +24,6 @@ public class GameUi : MonoBehaviour
     public EventUi eventPopup;
     public GameObject passedGoPopup, PlayerCardSmallPrefab;
 
-    // TODO: Replace with actual StockTrader & PlayerRecordDAO classes from stock system
     GameController controller;
     readonly List<PlayerCardSmall> smallPlayerCards = new List<PlayerCardSmall>(4);
 
@@ -33,7 +32,7 @@ public class GameUi : MonoBehaviour
         // Uncomment when testing Game UI only
         //GameStore.InitPlayers(new string[] { "Abu", "Banana", "Cherry", "Mewtwo" });
 
-        controller = new GameController(new StockTraderTest(), new PlayerRecordDAO());
+        controller = new GameController(new StockTrader(), new PlayerRecordDAO());
         GeneratePlayerCards();
 
         // Ensures popup is displayed on top of everything else. Must be done after player cards are generated
