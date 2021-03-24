@@ -5,10 +5,11 @@ public class NewsListUi : MonoBehaviour
 {
     public NewsList newsList;
 
-    // Start is called before the first frame update
+    readonly NewsListManager manager = new NewsListManager();
+
     void Start()
     {
-        
+        newsList.SetNewsList(manager.GetNewsList());
     }
 
     public void OnBackButtonClick()
