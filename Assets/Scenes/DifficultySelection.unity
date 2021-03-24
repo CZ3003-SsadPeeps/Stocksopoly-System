@@ -204,14 +204,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1532883301}
-        m_MethodName: OnIntermediateButtonClick
-        m_Mode: 1
+        m_MethodName: ShowQuizUi
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Intermediate
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &216484467
@@ -819,14 +819,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1532883301}
-        m_MethodName: OnExpertButtonClick
-        m_Mode: 1
+        m_MethodName: ShowQuizUi
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Expert
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1037328790
@@ -1136,14 +1136,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1532883301}
-        m_MethodName: OnNoviceButtonClick
-        m_Mode: 1
+        m_MethodName: ShowQuizUi
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Novice
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2016832900

@@ -16,17 +16,17 @@ public class StockListItem : MonoBehaviour
         itemClickListener.Invoke(pos);
     }
 
-    public void SetPos(int pos)
+    internal void SetPos(int pos)
     {
         this.pos = pos;
     }
 
-    public void SetStockName(string name)
+    internal void SetStockName(string name)
     {
         stockNameText.text = name;
     }
 
-    public void SetClickListener(Action<int> listener)
+    internal void SetClickListener(Action<int> listener)
     {
         itemClickListener = listener;
     }

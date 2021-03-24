@@ -40,6 +40,9 @@ public class LeaderboardUi : MonoBehaviour
             contentText.transform.SetParent(scrollViewContent, false);
             contentText.text = playerRecord.CreditEarned.ToString();
         }
+
+        // Scroll layout by default scrolls to the middle of the list, so must scroll back to top
+        scrollView.normalizedPosition = new Vector2(0, 1);
     }
 
     public void OnBackButtonClick()

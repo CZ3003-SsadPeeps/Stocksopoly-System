@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class AnswerScript : MonoBehaviour
+public class QuizUi : MonoBehaviour
 {
     public Text questionText, messageText;
     public Button confirmButton, closeButton;
@@ -69,6 +69,6 @@ public class AnswerScript : MonoBehaviour
 
     public void OnQuitButtonClick()
     {
-        SceneManager.UnloadSceneAsync("QuizScene");
+        SceneManager.UnloadSceneAsync("Quiz");
     }
 }

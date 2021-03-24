@@ -578,7 +578,7 @@ GameObject:
   - component: {fileID: 446116164}
   - component: {fileID: 446116165}
   m_Layer: 5
-  m_Name: Stock Amount Editor
+  m_Name: Quantity Editor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

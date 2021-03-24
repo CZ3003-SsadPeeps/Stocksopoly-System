@@ -95,7 +95,7 @@ public class GameUi : MonoBehaviour
 
     public void ShowStockMarket()
     {
-        SceneManager.LoadScene("Stock", LoadSceneMode.Additive);
+        SceneManager.LoadScene("StockList", LoadSceneMode.Additive);
     }
 
     public void OnHomeButtonClick()

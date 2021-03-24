@@ -7,17 +7,17 @@ class LeaderboardController
 
     readonly IPlayerRecordDAO playerRecordDAO;
 
-    public LeaderboardController(IPlayerRecordDAO playerRecordDAO)
+    internal LeaderboardController(IPlayerRecordDAO playerRecordDAO)
     {
         this.playerRecordDAO = playerRecordDAO;
     }
 
-    public List<PlayerRecord> GetLeaderboard()
+    internal List<PlayerRecord> GetLeaderboard()
     {
         return playerRecordDAO.RetrievePlayerRecords();
     }
 
-    public string ConvertToDateTimeString(long milliseconds)
+    internal string ConvertToDateTimeString(long milliseconds)
     {
         return new DateTime(1970, 1, 1).AddMilliseconds(milliseconds).ToString(DATETIME_FORMAT);
     }

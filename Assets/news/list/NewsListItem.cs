@@ -5,7 +5,7 @@ public class NewsListItem : MonoBehaviour
 {
     public Text newsText;
 
-    public void SetNews(News news)
+    internal void SetNews(News news)
     {
         newsText.text = $"{news.CompanyName} - {news.Content}";
     }

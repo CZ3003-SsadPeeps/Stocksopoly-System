@@ -6,7 +6,7 @@ public class StockDetailsUi : MonoBehaviour
 {
     public Text stockNameText, buyAmountText, sellAmountText, playerDetails;
     public Window_Graph graph;
-    public EditQuantity quantityEditor;
+    public QuantityEditor quantityEditor;
     public Button buyButton, sellButton;
 
     readonly StockDetailsManager manager = new StockDetailsManager();
@@ -56,7 +56,7 @@ public class StockDetailsUi : MonoBehaviour
     public void OnBackButtonClick()
     {
         GameStore.ShouldUpdatePlayerStock = false;
-        SceneManager.UnloadSceneAsync("Tesla");
+        SceneManager.UnloadSceneAsync("StockDetails");
     }
 
     public void OnBuySellButtonClick()

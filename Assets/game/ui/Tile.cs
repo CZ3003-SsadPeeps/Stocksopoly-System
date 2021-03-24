@@ -3,7 +3,7 @@
 public class Tile : MonoBehaviour
 {
     public TileType Type;
-    Piece[] pieceSlots = new Piece[4];
+    readonly Piece[] pieceSlots = new Piece[4];
 
     void OnTriggerExit(Collider other)
     {
@@ -19,7 +19,7 @@ public class Tile : MonoBehaviour
         }
     }
 
-    public Vector3 GetEmptySlotForPiece(Piece piece)
+    internal Vector3 GetEmptySlotForPiece(Piece piece)
     {
         Vector3 pos = gameObject.transform.position;
 

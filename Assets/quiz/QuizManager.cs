@@ -13,7 +13,7 @@ public class QuizManager
     public QuestionsNAnswers LoadQuestion()
     {
         QuestionsNAnswersDAO dao = new QuestionsNAnswersDAO();
-        List<QuestionsNAnswers> questions = dao.RetrieveQuestions(Difficulty.difficulty);
+        List<QuestionsNAnswers> questions = dao.RetrieveQuestions(DifficultyStore.Difficulty);
         question = questions[Random.Range(0, questions.Count)];
 
         return question;

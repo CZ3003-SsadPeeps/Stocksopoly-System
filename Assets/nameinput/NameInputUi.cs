@@ -29,31 +29,35 @@ public class NameInputUi : MonoBehaviour
         // Check if any errors occur
         if (results.Count > 0)
         {
-            Text errorMessage;
-            int otherPos;
-            foreach (NameValidationError result in results)
-            {
-                errorMessage = errorMessages[result.Pos];
-
-                if (result is NameValidationError.IsBlank)
-                {
-                    errorMessage.text = "Name cannot be blank!";
-                    errorMessage.gameObject.SetActive(true);
-                    continue;
-                }
-
-                if (result is NameValidationError.Clash)
-                {
-                    otherPos = (result as NameValidationError.Clash).WithPos + 1;
-                    errorMessage.text = $"Name cannot be the same as Player {otherPos}'s name";
-                    errorMessage.gameObject.SetActive(true);
-                }
-            }
-
+            DisplayErrors(results);
             return;
         }
 
         controller.InitializeGame(nameInputs);
         SceneManager.LoadScene("Game");
+    }
+
+    void DisplayErrors(List<NameValidationError> errors)
+    {
+        Text errorMessage;
+        int otherPos;
+        foreach (NameValidationError result in errors)
+        {
+            errorMessage = errorMessages[result.Pos];
+
+            if (result is NameValidationError.IsBlank)
+            {
+                errorMessage.text = "Name cannot be blank!";
+                errorMessage.gameObject.SetActive(true);
+                continue;
+            }
+
+            if (result is NameValidationError.Clash)
+            {
+                otherPos = (result as NameValidationError.Clash).WithPos + 1;
+                errorMessage.text = $"Name cannot be the same as Player {otherPos}'s name";
+                errorMessage.gameObject.SetActive(true);
+            }
+        }
     }
 }

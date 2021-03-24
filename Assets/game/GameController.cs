@@ -9,34 +9,34 @@ class GameController
     readonly IStockTrader stockTrader;
     readonly IPlayerRecordDAO playerRecordDAO;
 
-    public GameController(IStockTrader stockTrader, IPlayerRecordDAO playerRecordDAO)
+    internal GameController(IStockTrader stockTrader, IPlayerRecordDAO playerRecordDAO)
     {
         this.stockTrader = stockTrader;
         this.playerRecordDAO = playerRecordDAO;
     }
 
-    public List<PlayerStock> GetPlayerStocks()
+    internal List<PlayerStock> GetPlayerStocks()
     {
         return stockTrader.GetPlayerStocks(GameStore.CurrentPlayer.Name);
     }
 
-    public int GenerateDiceValue()
+    internal int GenerateDiceValue()
     {
         // [Note] Upper bound is exclusive
         return Random.Range(1, 7);
     }
 
-    public void IssueGoPayout()
+    internal void IssueGoPayout()
     {
         GameStore.CurrentPlayer.AddCredit(GO_PAYOUT);
     }
 
-    public bool NextTurn()
+    internal bool NextTurn()
     {
         return GameStore.IncrementTurn();
     }
 
-    public void SavePlayerScores()
+    internal void SavePlayerScores()
     {
         stockTrader.SellAllStocks(GameStore.Players);
 

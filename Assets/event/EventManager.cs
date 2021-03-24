@@ -4,7 +4,7 @@ using Database;
 
 class EventManager
 {
-    public EventRecord GetEvent()
+    internal EventRecord GetEvent()
     {
         // Retrieve random event
         EventRecordDAO dao = new EventRecordDAO();

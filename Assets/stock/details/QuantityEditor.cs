@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EditQuantity : MonoBehaviour
+public class QuantityEditor : MonoBehaviour
 {
     public Text QuantityText;
     public Text StockPriceText;
@@ -35,17 +35,17 @@ public class EditQuantity : MonoBehaviour
         QuantityChangeListener.Invoke(QuantityChange);
     }
 
-    public void SetStockPrice(int stockPrice)
+    internal void SetStockPrice(int stockPrice)
     {
         StockPriceText.text = $"@ ${stockPrice} per stock";
     }
 
-    public void SetQuantityChangeListener(Action<int> changeListener)
+    internal void SetQuantityChangeListener(Action<int> changeListener)
     {
         QuantityChangeListener = changeListener;
     }
 
-    public void SetQuantity(int currentQuantity)
+    internal void SetQuantity(int currentQuantity)
     {
         this.currentQuantity = currentQuantity;
         QuantityChange = 0;

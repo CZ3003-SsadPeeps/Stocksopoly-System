@@ -1,32 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StockListUi : MonoBehaviour
 {
-    public GameObject stockListItemPrefab;
-    Action<int> itemClickListener;
+    public StockList stockList;
 
-    public Transform content;
+    readonly StockListManager manager = new StockListManager();
 
-    public void SetItemClickListener(Action<int> itemClickListener)
+    void Start()
     {
-        this.itemClickListener = itemClickListener;
+        stockList.SetItemClickListener(pos => {
+            StockStore.SelectedStockPos = pos;
+            SceneManager.LoadScene("StockDetails", LoadSceneMode.Additive);
+        });
+
+        stockList.SetList(manager.GetAllStocks());
     }
 
-    public void SetList(List<Stock> stocks)
+    public void OnBackButtonClick()
     {
-        GameObject stockObject;
-        StockListItem stockListItem;
-        for (int i = 0; i < stocks.Count; i++)
-        {
-            stockObject = Instantiate(stockListItemPrefab);
-            stockObject.transform.SetParent(content, false);
-
-            stockListItem = stockObject.GetComponent<StockListItem>();
-            stockListItem.SetPos(i);
-            stockListItem.SetStockName(stocks[i].Name);
-            stockListItem.SetClickListener(itemClickListener);
-        }
+        SceneManager.UnloadSceneAsync("StockList");
     }
 }

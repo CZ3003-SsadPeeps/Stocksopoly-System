@@ -2,7 +2,7 @@
 
 class NewsListManager
 {
-    public List<News> GetNewsList()
+    internal List<News> GetNewsList()
     {
         return NewsStore.issuedNews;
     }

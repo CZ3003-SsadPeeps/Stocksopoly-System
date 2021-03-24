@@ -6,11 +6,11 @@ public class NewsPopupUi : MonoBehaviour
 {
     public Text newsContentText;
 
-    NewsManager manager;
+    NewsPopupManager manager;
 
     void Start()
     {
-        manager = new NewsManager();
+        manager = new NewsPopupManager();
         News news = manager.GetNews();
 
         newsContentText.text = $"{news.CompanyName}: {news.Content}";

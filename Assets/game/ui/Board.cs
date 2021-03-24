@@ -71,20 +71,4 @@ public class Board : MonoBehaviour
 
         piece.transform.position = target; //Snap to final target in case
     }
-
-    void OnDrawGizmos()
-    {
-        //Gizmos.color = Color.green;
-
-        //for (int i = 0; i < tiles.Length; i++)
-        //{
-        //    Vector3 currentPos = tiles[i].gameObject.transform.position;
-
-        //    if (i > 0)
-        //    {
-        //        Vector3 previousPos = tiles[i - 1].gameObject.transform.position;
-        //        Gizmos.DrawLine(previousPos, currentPos);
-        //    }
-        //}
-    }
 }

@@ -2,7 +2,7 @@
 
 class StockListManager
 {
-    public List<Stock> GetAllStocks()
+    internal List<Stock> GetAllStocks()
     {
         return StockStore.Stocks;
     }

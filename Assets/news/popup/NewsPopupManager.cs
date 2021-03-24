@@ -1,4 +1,4 @@
-﻿public class NewsManager
+﻿public class NewsPopupManager
 {
     public News GetNews()
     {

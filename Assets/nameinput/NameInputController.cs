@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 class NameInputController
 {
@@ -48,6 +47,6 @@ class NameInputController
 
     bool ValidateName(string name)
     {
-        return !String.IsNullOrWhiteSpace(name);
+        return !string.IsNullOrWhiteSpace(name);
     }
 }

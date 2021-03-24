@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class Window_Graph : MonoBehaviour
@@ -26,7 +24,7 @@ public class Window_Graph : MonoBehaviour
 
     }
 
-    //generates the graoh
+    //generates the graph
     public void ShowGraph(int[] valueList)
     {
         float graphHeight = graphContainer.sizeDelta.y;
@@ -34,10 +32,10 @@ public class Window_Graph : MonoBehaviour
         float yMaximum = 100f;
         float xSize = 55f;
         GameObject lastCircleGameObject = null;
-        for(int i = 0; i < valueList.Length; i++)
+        for (int i = 0; i < valueList.Length; i++)
         {
             float xPosition = 250f + (i * xSize);
-            float yPosition =  (valueList[i] / yMaximum) * graphHeight;
+            float yPosition = (valueList[i] / yMaximum) * graphHeight;
             GameObject circleGameObject = CreateCircle(new Vector2(xPosition, yPosition));
             if (lastCircleGameObject != null)
             {
@@ -50,7 +48,7 @@ public class Window_Graph : MonoBehaviour
             labelX.SetParent(graphContainer.transform, false);
             labelX.gameObject.SetActive(true);
             labelX.anchoredPosition = new Vector2(xPosition, 10f);
-            labelX.GetComponent<Text>().text = (i*1f +1f).ToString();
+            labelX.GetComponent<Text>().text = (i * 1f + 1f).ToString();
         }
 
         // this part of the code insantiates the y-axis
@@ -61,7 +59,7 @@ public class Window_Graph : MonoBehaviour
             labelY.SetParent(graphContainer.transform, false);
             labelY.gameObject.SetActive(true);
             float normalizedValue = i * 1f / separatorCount;
-            labelY.anchoredPosition = new Vector2(150f,-387f+ normalizedValue *graphHeight);
+            labelY.anchoredPosition = new Vector2(150f, -387f + normalizedValue * graphHeight);
             labelY.GetComponent<Text>().text = Mathf.RoundToInt(normalizedValue * yMaximum).ToString();
         }
     }
@@ -91,6 +89,4 @@ public class Window_Graph : MonoBehaviour
 
         return n;
     }
-
-
 }
