@@ -1025,6 +1025,16 @@ MonoBehaviour:
   passedGoPopup: {fileID: 667464219}
   PlayerCardSmallPrefab: {fileID: 2336208187690542602, guid: d8a276fe357eec74bb51ef64543ddf2e,
     type: 3}
+  startGameObjects:
+  - {fileID: 1162998035}
+  - {fileID: 398047793}
+  - {fileID: 1779476256}
+  - {fileID: 93033154}
+  endGameObjects:
+  - {fileID: 1992580970}
+  - {fileID: 387187447}
+  - {fileID: 616183904}
+  - {fileID: 1042853061}
 --- !u!4 &604905983
 Transform:
   m_ObjectHideFlags: 0
