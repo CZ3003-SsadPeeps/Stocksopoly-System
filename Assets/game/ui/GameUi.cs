@@ -121,6 +121,11 @@ public class GameUi : MonoBehaviour
         StartCoroutine(MovePopupToPos(eventPopup.PosTransform, popupHiddenPos));
     }
 
+    public void ShowNewsList()
+    {
+        SceneManager.LoadScene("NewsList", LoadSceneMode.Additive);
+    }
+
     void LoadCurrentPlayerDetails()
     {
         Player currentPlayer = GameStore.CurrentPlayer;
