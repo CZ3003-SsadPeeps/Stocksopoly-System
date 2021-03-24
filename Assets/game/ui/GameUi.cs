@@ -17,12 +17,15 @@ public class GameUi : MonoBehaviour
 
     public Board board;
     public Canvas canvas;
-    public Button rollDiceButton, endTurnButton, leaderboardButton, homeButton;
+    public Button rollDiceButton, endTurnButton;
     public Text endGameText;
     public Image endGameBackground;
     public PlayerCardBig bigPlayerCard;
     public EventUi eventPopup;
     public GameObject passedGoPopup, PlayerCardSmallPrefab;
+
+    public GameObject[] startGameObjects;
+    public GameObject[] endGameObjects;
 
     GameController controller;
     readonly List<PlayerCardSmall> smallPlayerCards = new List<PlayerCardSmall>(4);
@@ -73,13 +76,15 @@ public class GameUi : MonoBehaviour
             }
 
             // Disable all buttons except leaderboard & back
-            rollDiceButton.gameObject.SetActive(false);
-            endTurnButton.gameObject.SetActive(false);
+            foreach(GameObject gameObject in startGameObjects)
+            {
+                gameObject.SetActive(false);
+            }
 
-            endGameBackground.gameObject.SetActive(true);
-            endGameText.gameObject.SetActive(true);
-            leaderboardButton.gameObject.SetActive(true);
-            homeButton.gameObject.SetActive(true);
+            foreach (GameObject gameObject in endGameObjects)
+            {
+                gameObject.SetActive(true);
+            }
 
             controller.SavePlayerScores();
             DisplayFinalScores();
