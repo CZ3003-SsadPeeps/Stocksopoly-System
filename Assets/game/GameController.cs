@@ -1,10 +1,11 @@
-﻿using Random = UnityEngine.Random;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 class GameController
 {
     static readonly int GO_PAYOUT = 150;
+    static readonly int[] DICE_VALUES = { 2, 3, 5, 6, 4, 5, 6, 1, 6 };
+    static int DICE_POS = 0;
 
     readonly IStockTrader stockTrader;
     readonly IPlayerRecordDAO playerRecordDAO;
@@ -22,8 +23,9 @@ class GameController
 
     internal int GenerateDiceValue()
     {
-        // [Note] Upper bound is exclusive
-        return Random.Range(1, 7);
+        int diceValue = DICE_VALUES[DICE_POS++];
+        DICE_POS %= DICE_VALUES.Length;
+        return diceValue;
     }
 
     internal void IssueGoPayout()
