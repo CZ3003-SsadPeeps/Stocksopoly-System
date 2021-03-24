@@ -12,7 +12,7 @@ namespace Database
     {
         public const string Tag = "Riz: SqliteHelper:\t";
 
-        private const string database_name = "my_db.db";
+        private const string database_name = "stocksopoly_database.db";
 
         public string db_connection_string;
         public IDbConnection db_connection;
@@ -20,7 +20,15 @@ namespace Database
         public SqliteHelper()
         {
             Debug.Log(Tag + "Connected");
-            db_connection_string = "URI=file:" + Application.persistentDataPath + "/" + database_name;
+
+            string databaseFile;
+#if UNITY_EDITOR
+            databaseFile = $"Assets/Resources/{database_name}";
+#else
+            databaseFile = $"{Application.dataPath}/Resources/{database_name}";
+#endif
+
+            db_connection_string = $"URI=file:{databaseFile}";
             Debug.Log("db_connection_string" + db_connection_string);
             db_connection = new SqliteConnection(db_connection_string);
             db_connection.Open();
