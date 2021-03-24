@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Board : MonoBehaviour
 {
-    static readonly int MAX_LAPS = 14;
+    static readonly int MAX_LAPS = 1;
 
     public Piece[] pieces;
     public Tile[] tiles;
