@@ -875,6 +875,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   newsItemPrefab: {fileID: 1500738767991560143, guid: de4823c95ea2d5d4bbdfc887a9f212ce,
     type: 3}
+  contentRoot: {fileID: 370431619}
 --- !u!222 &1541770289
 CanvasRenderer:
   m_ObjectHideFlags: 0
