@@ -32,7 +32,7 @@ public class Window_Graph : MonoBehaviour
         float graphHeight = graphContainer.sizeDelta.y;
         // change yMaximum if your max price is diff i.e. 10 dollar means y max is 10, change xSize to change how wide the graph is
         float yMaximum = 100f;
-        float xSize = 150f;
+        float xSize = 55f;
         GameObject lastCircleGameObject = null;
         for(int i = 0; i < valueList.Length; i++)
         {
@@ -61,7 +61,7 @@ public class Window_Graph : MonoBehaviour
             labelY.SetParent(graphContainer.transform, false);
             labelY.gameObject.SetActive(true);
             float normalizedValue = i * 1f / separatorCount;
-            labelY.anchoredPosition = new Vector2(150f, normalizedValue *graphHeight);
+            labelY.anchoredPosition = new Vector2(150f,-387f+ normalizedValue *graphHeight);
             labelY.GetComponent<Text>().text = Mathf.RoundToInt(normalizedValue * yMaximum).ToString();
         }
     }
