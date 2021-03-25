@@ -21,7 +21,6 @@ public class GameUi : MonoBehaviour
     public Text endGameText;
     public Image endGameBackground;
     public PlayerCardBig bigPlayerCard;
-    public EventUi eventPopup;
     public GameObject passedGoPopup, PlayerCardSmallPrefab;
 
     public GameObject[] startGameObjects;
@@ -40,7 +39,6 @@ public class GameUi : MonoBehaviour
 
         // Ensures popup is displayed on top of everything else. Must be done after player cards are generated
         passedGoPopup.transform.SetAsLastSibling();
-        eventPopup.transform.SetAsLastSibling();
 
         LoadCurrentPlayerDetails();
     }
@@ -121,11 +119,6 @@ public class GameUi : MonoBehaviour
         Debug.Log("Ending game...");
     }
 
-    public void OnEventConfirmButtonClick()
-    {
-        StartCoroutine(MovePopupToPos(eventPopup.PosTransform, popupHiddenPos));
-    }
-
     public void ShowNewsList()
     {
         SceneManager.LoadScene("NewsList", LoadSceneMode.Additive);
@@ -156,9 +149,7 @@ public class GameUi : MonoBehaviour
 
     void OnEventTileActivated()
     {
-        Debug.Log("Launching event UI...");
-        eventPopup.LoadNewEvent();
-        StartCoroutine(MovePopupToPos(eventPopup.PosTransform, Vector2.zero));
+        SceneManager.LoadScene("EventPopup", LoadSceneMode.Additive);
     }
 
     void DisplayNews()

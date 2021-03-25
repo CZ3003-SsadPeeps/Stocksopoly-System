@@ -1,18 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class EventUi : MonoBehaviour
+public class EventPopupUi : MonoBehaviour
 {
     public Text contentText, creditText;
 
-    public RectTransform PosTransform
-    {
-        get { return GetComponent<RectTransform>(); }
-    }
-
     readonly EventManager manager = new EventManager();
 
-    public void LoadNewEvent()
+    void Start()
     {
         EventRecord eventRecord = manager.GetEvent();
         contentText.text = eventRecord.Content;
@@ -21,10 +17,16 @@ public class EventUi : MonoBehaviour
         {
             creditText.text = $"+${creditAmount}";
             creditText.color = Color.green;
-        } else
+        }
+        else
         {
             creditText.text = $"-${Mathf.Abs(creditAmount)}";
             creditText.color = Color.red;
         }
+    }
+
+    public void OnConfirmButtonClick()
+    {
+        SceneManager.UnloadSceneAsync("EventPopup");
     }
 }
