@@ -38,11 +38,11 @@ namespace Database
                 + KEY_DateAchieved + ", "
                 + KEY_CreditEarned + " ) "
 
-                + "VALUES ( '"
-                // + "NULL" + "', '"
-                + player.Name + "', '"
-                + player.DateAchieved + "', '"
-                + player.CreditEarned + "' )";
+                + "VALUES ( \""
+                // + "NULL" + "\", \""
+                + player.Name + "\", \""
+                + player.DateAchieved + "\", \""
+                + player.CreditEarned + "\" )";
             dbcmd.ExecuteNonQuery();
 
         }
@@ -53,14 +53,14 @@ namespace Database
 
                 IDbCommand dbcmd = getDbCommand();
                 dbcmd.CommandText =
-                    "SELECT * FROM " + TABLE_NAME + " WHERE " + KEY_PlayerID + " = '" + str + "'";
+                    "SELECT * FROM " + TABLE_NAME + " WHERE " + KEY_PlayerID + " = \"" + str + "\"";
                 return convertToList(dbcmd.ExecuteReader());
         }
 
         public override  void deleteDataByString(string str)
         {
             IDbCommand dbcmd = db_connection.CreateCommand();
-            dbcmd.CommandText = "DELETE FROM " + TABLE_NAME + " WHERE " + KEY_PlayerID + " = '" + str + "'";
+            dbcmd.CommandText = "DELETE FROM " + TABLE_NAME + " WHERE " + KEY_PlayerID + " = \"" + str + "\"";
             dbcmd.ExecuteNonQuery();
         }
 

@@ -55,12 +55,12 @@ namespace Database
                     + KEY_Credit + ", "
                     + KEY_Difficulty + " ) "
 
-                    + "VALUES ( '"
-                    + quizRecord.QuizID + "', '"
-                    + quizRecord.Question + "', '"
-                    + quizRecord.CorrectAnswer + "', '"
-                    + quizRecord.Credit + "', '"
-                    + quizRecord.Difficulty + "' )";
+                    + "VALUES ( \""
+                    + quizRecord.QuizID + "\", \""
+                    + quizRecord.Question + "\", \""
+                    + quizRecord.CorrectAnswer + "\", \""
+                    + quizRecord.Credit + "\", \""
+                    + quizRecord.Difficulty + "\" )";
                 dbcmd.ExecuteNonQuery();
 
 
@@ -75,10 +75,10 @@ namespace Database
                     + KEY_Content + ", "
                     + KEY_OptionIndex + " ) "
 
-                    + "VALUES ( '"
-                    + quizRecord.QuizID + "', '"
-                    + option + "', '"
-                    + Array.IndexOf(quizRecord.AnswerSelections, option) + "' )";
+                    + "VALUES ( \""
+                    + quizRecord.QuizID + "\", \""
+                    + option + "\", \""
+                    + Array.IndexOf(quizRecord.AnswerSelections, option) + "\" )";
                     dbcmd.ExecuteNonQuery();
                 }
             }
@@ -100,7 +100,7 @@ namespace Database
         {
             // Execute SQL statement to retrieve questions of a certain difficulty
             IDbCommand selectQuestionsCommand = getDbCommand();
-            selectQuestionsCommand.CommandText = $"SELECT * FROM {TABLE_NAME} WHERE {KEY_Difficulty} = '{difficulty}'";
+            selectQuestionsCommand.CommandText = $"SELECT * FROM {TABLE_NAME} WHERE {KEY_Difficulty} = \"{difficulty}\"";
             IDataReader questionReader = selectQuestionsCommand.ExecuteReader();
 
             List<QuestionsNAnswers> res = new List<QuestionsNAnswers>();

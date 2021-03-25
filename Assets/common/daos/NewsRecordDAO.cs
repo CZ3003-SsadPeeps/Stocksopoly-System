@@ -38,10 +38,10 @@ namespace Database
                     + KEY_Content + ", "
                     + KEY_FluctuationRate + " ) "
 
-                    + "VALUES ( '"
-                    + news.CompanyName + "', '"
-                    + news.Content + "', '"
-                    + news.FluctuationRate + "' )";
+                    + "VALUES ( \""
+                    + news.CompanyName + "\", \""
+                    + news.Content + "\", \""
+                    + news.FluctuationRate + "\" )";
                 dbcmd.ExecuteNonQuery();
             }
             catch

@@ -33,5 +33,30 @@ namespace Database
 
             return stocks;
         }
+
+        public void addData(Stock Stock)
+        {
+            IDbCommand dbcmd = getDbCommand();
+            dbcmd.CommandText =
+                "INSERT INTO " + TABLE_NAME
+                + " ( "
+                + KEY_NAME + ", "
+                + KEY_INITIAL_PRICE + " ) "
+
+                + "VALUES ( \""
+                + Stock.Name + "\", \""
+                + Stock.StockPriceHistory.Peek() +"\" )";
+            dbcmd.ExecuteNonQuery();
+
+        }
+        public bool StoreStock(Stock[] Stocks)
+        {
+            foreach (Stock stock in Stocks)
+            {
+                addData(stock);
+            }
+            return true;
+        }
+
     }
 }

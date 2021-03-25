@@ -38,10 +38,10 @@ namespace Database
                     + KEY_Content + ", "
                     + KEY_Amount + " ) "
 
-                    + "VALUES ( '"
-                    //+ eventRecord.EventID + "', '"
-                    + eventRecord.Content + "', '"
-                    + eventRecord.Amount + "' )";
+                    + "VALUES ( \""
+                    //+ eventRecord.EventID + "\", \""
+                    + eventRecord.Content + "\", \""
+                    + eventRecord.Amount + "\" )";
                 dbcmd.ExecuteNonQuery();
             }
             catch
