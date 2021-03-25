@@ -1016,8 +1016,6 @@ MonoBehaviour:
   canvas: {fileID: 1134043460}
   rollDiceButton: {fileID: 1162998037}
   endTurnButton: {fileID: 398047795}
-  leaderboardButton: {fileID: 387187449}
-  homeButton: {fileID: 616183906}
   endGameText: {fileID: 1042853063}
   endGameBackground: {fileID: 1992580972}
   bigPlayerCard: {fileID: 1010555691}
@@ -1789,7 +1787,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.092024155, y: 0.91445816, z: -0.26517075, w: 0.29151735}
-  m_LocalPosition: {x: -2.1066608, y: 1.7, z: 2.9943542}
+  m_LocalPosition: {x: -2.692, y: 2.35, z: 3.827}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2617,6 +2615,7 @@ GameObject:
   - component: {fileID: 1134043460}
   - component: {fileID: 1134043459}
   - component: {fileID: 1134043458}
+  - component: {fileID: 1134043462}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2714,6 +2713,14 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!222 &1134043462
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134043457}
+  m_CullTransparentMesh: 0
 --- !u!1 &1162998035
 GameObject:
   m_ObjectHideFlags: 0
