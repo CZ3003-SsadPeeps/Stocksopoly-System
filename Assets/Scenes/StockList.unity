@@ -208,7 +208,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 67012182}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd07719e58ac9d443a9dc24d4611144a, type: 3}
+  m_Script: {fileID: 11500000, guid: 97cd7b1dcd2514044a9acc5f8a0e6309, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   stockListItemPrefab: {fileID: 262755680413092413, guid: 139db680dec1a4241a88caf5dfd0c1f1,
@@ -365,7 +365,7 @@ GameObject:
   - component: {fileID: 605990471}
   - component: {fileID: 605990472}
   m_Layer: 0
-  m_Name: StockUi
+  m_Name: StockListUi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -394,7 +394,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 605990470}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11fd8be2b7e7ecc48a899a00b0a9418a, type: 3}
+  m_Script: {fileID: 11500000, guid: 4453abbd1ac56fe4c8929a8231bce309, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   stockList: {fileID: 67012187}
