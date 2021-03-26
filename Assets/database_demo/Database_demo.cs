@@ -53,7 +53,7 @@ public class Database_demo : MonoBehaviour
         //    ,"Imminent Profitable Option" }
         //    ,2,110,"Expert")};
         List<QuestionsNAnswers> qnalist = new List<QuestionsNAnswers>() {
-            new QuestionsNAnswers(1, "",
+            new QuestionsNAnswers(1, "What is a stock market? ",
             new string[]{ "A market where people bet on race horses to gain some money. "
             , "A market where people buy products which the merchants have a lot of stocks. "
             , "A place where people can buy stocks which are shares of companies. "
