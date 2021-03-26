@@ -21,7 +21,7 @@ public class StockDetailsUi : MonoBehaviour
 
         stockNameText.text = stock.Name;
         quantityEditor.SetQuantity(purchaseRecord.Quantity);
-        quantityEditor.SetStockPrice(stock.CurrentStockPrice);
+        quantityEditor.SetStockPrice(stock.CurrentStockPrice, manager.Player.Credit);
         graph.ShowGraph(stock.StockPriceHistory.ToArray());
 
         quantityEditor.SetQuantityChangeListener(quantity =>
@@ -64,6 +64,7 @@ public class StockDetailsUi : MonoBehaviour
         manager.SaveQuantityChange();
 
         quantityEditor.SetQuantity(manager.PurchaseRecord.Quantity);
+        quantityEditor.SetStockPrice(manager.Stock.CurrentStockPrice, manager.Player.Credit);
         buyAmountText.text = string.Empty;
         sellAmountText.text = string.Empty;
         buyButton.interactable = false;
