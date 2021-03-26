@@ -621,6 +621,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   QuantityText: {fileID: 1656451337}
   StockPriceText: {fileID: 149314297}
+  increaseButton: {fileID: 2063824018}
   decreaseButton: {fileID: 995241494}
 --- !u!1 &803663501
 GameObject:

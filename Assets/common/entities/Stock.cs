@@ -11,9 +11,17 @@ public class Stock
     public Stock(string name, int initialPrice)
     {
         Name = name;
+
+        int price;
         for (int i = 0; i < 9; i++)
         {
-            StockPriceHistory.Enqueue(Random.Range(initialPrice - 10, initialPrice + 10));
+            price = Random.Range(initialPrice - 10, initialPrice + 10);
+            if (price < 1)
+            {
+                price = 1;
+            }
+
+            StockPriceHistory.Enqueue(price);
         }
 
         CurrentStockPrice = initialPrice;
@@ -22,6 +30,10 @@ public class Stock
     public void ChangePrice(int fluctuationRate)
     {
         int newStockPrice = CurrentStockPrice + fluctuationRate;
+        if (newStockPrice < 1)
+        {
+            newStockPrice = 1;
+        }
 
         StockPriceHistory.Dequeue();
         StockPriceHistory.Enqueue(CurrentStockPrice);

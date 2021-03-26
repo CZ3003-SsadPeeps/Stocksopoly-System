@@ -7,10 +7,12 @@ public class QuantityEditor : MonoBehaviour
     public Text QuantityText;
     public Text StockPriceText;
 
-    public Button decreaseButton;
+    public Button increaseButton, decreaseButton;
+
+    public int QuantityChange { get; private set; } = 0;
 
     int currentQuantity;
-    public int QuantityChange { get; private set; } = 0;
+    int maxQuantity;
 
     Action<int> QuantityChangeListener;
 
@@ -24,6 +26,7 @@ public class QuantityEditor : MonoBehaviour
         else
         {
             QuantityChange--;
+            increaseButton.interactable = true;
         }
 
         QuantityText.text = (currentQuantity + QuantityChange).ToString();
@@ -32,12 +35,23 @@ public class QuantityEditor : MonoBehaviour
             decreaseButton.interactable = false;
         }
 
+        if (QuantityChange == maxQuantity)
+        {
+            increaseButton.interactable = false;
+        }
+
         QuantityChangeListener.Invoke(QuantityChange);
     }
 
-    internal void SetStockPrice(int stockPrice)
+    internal void SetStockPrice(int stockPrice, int playerCredit)
     {
         StockPriceText.text = $"@ ${stockPrice} per stock";
+
+        maxQuantity = Mathf.FloorToInt(playerCredit / stockPrice);
+        if (maxQuantity == 0)
+        {
+            increaseButton.interactable = false;
+        }
     }
 
     internal void SetQuantityChangeListener(Action<int> changeListener)
