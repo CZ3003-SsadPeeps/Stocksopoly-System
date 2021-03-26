@@ -63,7 +63,7 @@ public class Database_demo : MonoBehaviour
             new string[]{ "Bear means stock are falling while bull means stocks are going up. "
             , "Bear means stocks market are closing while bull means stock market are opening. "
             , "Bear means stocks are rising while bull means stock are falling. "
-            ,"Bear means stocks market are closing while bull means stock market are opening. " }
+            ,"Bear means stocks market are closing while bull means stock market are not opening. " }
             ,0,50,"Novice"),
             new QuestionsNAnswers(3, "How many types of stocks are there? ",
             new string[]{ "3 "
@@ -88,7 +88,19 @@ public class Database_demo : MonoBehaviour
             , "Lack of buyer and seller "
             , "Lack of stock traded. "
             ,"Lack of alternative investment venues " }
-            ,1,110,"Expert"),};
+            ,1,110,"Expert"),
+        new QuestionsNAnswers(7, "Which of the following drives stock price in the short run? ",
+            new string[]{ "Supply and Demand "
+            , "Treasurer predictions "
+            , "Government"
+            ,"Insider trading " }
+            ,0,50,"Novice"),
+        new QuestionsNAnswers(8, "Which of the following is an advantage of a corporation? ",
+            new string[]{ "Ease of formation "
+            , "Minimized taxes "
+            , "Limited liability to owners "
+            ,"Higher market share " }
+            ,2,75,"Intermediate"),};
         qnadao.StoreQNARecords(qnalist);
 
         //store events
@@ -103,14 +115,22 @@ public class Database_demo : MonoBehaviour
             new EventRecord(2,"Oops! You are involved in an accident! ",-50),
             new EventRecord(3,"Wow! You are so hardworking! Here is some rewards for you. ",50),
             new EventRecord(4,"All your properties are destroy due to tornado disaster ",-200 ),
-            new EventRecord(5,"Congrats! You earned a house property! ",100),
-            new EventRecord(6,"Your company went bankrupt and you lost your job ",-150),
+            new EventRecord(5,"Congrats! You inherited a house! ",100),
+            new EventRecord(6,"Your company went bankrupt, and you lost your job ",-150),
             new EventRecord(7,"Your children are preparing for marriage and need some money from you ",-75),
             new EventRecord(8,"You are promoted as the manager! ",150),
             new EventRecord(9,"Your company are giving profit sharing for all workers ",75),
-            new EventRecord(10,"Your house is accidentally burned down when your children play with fire cracker. ",-175),
-            new EventRecord(11,"You are tested positive for covid : (  ",-185),
-            new EventRecord(12,"You won a lucky draw to London during a promotion! ",175),
+            new EventRecord(10,"Your house is burned down and have to rebuild it ",-175),
+            new EventRecord(11,"You are tested positive for covid and need to pay for medical treatment :( ",-185),
+            new EventRecord(12,"You won a lucky draw! ",175),
+            new EventRecord(13,"Your car got stolen and you must buy a new one ",-90 ),
+            new EventRecord(14,"You got diagnosed with cancer and must pay for chemotherapy ",-170 ),
+            new EventRecord(15,"You won a Coding Competition  ",115 ),
+            new EventRecord(16,"You helped a stranger, and he pays you as gratitude ",60 ),
+            new EventRecord(17,"You received red packets for Chinese New Year ",100 ),
+            new EventRecord(18,"You got caught littering! The government issues you a fine ",-100 ),
+            new EventRecord(19,"You are starting up a bakery with your friend and need to pay the down payment for the rent ",-150 ),
+            new EventRecord(20,"Your start up is doing well, and you are getting your first paycheck  ",100 ),
         };
         erdao.StoreEventRecords(eventlist);
 
