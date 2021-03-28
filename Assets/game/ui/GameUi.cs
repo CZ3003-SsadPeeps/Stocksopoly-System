@@ -206,7 +206,7 @@ public class GameUi : MonoBehaviour
                 break;
         }
 
-        rollDiceButton.GetComponentInChildren<Text>().text = "Roll Dice";
+        rollDiceButton.GetComponentInChildren<Text>().text = string.Empty;
         endTurnButton.interactable = true;
 
         yield break;
