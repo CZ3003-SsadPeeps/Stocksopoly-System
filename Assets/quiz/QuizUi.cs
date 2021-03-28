@@ -4,6 +4,10 @@ using UnityEngine.SceneManagement;
 
 public class QuizUi : MonoBehaviour
 {
+
+    static readonly Color32 COLOR_CORRECT = new Color32(99, 160, 118, 255);
+    static readonly Color32 COLOR_WRONG = new Color32(218, 85, 86, 255);
+
     public Text questionText, messageText;
     public Button confirmButton, closeButton;
     public Toggle[] optionToggles;
@@ -29,7 +33,7 @@ public class QuizUi : MonoBehaviour
 
     public void OnConfirmButtonClick()
     {
-        messageText.gameObject.SetActive(false);
+        messageText.gameObject.SetActive(true);
 
         // Check if there are any toggles that are selected
         int selectedOption = -1;
@@ -43,8 +47,7 @@ public class QuizUi : MonoBehaviour
 
         if (selectedOption == -1)
         {
-            messageText.gameObject.SetActive(true);
-            messageText.color = Color.red;
+            messageText.color = COLOR_WRONG;
             messageText.text = "You must select an option!";
             return;
         }
@@ -58,12 +61,18 @@ public class QuizUi : MonoBehaviour
         }
 
         // Mark correct answer
-        optionToggles[quizManager.CorrectAnswer].image.color = Color.green;
+        optionToggles[quizManager.CorrectAnswer].image.color = COLOR_CORRECT;
 
         // Verify answer
         if (!quizManager.VerifyAnswer(selectedOption))
         {
-            optionToggles[selectedOption].image.color = Color.red;
+            optionToggles[selectedOption].image.color = COLOR_WRONG;
+            messageText.color = COLOR_WRONG;
+            messageText.text = "-0C";
+        } else
+        {
+            messageText.color = COLOR_CORRECT;
+            messageText.text = $"+{quizManager.GetAmountToCredit()}C";
         }
     }
 
