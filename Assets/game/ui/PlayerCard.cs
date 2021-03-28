@@ -9,12 +9,12 @@ public abstract class PlayerCard : MonoBehaviour
     internal void SetPlayerDetails(Player player, Color32 backgroundColor)
     {
         nameText.text = player.Name;
-        creditText.text = $"${player.Credit}";
+        creditText.text = $"{player.Credit}C";
         cardBackground.color = backgroundColor;
     }
 
     internal void SetCredit(int credit)
     {
-        creditText.text = $"${credit}";
+        creditText.text = $"{credit}C";
     }
 }

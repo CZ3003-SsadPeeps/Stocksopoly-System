@@ -38,7 +38,7 @@ public class LeaderboardUi : MonoBehaviour
             // Display credit earned
             contentText = Instantiate(contentTextPrefab);
             contentText.transform.SetParent(scrollViewContent, false);
-            contentText.text = playerRecord.CreditEarned.ToString();
+            contentText.text = $"{playerRecord.CreditEarned}C";
         }
 
         // Scroll layout by default scrolls to the middle of the list, so must scroll back to top

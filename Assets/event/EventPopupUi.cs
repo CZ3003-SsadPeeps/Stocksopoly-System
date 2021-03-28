@@ -15,12 +15,12 @@ public class EventPopupUi : MonoBehaviour
         int creditAmount = eventRecord.Amount;
         if (creditAmount >= 0)
         {
-            creditText.text = $"+${creditAmount}";
+            creditText.text = $"+{creditAmount}C";
             creditText.color = Color.green;
         }
         else
         {
-            creditText.text = $"-${Mathf.Abs(creditAmount)}";
+            creditText.text = $"{creditAmount}C";
             creditText.color = Color.red;
         }
     }

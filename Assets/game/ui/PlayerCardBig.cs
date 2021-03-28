@@ -46,8 +46,8 @@ public class PlayerCardBig : PlayerCard
         {
             CreateNewText().text = stock.CompanyName;
             CreateNewText().text = stock.Quantity.ToString();
-            CreateNewText().text = $"${stock.AvgPurchasePrice}";
-            CreateNewText().text = $"${stock.CurrentStockPrice}";
+            CreateNewText().text = $"{stock.AvgPurchasePrice}C";
+            CreateNewText().text = $"{stock.CurrentStockPrice}C";
         }
 
         // Scroll layout by default scrolls to the middle of the list, so must scroll back to top
