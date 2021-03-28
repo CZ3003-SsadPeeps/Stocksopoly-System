@@ -51,7 +51,7 @@ public class QuizUi : MonoBehaviour
 
         // Disable option selection
         closeButton.gameObject.SetActive(true);
-        confirmButton.gameObject.SetActive(false);
+        confirmButton.interactable = false;
         foreach (Toggle optionToggle in optionToggles)
         {
             optionToggle.enabled = false;
