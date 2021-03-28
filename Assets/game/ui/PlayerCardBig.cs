@@ -42,7 +42,7 @@ public class PlayerCardBig : PlayerCard
 
         headerText = CreateNewText();
         headerText.fontStyle = FontStyle.Bold;
-        headerText.text = "Average Purchase Price";
+        headerText.text = "Avg Purchase Price";
 
         headerText = CreateNewText();
         headerText.fontStyle = FontStyle.Bold;
