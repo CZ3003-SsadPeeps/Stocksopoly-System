@@ -18,6 +18,8 @@ public class PlayerCardBig : PlayerCard
     internal void SetTextColor(bool isWhite)
     {
         textColor = isWhite ? Color.white : Color.black;
+        nameText.color = textColor;
+        creditText.color = textColor;
     }
 
     internal void SetStockDetails(List<PlayerStock> stocks)
