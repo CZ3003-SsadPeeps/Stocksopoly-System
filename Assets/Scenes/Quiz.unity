@@ -2238,7 +2238,6 @@ GameObject:
   - component: {fileID: 1924749658}
   - component: {fileID: 1924749660}
   - component: {fileID: 1924749659}
-  - component: {fileID: 1924749661}
   m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
@@ -2307,22 +2306,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1924749657}
   m_CullTransparentMesh: 0
---- !u!114 &1924749661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1924749657}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f65c8f9913d1c2d4a94d7d518fbdb3a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isCorrect: 0
-  quizMgr: {fileID: 0}
-  button: {fileID: 0}
-  quitButton: {fileID: 0}
 --- !u!1 &1979470875
 GameObject:
   m_ObjectHideFlags: 0
