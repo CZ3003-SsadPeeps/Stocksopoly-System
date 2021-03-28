@@ -34,20 +34,16 @@ public class PlayerCardBig : PlayerCard
         Text headerText;
 
         // Headers
-        headerText = CreateNewText();
-        headerText.fontStyle = FontStyle.Bold;
+        headerText = CreateNewHeader();
         headerText.text = "Company";
 
-        headerText = CreateNewText();
-        headerText.fontStyle = FontStyle.Bold;
+        headerText = CreateNewHeader();
         headerText.text = "Quantity";
 
-        headerText = CreateNewText();
-        headerText.fontStyle = FontStyle.Bold;
+        headerText = CreateNewHeader();
         headerText.text = "Avg Purchase Price";
 
-        headerText = CreateNewText();
-        headerText.fontStyle = FontStyle.Bold;
+        headerText = CreateNewHeader();
         headerText.text = "Current Stock Price";
 
         // Stock info
@@ -70,6 +66,13 @@ public class PlayerCardBig : PlayerCard
 
         Text text = textObject.GetComponent<Text>();
         text.color = textColor;
+        return text;
+    }
+
+    Text CreateNewHeader()
+    {
+        Text text = CreateNewText();
+        text.fontSize = 22;
         return text;
     }
 }
