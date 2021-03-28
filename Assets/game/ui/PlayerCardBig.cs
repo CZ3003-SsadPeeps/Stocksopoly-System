@@ -8,9 +8,16 @@ public class PlayerCardBig : PlayerCard
     public GameObject TextPrefab;
     public Transform content;
 
+    Color textColor = Color.white;
+
     internal void SetVisible(bool isVisible)
     {
         gameObject.SetActive(isVisible);
+    }
+
+    internal void SetTextColor(bool isWhite)
+    {
+        textColor = isWhite ? Color.white : Color.black;
     }
 
     internal void SetStockDetails(List<PlayerStock> stocks)
@@ -58,6 +65,9 @@ public class PlayerCardBig : PlayerCard
     {
         GameObject textObject = Instantiate(TextPrefab);
         textObject.transform.SetParent(content, false);
-        return textObject.GetComponent<Text>();
+
+        Text text = textObject.GetComponent<Text>();
+        text.color = textColor;
+        return text;
     }
 }

@@ -8,12 +8,18 @@ using Database;
 public class GameUi : MonoBehaviour
 {
     static readonly Vector2 popupHiddenPos = new Vector2(0, -800);
-    static readonly Color32[] CARD_COLORS = new Color32[] {
-        new Color32(240, 98, 146, 255),
-        new Color32(186, 102, 199, 255),
-        new Color32(125, 133, 201, 255),
-        new Color32(145, 164, 174, 255)
-    };
+    static readonly string PLAYER_CARDS_ROOT = "Cards";
+    static readonly string[] SMALL_CARD_RES = new string[4];
+    static readonly string[] BIG_CARD_RES = new string[4];
+
+    static GameUi()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            SMALL_CARD_RES[i] = $"{PLAYER_CARDS_ROOT}/Small/player_{i + 1}_card_small";
+            BIG_CARD_RES[i] = $"{PLAYER_CARDS_ROOT}/Big/player_{i + 1}_card_big";
+        }
+    }
 
     public Board board;
     public Canvas canvas;
@@ -74,7 +80,7 @@ public class GameUi : MonoBehaviour
             }
 
             // Disable all buttons except leaderboard & back
-            foreach(GameObject gameObject in startGameObjects)
+            foreach (GameObject gameObject in startGameObjects)
             {
                 gameObject.SetActive(false);
             }
@@ -126,18 +132,20 @@ public class GameUi : MonoBehaviour
 
     void LoadCurrentPlayerDetails()
     {
+        int prevPos = GameStore.PrevPlayerPos;
+        int currentPos = GameStore.CurrentPlayerPos;
         Player currentPlayer = GameStore.CurrentPlayer;
         List<PlayerStock> stocks = controller.GetPlayerStocks();
-        Debug.Log($"Player[{currentPlayer.Name}, ${currentPlayer.Credit}]");
 
-        smallPlayerCards[GameStore.PrevPlayerPos].SetSelected(false);
-        smallPlayerCards[GameStore.CurrentPlayerPos].SetSelected(true);
+        smallPlayerCards[prevPos].SetSelected(false);
+        smallPlayerCards[currentPos].SetSelected(true);
 
-        bigPlayerCard.SetPlayerDetails(currentPlayer, CARD_COLORS[GameStore.CurrentPlayerPos]);
+        bigPlayerCard.SetTextColor(currentPos == 0);
+        bigPlayerCard.SetPlayerDetails(currentPlayer, BIG_CARD_RES[currentPos]);
         bigPlayerCard.SetStockDetails(stocks);
 
         // Select player's piece
-        board.SetSelectedPiece(GameStore.CurrentPlayerPos);
+        board.SetSelectedPiece(currentPos);
         endTurnButton.interactable = false;
     }
 
@@ -227,7 +235,7 @@ public class GameUi : MonoBehaviour
 
             smallPlayerCard = cardObject.GetComponent<PlayerCardSmall>();
             smallPlayerCard.SetPosition(new Vector3(-400f, -90 * (i + 1), 0f));
-            smallPlayerCard.SetPlayerDetails(player, CARD_COLORS[i]);
+            smallPlayerCard.SetPlayerDetails(player, SMALL_CARD_RES[i]);
             smallPlayerCards.Add(smallPlayerCard);
         }
     }

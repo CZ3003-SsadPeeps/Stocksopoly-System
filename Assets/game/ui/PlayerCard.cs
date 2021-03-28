@@ -4,13 +4,14 @@ using UnityEngine.UI;
 public abstract class PlayerCard : MonoBehaviour
 {
     public Text nameText, creditText;
-    public Image cardBackground;
+    public RawImage cardBackground;
 
-    internal void SetPlayerDetails(Player player, Color32 backgroundColor)
+    internal void SetPlayerDetails(Player player, string imageRes)
     {
         nameText.text = player.Name;
         creditText.text = $"{player.Credit}C";
-        cardBackground.color = backgroundColor;
+
+        cardBackground.texture = Resources.Load<Texture2D>(imageRes);
     }
 
     internal void SetCredit(int credit)
