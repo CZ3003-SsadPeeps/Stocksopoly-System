@@ -7,7 +7,7 @@ using Database;
 
 public class GameUi : MonoBehaviour
 {
-    static readonly Vector2 popupHiddenPos = new Vector2(0, -760);
+    static readonly Vector2 popupHiddenPos = new Vector2(0, -800);
     static readonly Color32[] CARD_COLORS = new Color32[] {
         new Color32(240, 98, 146, 255),
         new Color32(186, 102, 199, 255),
