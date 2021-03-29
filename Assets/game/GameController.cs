@@ -6,6 +6,31 @@ class GameController
 {
     static readonly int GO_PAYOUT = 150;
 
+    public Player[] Players
+    {
+        get { return GameStore.Players; }
+    }
+
+    public Player CurrentPlayer
+    {
+        get { return GameStore.CurrentPlayer; }
+    }
+
+    public int CurrentPlayerPos
+    {
+        get { return GameStore.CurrentPlayerPos; }
+    }
+
+    public int PrevPlayerPos
+    {
+        get { return GameStore.PrevPlayerPos; }
+    }
+
+    public bool ShouldUpdatePlayerStock
+    {
+        get { return GameStore.ShouldUpdatePlayerStock; }
+    }
+
     readonly IStockTrader stockTrader;
     readonly IPlayerRecordDAO playerRecordDAO;
 

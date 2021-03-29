@@ -7,7 +7,7 @@ using Database;
 
 public class GameUi : MonoBehaviour
 {
-    static readonly Vector2 popupHiddenPos = new Vector2(0, -800);
+    static readonly Vector2 POPUP_HIDDEN_POS = new Vector2(0, -800);
     static readonly string PLAYER_CARDS_ROOT = "Cards";
     static readonly string[] SMALL_CARD_RES = new string[4];
     static readonly string[] BIG_CARD_RES = new string[4];
@@ -38,8 +38,6 @@ public class GameUi : MonoBehaviour
     void Start()
     {
         // Uncomment when testing Game UI only
-        //GameStore.InitPlayers(new string[] { "Abu", "Banana", "Cherry", "Mewtwo" });
-
         controller = new GameController(new StockTrader(), new PlayerRecordDAO());
         GeneratePlayerCards();
 
@@ -51,15 +49,14 @@ public class GameUi : MonoBehaviour
 
     void Update()
     {
-        int currentPlayerCredit = GameStore.CurrentPlayer.Credit;
-        smallPlayerCards[GameStore.CurrentPlayerPos].SetCredit(currentPlayerCredit);
-
+        int currentPlayerCredit = controller.CurrentPlayer.Credit;
+        smallPlayerCards[controller.CurrentPlayerPos].SetCredit(currentPlayerCredit);
         bigPlayerCard.SetCredit(currentPlayerCredit);
+
         // This operation is pretty expensive, so will only be done when while user is in stock market UI
-        if (GameStore.ShouldUpdatePlayerStock)
+        if (controller.ShouldUpdatePlayerStock)
         {
-            List<PlayerStock> stocks = controller.GetPlayerStocks();
-            bigPlayerCard.SetStockDetails(stocks);
+            bigPlayerCard.SetStockDetails(controller.GetPlayerStocks());
         }
     }
 
@@ -98,14 +95,6 @@ public class GameUi : MonoBehaviour
         SceneManager.LoadScene("Leaderboard", LoadSceneMode.Additive);
     }
 
-    // [NOTE] This function corresponds to clicking the end game button. This is NOT the same as
-    // the first player reaching 14 laps
-    public void OnEndGameButtonClick()
-    {
-        // TODO: Display confirmation message, then end game
-        Debug.Log("Ending game...");
-    }
-
     public void ShowNewsList()
     {
         SceneManager.LoadScene("NewsList", LoadSceneMode.Additive);
@@ -113,9 +102,9 @@ public class GameUi : MonoBehaviour
 
     void LoadCurrentPlayerDetails()
     {
-        int prevPos = GameStore.PrevPlayerPos;
-        int currentPos = GameStore.CurrentPlayerPos;
-        Player currentPlayer = GameStore.CurrentPlayer;
+        int prevPos = controller.PrevPlayerPos;
+        int currentPos = controller.CurrentPlayerPos;
+        Player currentPlayer = controller.CurrentPlayer;
         List<PlayerStock> stocks = controller.GetPlayerStocks();
 
         smallPlayerCards[prevPos].SetSelected(false);
@@ -132,7 +121,6 @@ public class GameUi : MonoBehaviour
 
     void OnQuizTileActivated()
     {
-        Debug.Log("Launching quiz UI...");
         SceneManager.LoadScene("DifficultySelection", LoadSceneMode.Additive);
     }
 
@@ -165,11 +153,13 @@ public class GameUi : MonoBehaviour
         controller.SavePlayerScores();
 
         // Update player card details & move to center of screen
+        Player[] players = controller.Players;
+
         Player player;
         PlayerCardSmall smallCard;
         for (int i = 0; i < smallPlayerCards.Count; i++)
         {
-            player = GameStore.Players[i];
+            player = players[i];
             smallCard = smallPlayerCards[i];
 
             smallCard.SetPosition(new Vector3(-300 + (200 * i), -180, 0f));
@@ -199,9 +189,7 @@ public class GameUi : MonoBehaviour
 
             yield return StartCoroutine(MovePopupToPos(goPopupTransform, Vector2.zero));
             yield return new WaitForSeconds(3f);
-            yield return StartCoroutine(MovePopupToPos(goPopupTransform, popupHiddenPos));
-
-            Debug.Log("Received GO payout");
+            yield return StartCoroutine(MovePopupToPos(goPopupTransform, POPUP_HIDDEN_POS));
         }
 
         // Launch tile event if needed
@@ -225,12 +213,14 @@ public class GameUi : MonoBehaviour
 
     void GeneratePlayerCards()
     {
+        Player[] players = controller.Players;
+
         GameObject cardObject;
         Player player;
         PlayerCardSmall smallPlayerCard;
-        for (int i = 0; i < GameStore.Players.Length; i++)
+        for (int i = 0; i < players.Length; i++)
         {
-            player = GameStore.Players[i];
+            player = players[i];
 
             // Create small player card
             cardObject = Instantiate(PlayerCardSmallPrefab);
