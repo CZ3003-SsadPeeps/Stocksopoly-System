@@ -150,14 +150,6 @@ public class GameUi : MonoBehaviour
     {
         bigPlayerCard.SetVisible(false);
 
-        PlayerCardSmall smallCard;
-        for (int i = 0; i < smallPlayerCards.Count; i++)
-        {
-            smallCard = smallPlayerCards[i];
-            smallCard.SetPosition(new Vector3(-300 + (200 * i), -180, 0f));
-            smallCard.SetSelected(false);
-        }
-
         // Disable all buttons except leaderboard & back
         foreach (GameObject gameObject in startGameObjects)
         {
@@ -169,7 +161,21 @@ public class GameUi : MonoBehaviour
             gameObject.SetActive(true);
         }
 
+        // Sell all stocks
         controller.SavePlayerScores();
+
+        // Update player card details & move to center of screen
+        Player player;
+        PlayerCardSmall smallCard;
+        for (int i = 0; i < smallPlayerCards.Count; i++)
+        {
+            player = GameStore.Players[i];
+            smallCard = smallPlayerCards[i];
+
+            smallCard.SetPosition(new Vector3(-300 + (200 * i), -180, 0f));
+            smallCard.SetSelected(false);
+            smallCard.SetCredit(player.Credit);
+        }
     }
 
     // Must be performed in coroutine to wait for piece to move before performing additional operations
