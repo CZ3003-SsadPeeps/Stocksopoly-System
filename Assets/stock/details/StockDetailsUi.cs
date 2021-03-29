@@ -22,7 +22,7 @@ public class StockDetailsUi : MonoBehaviour
         stockNameText.text = stock.Name;
         quantityEditor.SetQuantity(purchaseRecord.Quantity);
         quantityEditor.SetStockPrice(stock.CurrentStockPrice, manager.Player.Credit);
-        graph.ShowGraph(stock.StockPriceHistory.ToArray());
+        graph.ShowGraph(stock.StockPriceHistory);
 
         quantityEditor.SetQuantityChangeListener(quantity =>
         {

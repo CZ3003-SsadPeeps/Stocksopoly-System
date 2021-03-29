@@ -4,8 +4,19 @@ using UnityEngine;
 public class Stock
 {
     public string Name { get; }
-    public Queue<int> StockPriceHistory { get; set; } = new Queue<int>(9);
+    public int[] StockPriceHistory {
+        get
+        {
+            int[] priceHistory = new int[10];
+            PrevPrices.ToArray().CopyTo(priceHistory, 0);
+            priceHistory[9] = CurrentStockPrice;
+
+            return priceHistory;
+        }
+    }
     public int CurrentStockPrice { get; private set; }
+
+    readonly Queue<int> PrevPrices = new Queue<int>(9);
 
     // class in charge of the stock name and price list, edit this with db
     public Stock(string name, int initialPrice)
@@ -21,7 +32,7 @@ public class Stock
                 price = 1;
             }
 
-            StockPriceHistory.Enqueue(price);
+            PrevPrices.Enqueue(price);
         }
 
         CurrentStockPrice = initialPrice;
@@ -35,8 +46,8 @@ public class Stock
             newStockPrice = 1;
         }
 
-        StockPriceHistory.Dequeue();
-        StockPriceHistory.Enqueue(CurrentStockPrice);
+        PrevPrices.Dequeue();
+        PrevPrices.Enqueue(CurrentStockPrice);
         CurrentStockPrice = newStockPrice;
     }
 }
