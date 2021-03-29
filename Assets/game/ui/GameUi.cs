@@ -44,7 +44,7 @@ public class GameUi : MonoBehaviour
         // Ensures popup is displayed on top of everything else. Must be done after player cards are generated
         passedGoPopup.transform.SetAsLastSibling();
 
-        LoadCurrentPlayerDetails();
+        LoadCurrentPlayer();
     }
 
     void Update()
@@ -77,7 +77,7 @@ public class GameUi : MonoBehaviour
         bool shouldShowNews = controller.NextTurn();
         if (shouldShowNews) DisplayNews();
 
-        LoadCurrentPlayerDetails();
+        LoadCurrentPlayer();
         rollDiceButton.interactable = true;
     }
 
@@ -101,19 +101,40 @@ public class GameUi : MonoBehaviour
         SceneManager.LoadScene("NewsList", LoadSceneMode.Additive);
     }
 
-    void LoadCurrentPlayerDetails()
+    void GeneratePlayerCards()
     {
-        int prevPos = controller.PrevPlayerPos;
-        int currentPos = controller.CurrentPlayerPos;
-        Player currentPlayer = controller.CurrentPlayer;
-        List<PlayerStock> stocks = controller.GetPlayerStocks();
+        Player[] players = controller.Players;
 
-        smallPlayerCards[prevPos].SetSelected(false);
+        GameObject cardObject;
+        Player player;
+        PlayerCardSmall smallPlayerCard;
+        for (int i = 0; i < players.Length; i++)
+        {
+            player = players[i];
+
+            // Create small player card
+            cardObject = Instantiate(PlayerCardSmallPrefab);
+            cardObject.transform.SetParent(canvas.transform, false);
+
+            smallPlayerCard = cardObject.GetComponent<PlayerCardSmall>();
+            smallPlayerCard.SetPosition(new Vector3(-400f, -90 * (i + 1), 0f));
+            smallPlayerCard.SetPlayerDetails(player, SMALL_CARD_RES[i]);
+            smallPlayerCards.Add(smallPlayerCard);
+        }
+    }
+
+    void LoadCurrentPlayer()
+    {
+        int currentPos = controller.CurrentPlayerPos;
+
+        // Change selected player
+        smallPlayerCards[controller.PrevPlayerPos].SetSelected(false);
         smallPlayerCards[currentPos].SetSelected(true);
 
+        // Change big card details
         bigPlayerCard.SetTextColor(currentPos == 0);
-        bigPlayerCard.SetPlayerDetails(currentPlayer, BIG_CARD_RES[currentPos]);
-        bigPlayerCard.SetStockDetails(stocks);
+        bigPlayerCard.SetPlayerDetails(controller.CurrentPlayer, BIG_CARD_RES[currentPos]);
+        bigPlayerCard.SetStockDetails(controller.GetPlayerStocks());
 
         // Select player's piece
         board.SetSelectedPiece(currentPos);
@@ -139,7 +160,7 @@ public class GameUi : MonoBehaviour
     {
         bigPlayerCard.SetVisible(false);
 
-        // Disable all buttons except leaderboard & back
+        // Switch to end of game UI
         foreach (GameObject gameObject in startGameObjects)
         {
             gameObject.SetActive(false);
@@ -210,28 +231,6 @@ public class GameUi : MonoBehaviour
         endTurnButton.interactable = true;
 
         yield break;
-    }
-
-    void GeneratePlayerCards()
-    {
-        Player[] players = controller.Players;
-
-        GameObject cardObject;
-        Player player;
-        PlayerCardSmall smallPlayerCard;
-        for (int i = 0; i < players.Length; i++)
-        {
-            player = players[i];
-
-            // Create small player card
-            cardObject = Instantiate(PlayerCardSmallPrefab);
-            cardObject.transform.SetParent(canvas.transform, false);
-
-            smallPlayerCard = cardObject.GetComponent<PlayerCardSmall>();
-            smallPlayerCard.SetPosition(new Vector3(-400f, -90 * (i + 1), 0f));
-            smallPlayerCard.SetPlayerDetails(player, SMALL_CARD_RES[i]);
-            smallPlayerCards.Add(smallPlayerCard);
-        }
     }
 
     IEnumerator MovePopupToPos(RectTransform popupTransform, Vector2 targetPos)
