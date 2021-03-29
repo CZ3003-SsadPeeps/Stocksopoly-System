@@ -24,7 +24,7 @@ class GameController
 
     public int PrevPlayerPos
     {
-        get { return GameStore.PrevPlayerPos; }
+        get { return (CurrentPlayerPos == 0 ? Players.Length : CurrentPlayerPos) - 1; }
     }
 
     public bool ShouldUpdatePlayerStock
