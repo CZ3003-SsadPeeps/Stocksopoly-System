@@ -59,7 +59,8 @@ class GameController
 
     internal bool NextTurn()
     {
-        return GameStore.IncrementTurn();
+        GameStore.IncrementTurn();
+        return CurrentPlayerPos == 0;
     }
 
     internal bool HasReachedMaxLaps(int numLaps)
