@@ -10,7 +10,7 @@ public class NameInputUi : MonoBehaviour
 
     NameInputController controller = new NameInputController();
 
-    public void OnStartButtonClick()
+    public void SubmitNames()
     {
         // Dismiss all error messages
         foreach (Text errorMessage in errorMessages)

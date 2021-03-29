@@ -7,27 +7,27 @@ class GameController
     static readonly int GO_PAYOUT = 150;
     static readonly int MAX_LAPS = 14;
 
-    public Player[] Players
+    internal Player[] Players
     {
         get { return GameStore.Players; }
     }
 
-    public Player CurrentPlayer
+    internal Player CurrentPlayer
     {
         get { return GameStore.CurrentPlayer; }
     }
 
-    public int CurrentPlayerPos
+    internal int CurrentPlayerPos
     {
         get { return GameStore.CurrentPlayerPos; }
     }
 
-    public int PrevPlayerPos
+    internal int PrevPlayerPos
     {
         get { return (CurrentPlayerPos == 0 ? Players.Length : CurrentPlayerPos) - 1; }
     }
 
-    public bool ShouldUpdatePlayerStock
+    internal bool ShouldUpdatePlayerStock
     {
         get { return GameStore.ShouldUpdatePlayerStock; }
     }

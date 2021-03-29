@@ -15,10 +15,18 @@ public class LeaderboardUi : MonoBehaviour
     void Start()
     {
         controller = new LeaderboardController(new PlayerRecordDAO());
-        List<PlayerRecord> playerRecords = controller.GetLeaderboard();
+        DisplayLeaderboard(controller.GetLeaderboard());
+    }
 
+    public void OnBackButtonClick()
+    {
+        SceneManager.UnloadSceneAsync("Leaderboard");
+    }
+
+    void DisplayLeaderboard(List<PlayerRecord> playerRecords)
+    {
         Text contentText;
-        foreach(PlayerRecord playerRecord in playerRecords)
+        foreach (PlayerRecord playerRecord in playerRecords)
         {
             // Display ID
             contentText = Instantiate(contentTextPrefab);
@@ -43,10 +51,5 @@ public class LeaderboardUi : MonoBehaviour
 
         // Scroll layout by default scrolls to the middle of the list, so must scroll back to top
         scrollView.normalizedPosition = new Vector2(0, 1);
-    }
-
-    public void OnBackButtonClick()
-    {
-        SceneManager.UnloadSceneAsync("Leaderboard");
     }
 }

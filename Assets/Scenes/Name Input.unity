@@ -1522,7 +1522,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 939689104}
-        m_MethodName: OnStartButtonClick
+        m_MethodName: SubmitNames
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

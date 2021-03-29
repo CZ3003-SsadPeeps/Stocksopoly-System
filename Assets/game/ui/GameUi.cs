@@ -70,7 +70,7 @@ public class GameUi : MonoBehaviour
         int numLaps = board.GetNumLapsForCurrentPiece();
         if (controller.HasReachedMaxLaps(numLaps))
         {
-            DisplayFinalScores();
+            DisplayEndOfGame();
             return;
         }
 
@@ -81,14 +81,14 @@ public class GameUi : MonoBehaviour
         rollDiceButton.interactable = true;
     }
 
+    public void ShowNewsList()
+    {
+        SceneManager.LoadScene("NewsList", LoadSceneMode.Additive);
+    }
+
     public void ShowStockMarket()
     {
         SceneManager.LoadScene("StockList", LoadSceneMode.Additive);
-    }
-
-    public void OnHomeButtonClick()
-    {
-        SceneManager.LoadScene("Home");
     }
 
     public void ShowLeaderBoard()
@@ -96,31 +96,9 @@ public class GameUi : MonoBehaviour
         SceneManager.LoadScene("Leaderboard", LoadSceneMode.Additive);
     }
 
-    public void ShowNewsList()
+    public void ReturnHome()
     {
-        SceneManager.LoadScene("NewsList", LoadSceneMode.Additive);
-    }
-
-    void GeneratePlayerCards()
-    {
-        Player[] players = controller.Players;
-
-        GameObject cardObject;
-        Player player;
-        PlayerCardSmall smallPlayerCard;
-        for (int i = 0; i < players.Length; i++)
-        {
-            player = players[i];
-
-            // Create small player card
-            cardObject = Instantiate(PlayerCardSmallPrefab);
-            cardObject.transform.SetParent(canvas.transform, false);
-
-            smallPlayerCard = cardObject.GetComponent<PlayerCardSmall>();
-            smallPlayerCard.SetPosition(new Vector3(-400f, -90 * (i + 1), 0f));
-            smallPlayerCard.SetPlayerDetails(player, SMALL_CARD_RES[i]);
-            smallPlayerCards.Add(smallPlayerCard);
-        }
+        SceneManager.LoadScene("Home");
     }
 
     void LoadCurrentPlayer()
@@ -141,12 +119,12 @@ public class GameUi : MonoBehaviour
         endTurnButton.interactable = false;
     }
 
-    void OnQuizTileActivated()
+    void ActivateQuiz()
     {
         SceneManager.LoadScene("DifficultySelection", LoadSceneMode.Additive);
     }
 
-    void OnEventTileActivated()
+    void ActivateEvent()
     {
         SceneManager.LoadScene("EventPopup", LoadSceneMode.Additive);
     }
@@ -156,7 +134,7 @@ public class GameUi : MonoBehaviour
         SceneManager.LoadScene("News", LoadSceneMode.Additive);
     }
 
-    void DisplayFinalScores()
+    void DisplayEndOfGame()
     {
         bigPlayerCard.SetVisible(false);
 
@@ -190,6 +168,28 @@ public class GameUi : MonoBehaviour
         }
     }
 
+    void GeneratePlayerCards()
+    {
+        Player[] players = controller.Players;
+
+        GameObject cardObject;
+        Player player;
+        PlayerCardSmall smallPlayerCard;
+        for (int i = 0; i < players.Length; i++)
+        {
+            player = players[i];
+
+            // Create small player card
+            cardObject = Instantiate(PlayerCardSmallPrefab);
+            cardObject.transform.SetParent(canvas.transform, false);
+
+            smallPlayerCard = cardObject.GetComponent<PlayerCardSmall>();
+            smallPlayerCard.SetPosition(new Vector3(-400f, -90 * (i + 1), 0f));
+            smallPlayerCard.SetPlayerDetails(player, SMALL_CARD_RES[i]);
+            smallPlayerCards.Add(smallPlayerCard);
+        }
+    }
+
     // Must be performed in coroutine to wait for piece to move before performing additional operations
     IEnumerator PerformDiceRoll()
     {
@@ -220,10 +220,10 @@ public class GameUi : MonoBehaviour
         switch (currentTile.Type)
         {
             case TileType.Quiz:
-                OnQuizTileActivated();
+                ActivateQuiz();
                 break;
             case TileType.Event:
-                OnEventTileActivated();
+                ActivateEvent();
                 break;
         }
 
