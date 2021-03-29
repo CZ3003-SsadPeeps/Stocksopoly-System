@@ -45,7 +45,7 @@ namespace Database
 
                 + "VALUES ( \""
                 + Stock.Name + "\", \""
-                + Stock.StockPriceHistory.Peek() +"\" )";
+                + Stock.CurrentStockPrice +"\" )";
             dbcmd.ExecuteNonQuery();
 
         }
