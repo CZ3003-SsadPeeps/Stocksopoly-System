@@ -43,7 +43,7 @@ class GameController
 
     internal List<PlayerStock> GetPlayerStocks()
     {
-        return stockTrader.GetPlayerStocks(GameStore.CurrentPlayer.Name);
+        return stockTrader.GetPlayerStocks(CurrentPlayer.Name);
     }
 
     internal int GenerateDiceValue()
@@ -54,7 +54,7 @@ class GameController
 
     internal void IssueGoPayout()
     {
-        GameStore.CurrentPlayer.AddCredit(GO_PAYOUT);
+        CurrentPlayer.AddCredit(GO_PAYOUT);
     }
 
     internal bool NextTurn()
@@ -70,13 +70,13 @@ class GameController
 
     internal void SavePlayerScores()
     {
-        stockTrader.SellAllStocks(GameStore.Players);
+        stockTrader.SellAllStocks(Players);
 
-        PlayerRecord[] records = new PlayerRecord[GameStore.Players.Length];
+        PlayerRecord[] records = new PlayerRecord[Players.Length];
         Player player;
         for (int i = 0; i < records.Length; i++)
         {
-            player = GameStore.Players[i];
+            player = Players[i];
             records[i] = new PlayerRecord(player.Name, player.Credit, (long)(DateTime.Now - new DateTime(1970, 1, 1)).TotalMilliseconds);
         }
 
