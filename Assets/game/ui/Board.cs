@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class Board : MonoBehaviour
 {
-    static readonly int MAX_LAPS = 1;
-
     public Piece[] pieces;
     public Tile[] tiles;
 
@@ -45,9 +43,9 @@ public class Board : MonoBehaviour
         return pieces[currentPieceIndex].BoardPos;
     }
 
-    internal bool HasReachedMaxLaps()
+    internal int GetNumLapsForCurrentPiece()
     {
-        return pieces[currentPieceIndex].NumLaps >= MAX_LAPS;
+        return pieces[currentPieceIndex].NumLaps;
     }
 
     IEnumerator HopTowards(Piece piece, Vector3 target, float time)

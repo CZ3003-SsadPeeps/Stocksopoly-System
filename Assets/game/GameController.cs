@@ -1,11 +1,38 @@
-﻿using System;
+﻿using Random = UnityEngine.Random;
+using System;
 using System.Collections.Generic;
 
 class GameController
 {
     static readonly int GO_PAYOUT = 150;
+    static readonly int MAX_LAPS = 1;
     static readonly int[] DICE_VALUES = { 2, 3, 5, 6, 4, 5, 6, 1, 6 };
     static int DICE_POS = 0;
+
+    public Player[] Players
+    {
+        get { return GameStore.Players; }
+    }
+
+    public Player CurrentPlayer
+    {
+        get { return GameStore.CurrentPlayer; }
+    }
+
+    public int CurrentPlayerPos
+    {
+        get { return GameStore.CurrentPlayerPos; }
+    }
+
+    public int PrevPlayerPos
+    {
+        get { return (CurrentPlayerPos == 0 ? Players.Length : CurrentPlayerPos) - 1; }
+    }
+
+    public bool ShouldUpdatePlayerStock
+    {
+        get { return GameStore.ShouldUpdatePlayerStock; }
+    }
 
     readonly IStockTrader stockTrader;
     readonly IPlayerRecordDAO playerRecordDAO;
@@ -18,7 +45,7 @@ class GameController
 
     internal List<PlayerStock> GetPlayerStocks()
     {
-        return stockTrader.GetPlayerStocks(GameStore.CurrentPlayer.Name);
+        return stockTrader.GetPlayerStocks(CurrentPlayer.Name);
     }
 
     internal int GenerateDiceValue()
@@ -30,23 +57,29 @@ class GameController
 
     internal void IssueGoPayout()
     {
-        GameStore.CurrentPlayer.AddCredit(GO_PAYOUT);
+        CurrentPlayer.AddCredit(GO_PAYOUT);
     }
 
     internal bool NextTurn()
     {
-        return GameStore.IncrementTurn();
+        GameStore.IncrementTurn();
+        return CurrentPlayerPos == 0;
+    }
+
+    internal bool HasReachedMaxLaps(int numLaps)
+    {
+        return numLaps >= MAX_LAPS;
     }
 
     internal void SavePlayerScores()
     {
-        stockTrader.SellAllStocks(GameStore.Players);
+        stockTrader.SellAllStocks(Players);
 
-        PlayerRecord[] records = new PlayerRecord[GameStore.Players.Length];
+        PlayerRecord[] records = new PlayerRecord[Players.Length];
         Player player;
         for (int i = 0; i < records.Length; i++)
         {
-            player = GameStore.Players[i];
+            player = Players[i];
             records[i] = new PlayerRecord(player.Name, player.Credit, (long)(DateTime.Now - new DateTime(1970, 1, 1)).TotalMilliseconds);
         }
 
