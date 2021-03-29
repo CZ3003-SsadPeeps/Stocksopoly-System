@@ -31,4 +31,6 @@ public class QuizManager
     }
 
     public int GetCorrectAnswer() { return question.CorrectAnswer; }
+
+    internal int GetAmountToCredit() { return question.Credit; }
 }

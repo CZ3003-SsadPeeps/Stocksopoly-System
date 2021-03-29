@@ -8,9 +8,18 @@ public class PlayerCardBig : PlayerCard
     public GameObject TextPrefab;
     public Transform content;
 
+    Color textColor = Color.white;
+
     internal void SetVisible(bool isVisible)
     {
         gameObject.SetActive(isVisible);
+    }
+
+    internal void SetTextColor(bool isWhite)
+    {
+        textColor = isWhite ? Color.white : Color.black;
+        nameText.color = textColor;
+        creditText.color = textColor;
     }
 
     internal void SetStockDetails(List<PlayerStock> stocks)
@@ -25,20 +34,16 @@ public class PlayerCardBig : PlayerCard
         Text headerText;
 
         // Headers
-        headerText = CreateNewText();
-        headerText.fontStyle = FontStyle.Bold;
+        headerText = CreateNewHeader();
         headerText.text = "Company";
 
-        headerText = CreateNewText();
-        headerText.fontStyle = FontStyle.Bold;
+        headerText = CreateNewHeader();
         headerText.text = "Quantity";
 
-        headerText = CreateNewText();
-        headerText.fontStyle = FontStyle.Bold;
-        headerText.text = "Average Purchase Price";
+        headerText = CreateNewHeader();
+        headerText.text = "Avg Purchase Price";
 
-        headerText = CreateNewText();
-        headerText.fontStyle = FontStyle.Bold;
+        headerText = CreateNewHeader();
         headerText.text = "Current Stock Price";
 
         // Stock info
@@ -46,8 +51,8 @@ public class PlayerCardBig : PlayerCard
         {
             CreateNewText().text = stock.CompanyName;
             CreateNewText().text = stock.Quantity.ToString();
-            CreateNewText().text = $"${stock.AvgPurchasePrice}";
-            CreateNewText().text = $"${stock.CurrentStockPrice}";
+            CreateNewText().text = $"{stock.AvgPurchasePrice}C";
+            CreateNewText().text = $"{stock.CurrentStockPrice}C";
         }
 
         // Scroll layout by default scrolls to the middle of the list, so must scroll back to top
@@ -58,6 +63,16 @@ public class PlayerCardBig : PlayerCard
     {
         GameObject textObject = Instantiate(TextPrefab);
         textObject.transform.SetParent(content, false);
-        return textObject.GetComponent<Text>();
+
+        Text text = textObject.GetComponent<Text>();
+        text.color = textColor;
+        return text;
+    }
+
+    Text CreateNewHeader()
+    {
+        Text text = CreateNewText();
+        text.fontSize = 22;
+        return text;
     }
 }
