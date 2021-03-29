@@ -7,13 +7,19 @@ using Database;
 
 public class GameUi : MonoBehaviour
 {
-    static readonly Vector2 popupHiddenPos = new Vector2(0, -760);
-    static readonly Color32[] CARD_COLORS = new Color32[] {
-        new Color32(240, 98, 146, 255),
-        new Color32(186, 102, 199, 255),
-        new Color32(125, 133, 201, 255),
-        new Color32(145, 164, 174, 255)
-    };
+    static readonly Vector2 popupHiddenPos = new Vector2(0, -800);
+    static readonly string PLAYER_CARDS_ROOT = "Cards";
+    static readonly string[] SMALL_CARD_RES = new string[4];
+    static readonly string[] BIG_CARD_RES = new string[4];
+
+    static GameUi()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            SMALL_CARD_RES[i] = $"{PLAYER_CARDS_ROOT}/Small/player_{i + 1}_card_small";
+            BIG_CARD_RES[i] = $"{PLAYER_CARDS_ROOT}/Big/player_{i + 1}_card_big";
+        }
+    }
 
     public Board board;
     public Canvas canvas;
@@ -21,7 +27,6 @@ public class GameUi : MonoBehaviour
     public Text endGameText;
     public Image endGameBackground;
     public PlayerCardBig bigPlayerCard;
-    public EventUi eventPopup;
     public GameObject passedGoPopup, PlayerCardSmallPrefab;
 
     public GameObject[] startGameObjects;
@@ -40,7 +45,6 @@ public class GameUi : MonoBehaviour
 
         // Ensures popup is displayed on top of everything else. Must be done after player cards are generated
         passedGoPopup.transform.SetAsLastSibling();
-        eventPopup.transform.SetAsLastSibling();
 
         LoadCurrentPlayerDetails();
     }
@@ -68,25 +72,6 @@ public class GameUi : MonoBehaviour
     {
         if (board.HasReachedMaxLaps())
         {
-            bigPlayerCard.SetVisible(false);
-
-            for (int i = 0; i < smallPlayerCards.Count; i++)
-            {
-                smallPlayerCards[i].SetPosition(new Vector3(-300 + (200 * i), -180, 0f));
-            }
-
-            // Disable all buttons except leaderboard & back
-            foreach(GameObject gameObject in startGameObjects)
-            {
-                gameObject.SetActive(false);
-            }
-
-            foreach (GameObject gameObject in endGameObjects)
-            {
-                gameObject.SetActive(true);
-            }
-
-            controller.SavePlayerScores();
             DisplayFinalScores();
             return;
         }
@@ -121,11 +106,6 @@ public class GameUi : MonoBehaviour
         Debug.Log("Ending game...");
     }
 
-    public void OnEventConfirmButtonClick()
-    {
-        StartCoroutine(MovePopupToPos(eventPopup.PosTransform, popupHiddenPos));
-    }
-
     public void ShowNewsList()
     {
         SceneManager.LoadScene("NewsList", LoadSceneMode.Additive);
@@ -133,18 +113,20 @@ public class GameUi : MonoBehaviour
 
     void LoadCurrentPlayerDetails()
     {
+        int prevPos = GameStore.PrevPlayerPos;
+        int currentPos = GameStore.CurrentPlayerPos;
         Player currentPlayer = GameStore.CurrentPlayer;
         List<PlayerStock> stocks = controller.GetPlayerStocks();
-        Debug.Log($"Player[{currentPlayer.Name}, ${currentPlayer.Credit}]");
 
-        smallPlayerCards[GameStore.PrevPlayerPos].SetSelected(false);
-        smallPlayerCards[GameStore.CurrentPlayerPos].SetSelected(true);
+        smallPlayerCards[prevPos].SetSelected(false);
+        smallPlayerCards[currentPos].SetSelected(true);
 
-        bigPlayerCard.SetPlayerDetails(currentPlayer, CARD_COLORS[GameStore.CurrentPlayerPos]);
+        bigPlayerCard.SetTextColor(currentPos == 0);
+        bigPlayerCard.SetPlayerDetails(currentPlayer, BIG_CARD_RES[currentPos]);
         bigPlayerCard.SetStockDetails(stocks);
 
         // Select player's piece
-        board.SetSelectedPiece(GameStore.CurrentPlayerPos);
+        board.SetSelectedPiece(currentPos);
         endTurnButton.interactable = false;
     }
 
@@ -156,9 +138,7 @@ public class GameUi : MonoBehaviour
 
     void OnEventTileActivated()
     {
-        Debug.Log("Launching event UI...");
-        eventPopup.LoadNewEvent();
-        StartCoroutine(MovePopupToPos(eventPopup.PosTransform, Vector2.zero));
+        SceneManager.LoadScene("EventPopup", LoadSceneMode.Additive);
     }
 
     void DisplayNews()
@@ -168,11 +148,33 @@ public class GameUi : MonoBehaviour
 
     void DisplayFinalScores()
     {
-        // TODO: Display all players score
-        Player[] players = GameStore.Players;
-        foreach (Player player in players)
+        bigPlayerCard.SetVisible(false);
+
+        // Disable all buttons except leaderboard & back
+        foreach (GameObject gameObject in startGameObjects)
         {
-            Debug.Log($"Player[{player.Name}, ${player.Credit}]");
+            gameObject.SetActive(false);
+        }
+
+        foreach (GameObject gameObject in endGameObjects)
+        {
+            gameObject.SetActive(true);
+        }
+
+        // Sell all stocks
+        controller.SavePlayerScores();
+
+        // Update player card details & move to center of screen
+        Player player;
+        PlayerCardSmall smallCard;
+        for (int i = 0; i < smallPlayerCards.Count; i++)
+        {
+            player = GameStore.Players[i];
+            smallCard = smallPlayerCards[i];
+
+            smallCard.SetPosition(new Vector3(-300 + (200 * i), -180, 0f));
+            smallCard.SetSelected(false);
+            smallCard.SetCredit(player.Credit);
         }
     }
 
@@ -215,7 +217,7 @@ public class GameUi : MonoBehaviour
                 break;
         }
 
-        rollDiceButton.GetComponentInChildren<Text>().text = "Roll Dice";
+        rollDiceButton.GetComponentInChildren<Text>().text = string.Empty;
         endTurnButton.interactable = true;
 
         yield break;
@@ -236,7 +238,7 @@ public class GameUi : MonoBehaviour
 
             smallPlayerCard = cardObject.GetComponent<PlayerCardSmall>();
             smallPlayerCard.SetPosition(new Vector3(-400f, -90 * (i + 1), 0f));
-            smallPlayerCard.SetPlayerDetails(player, CARD_COLORS[i]);
+            smallPlayerCard.SetPlayerDetails(player, SMALL_CARD_RES[i]);
             smallPlayerCards.Add(smallPlayerCard);
         }
     }

@@ -22,7 +22,7 @@ public class StockDetailsUi : MonoBehaviour
         stockNameText.text = stock.Name;
         quantityEditor.SetQuantity(purchaseRecord.Quantity);
         quantityEditor.SetStockPrice(stock.CurrentStockPrice, manager.Player.Credit);
-        graph.ShowGraph(stock.StockPriceHistory.ToArray());
+        graph.ShowGraph(stock.StockPriceHistory);
 
         quantityEditor.SetQuantityChangeListener(quantity =>
         {
@@ -34,12 +34,12 @@ public class StockDetailsUi : MonoBehaviour
             int amountChanged = quantity * stock.CurrentStockPrice;
             if (amountChanged > 0)
             {
-                buyAmountText.text = $"-${amountChanged}";
+                buyAmountText.text = $"-{amountChanged}C";
                 buyButton.interactable = true;
             }
             else if (amountChanged < 0)
             {
-                sellAmountText.text = $"+${-amountChanged}";
+                sellAmountText.text = $"+{-amountChanged}C";
                 sellButton.interactable = true;
             }
 
@@ -50,7 +50,7 @@ public class StockDetailsUi : MonoBehaviour
     void Update()
     {
         Player player = manager.Player;
-        playerDetails.text = $"{player.Name} - ${player.Credit}";
+        playerDetails.text = $"{player.Name} - {player.Credit}C";
     }
 
     public void OnBackButtonClick()

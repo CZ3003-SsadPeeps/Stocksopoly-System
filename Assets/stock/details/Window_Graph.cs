@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 public class Window_Graph : MonoBehaviour
 {
+    static readonly Color32 COLOR_GRAPH_ELEMENTS = new Color32(110, 129, 160, 255);
+
     [SerializeField] private Sprite circleSprite;
     public RectTransform graphContainer;
     public RectTransform labelTemplateX;
@@ -14,6 +16,7 @@ public class Window_Graph : MonoBehaviour
         GameObject gameObject = new GameObject("circle", typeof(Image));
         gameObject.transform.SetParent(graphContainer, false);
         gameObject.GetComponent<Image>().sprite = circleSprite;
+        gameObject.GetComponent<Image>().color = COLOR_GRAPH_ELEMENTS;
         RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
         rectTransform.anchoredPosition = anchoredPosition;
         rectTransform.sizeDelta = new Vector2(11, 11);
@@ -60,7 +63,7 @@ public class Window_Graph : MonoBehaviour
             labelY.gameObject.SetActive(true);
             float normalizedValue = i * 1f / separatorCount;
             labelY.anchoredPosition = new Vector2(150f, -387f + normalizedValue * graphHeight);
-            labelY.GetComponent<Text>().text = Mathf.RoundToInt(normalizedValue * yMaximum).ToString();
+            labelY.GetComponent<Text>().text = $"{Mathf.RoundToInt(normalizedValue * yMaximum)}C";
         }
     }
 
@@ -69,7 +72,7 @@ public class Window_Graph : MonoBehaviour
     {
         GameObject gameObject = new GameObject("dotConnection", typeof(Image));
         gameObject.transform.SetParent(graphContainer, false);
-        gameObject.GetComponent<Image>().color = new Color(1, 1, 1, .5f);
+        gameObject.GetComponent<Image>().color = COLOR_GRAPH_ELEMENTS;
         Vector2 dir = (dotPositionB - dotPositionA).normalized;
         float distance = Vector2.Distance(dotPositionA, dotPositionB);
         RectTransform rectTransform = gameObject.GetComponent<RectTransform>();

@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NewsList.unity
     guid: b62d4d8ce3a214542b673801697bab79
+  - enabled: 1
+    path: Assets/Scenes/EventPopup.unity
+    guid: 073c1a6655104854a9a0633959938cf7
   m_configObjects: {}
