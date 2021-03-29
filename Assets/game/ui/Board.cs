@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class Board : MonoBehaviour
 {
+    // Adjust y value here to increase or decrease arc height (Smaller is higher)
+    static readonly Vector3 ARC_HEIGHT = new Vector3(0, 0.5f, 0);
+
     public Piece[] pieces;
     public Tile[] tiles;
 
@@ -54,7 +57,7 @@ public class Board : MonoBehaviour
 
         Vector3 center = (piece.transform.position + target) * 0.5f;
 
-        center -= new Vector3(0, 0.5f, 0); //Adjust y value here to increase or decrease arc height (Smaller is higher)
+        center -= ARC_HEIGHT;
 
         Vector3 startRelPosition = piece.transform.position - center;
         Vector3 endRelPosition = target - center;
@@ -67,6 +70,6 @@ public class Board : MonoBehaviour
             yield return null;
         }
 
-        piece.transform.position = target; //Snap to final target in case
+        piece.transform.position = target; // Snap to final target in case
     }
 }
