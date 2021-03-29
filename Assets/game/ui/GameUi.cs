@@ -67,7 +67,8 @@ public class GameUi : MonoBehaviour
 
     public void EndTurn()
     {
-        if (board.HasReachedMaxLaps())
+        int numLaps = board.GetNumLapsForCurrentPiece();
+        if (controller.HasReachedMaxLaps(numLaps))
         {
             DisplayFinalScores();
             return;

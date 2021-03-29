@@ -5,6 +5,7 @@ using System.Collections.Generic;
 class GameController
 {
     static readonly int GO_PAYOUT = 150;
+    static readonly int MAX_LAPS = 14;
 
     public Player[] Players
     {
@@ -59,6 +60,11 @@ class GameController
     internal bool NextTurn()
     {
         return GameStore.IncrementTurn();
+    }
+
+    internal bool HasReachedMaxLaps(int numLaps)
+    {
+        return numLaps >= MAX_LAPS;
     }
 
     internal void SavePlayerScores()
