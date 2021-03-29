@@ -72,25 +72,6 @@ public class GameUi : MonoBehaviour
     {
         if (board.HasReachedMaxLaps())
         {
-            bigPlayerCard.SetVisible(false);
-
-            for (int i = 0; i < smallPlayerCards.Count; i++)
-            {
-                smallPlayerCards[i].SetPosition(new Vector3(-300 + (200 * i), -180, 0f));
-            }
-
-            // Disable all buttons except leaderboard & back
-            foreach (GameObject gameObject in startGameObjects)
-            {
-                gameObject.SetActive(false);
-            }
-
-            foreach (GameObject gameObject in endGameObjects)
-            {
-                gameObject.SetActive(true);
-            }
-
-            controller.SavePlayerScores();
             DisplayFinalScores();
             return;
         }
@@ -167,12 +148,28 @@ public class GameUi : MonoBehaviour
 
     void DisplayFinalScores()
     {
-        // TODO: Display all players score
-        Player[] players = GameStore.Players;
-        foreach (Player player in players)
+        bigPlayerCard.SetVisible(false);
+
+        PlayerCardSmall smallCard;
+        for (int i = 0; i < smallPlayerCards.Count; i++)
         {
-            Debug.Log($"Player[{player.Name}, ${player.Credit}]");
+            smallCard = smallPlayerCards[i];
+            smallCard.SetPosition(new Vector3(-300 + (200 * i), -180, 0f));
+            smallCard.SetSelected(false);
         }
+
+        // Disable all buttons except leaderboard & back
+        foreach (GameObject gameObject in startGameObjects)
+        {
+            gameObject.SetActive(false);
+        }
+
+        foreach (GameObject gameObject in endGameObjects)
+        {
+            gameObject.SetActive(true);
+        }
+
+        controller.SavePlayerScores();
     }
 
     // Must be performed in coroutine to wait for piece to move before performing additional operations
