@@ -2,6 +2,9 @@
 using System;
 using System.Collections.Generic;
 
+/// <summary>
+/// Created by Khairuddin Bin Ali
+/// </summary>
 internal class GameController
 {
     private static readonly int GO_PAYOUT = 150;

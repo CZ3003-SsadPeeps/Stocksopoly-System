@@ -1,4 +1,7 @@
-﻿internal abstract class NameValidationError
+﻿/// <summary>
+/// Created by Khairuddin Bin Ali
+/// </summary>
+internal abstract class NameValidationError
 {
     internal int Pos { get; }
 

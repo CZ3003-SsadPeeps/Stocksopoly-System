@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
 
+/// <summary>
+/// Created by Khairuddin Bin Ali
+/// </summary>
 internal class NameInputController
 {
     internal List<NameValidationError> SubmitNames(string[] names)
