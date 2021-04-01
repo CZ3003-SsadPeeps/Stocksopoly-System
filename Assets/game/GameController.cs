@@ -2,10 +2,10 @@
 using System;
 using System.Collections.Generic;
 
-class GameController
+internal class GameController
 {
-    static readonly int GO_PAYOUT = 150;
-    static readonly int MAX_LAPS = 14;
+    private static readonly int GO_PAYOUT = 150;
+    private static readonly int MAX_LAPS = 14;
 
     internal Player[] Players
     {
@@ -32,8 +32,8 @@ class GameController
         get { return GameStore.ShouldUpdatePlayerStock; }
     }
 
-    readonly IStockTrader stockTrader;
-    readonly IPlayerRecordDAO playerRecordDAO;
+    private readonly IStockTrader stockTrader;
+    private readonly IPlayerRecordDAO playerRecordDAO;
 
     internal GameController(IStockTrader stockTrader, IPlayerRecordDAO playerRecordDAO)
     {
