@@ -1,22 +1,22 @@
-﻿abstract class NameValidationError
+﻿internal abstract class NameValidationError
 {
-    public int Pos { get; }
+    internal int Pos { get; }
 
     protected NameValidationError(int pos)
     {
         Pos = pos;
     }
 
-    public class IsBlank : NameValidationError
+    internal class IsBlank : NameValidationError
     {
-        public IsBlank(int pos) : base(pos) { }
+        internal IsBlank(int pos) : base(pos) { }
     }
 
-    public class Clash : NameValidationError
+    internal class Clash : NameValidationError
     {
-        public int WithPos { get; }
+        internal int WithPos { get; }
 
-        public Clash(int pos, int withPos) : base(pos)
+        internal Clash(int pos, int withPos) : base(pos)
         {
 
             WithPos = withPos;

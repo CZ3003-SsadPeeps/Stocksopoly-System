@@ -3,13 +3,31 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 
+/// <summary>
+/// This is the user interface that provides forms for the players to enter their names.
+/// <br/><br/>
+/// Created by Khairuddin Bin Ali
+/// </summary>
 public class NameInputUi : MonoBehaviour
 {
+    /// <summary>
+    /// The list of text fields where the players will enter their names. Each <c>InputField</c> objects
+    /// represents a form for each user.
+    /// </summary>
     public InputField[] inputFields;
+
+    /// <summary>
+    /// The text widgets that displays an error message for each form. All the <c>Text</c> objects are
+    /// hidden by default and are displayed only when a validation errors occurs on a form.
+    /// </summary>
     public Text[] errorMessages;
 
-    NameInputController controller = new NameInputController();
+    private readonly NameInputController controller = new NameInputController();
 
+    /// <summary>
+    /// Submits the names entered by the players to the controller for validation. If all names passed
+    /// validation, the <c>GameUi</c> class is launched.
+    /// </summary>
     public void SubmitNames()
     {
         // Dismiss all error messages
@@ -37,7 +55,7 @@ public class NameInputUi : MonoBehaviour
         SceneManager.LoadScene("Game");
     }
 
-    void DisplayErrors(List<NameValidationError> errors)
+    private void DisplayErrors(List<NameValidationError> errors)
     {
         Text errorMessage;
         int otherPos;
