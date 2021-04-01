@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 public class HomeUi : MonoBehaviour
 {
     /// <summary>
-    /// Launches <c>NameInputUi</c> class.
+    /// Launches <c>NameInputUi</c>
     /// </summary>
     public void OnPlayButtonClick()
     {

@@ -26,7 +26,8 @@ public class NameInputUi : MonoBehaviour
 
     /// <summary>
     /// Submits the names entered by the players to the controller for validation. If all names passed
-    /// validation, the <c>GameUi</c> class is launched.
+    /// validation, <c>GameUi</c> is launched. Otherwise an error message is displayed for the form(s)
+    /// that failed the validation.
     /// </summary>
     public void SubmitNames()
     {
