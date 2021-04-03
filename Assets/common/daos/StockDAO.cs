@@ -3,12 +3,20 @@ using System.Data;
 
 namespace Database
 {
+    /// <summary>
+    /// A class to query and store stock-related information. This class prepares the SQL statement
+    /// <br> and abstracts the communication with the database.
+    /// 
+    /// </summary>
     public class StockDAO : SqliteHelper
     {
         static readonly string TABLE_NAME = "Stock";
         static readonly string KEY_NAME = "name";
         static readonly string KEY_INITIAL_PRICE = "initialPrice";
 
+        /// <summary>
+        /// Constructor, creating table if table not exists in the database
+        /// </summary>
         public StockDAO() : base()
         {
             IDbCommand dbcmd = getDbCommand();
@@ -18,6 +26,10 @@ namespace Database
                 + ")";
             dbcmd.ExecuteNonQuery();
         }
+        /// <summary>
+        /// Retrieve Stock objects
+        /// </summary>
+        /// <returns>List of Stock objects</returns>
 
         public List<Stock> RetrieveStocks()
         {
