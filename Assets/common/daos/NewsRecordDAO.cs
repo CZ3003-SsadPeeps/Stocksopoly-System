@@ -7,6 +7,12 @@ using UnityEngine;
 
 namespace Database
 {
+    /// <summary>
+    /// This is a DAO class inherited from SqliteHelper and created for database interaction for NewsRecord.
+    /// This class can store and retrieve NewsRecord from database.
+    /// <br/><br/>
+    /// Created by Liew Zi Peng
+    /// </summary>
     public class NewsRecordDAO : SqliteHelper
     {
         static readonly string TABLE_NAME = "News";
@@ -15,6 +21,9 @@ namespace Database
         static readonly string KEY_Content = "Content";
         static readonly string KEY_FluctuationRate = "FluctuationRate";
 
+        /// <summary>
+        /// Constructs this class. Create a NewsRecord table in database if it hasn't exist yet.
+        /// </summary>
         public NewsRecordDAO() : base()
         {
             IDbCommand dbcmd = getDbCommand();
@@ -26,6 +35,10 @@ namespace Database
             dbcmd.ExecuteNonQuery();
         }
 
+        /// <summary>
+        /// Stores NewsRecord into database.
+        /// </summary>
+        /// <param name="news">NewsRecord that needs to be stored.</param>
         public void addData(News news)
         {
             try
@@ -52,6 +65,10 @@ namespace Database
 
         }
 
+        /// <summary>
+        /// Stores List of NewsRecord into database.
+        /// </summary>
+        /// <param name="newsRecords">List of NewsRecord that needs to be stored</param>
         public void StoreNewsRecords(List<News> newsRecords)
         {
             foreach (News news in newsRecords)
@@ -60,6 +77,10 @@ namespace Database
             }
         }
 
+        /// <summary>
+        /// Retrieves NewsRecord from database.
+        /// </summary>
+        /// <returns>List of NewsRecord from database</returns>
         public List<News> RetrieveNewsRecords()
         {
             IDbCommand dbcmd = getDbCommand();
