@@ -1,9 +1,26 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// This is a base class for UI widgets that display the player's name & credit.
+/// <br/><br/>
+/// Created by Khairuddin Bin Ali
+/// </summary>
 public abstract class PlayerCard : MonoBehaviour
 {
-    public Text nameText, creditText;
+    /// <summary>
+    /// The text widget that displays the player's name.
+    /// </summary>
+    public Text nameText;
+
+    /// <summary>
+    /// The text widget that displays the player's credit.
+    /// </summary>
+    public Text creditText;
+
+    /// <summary>
+    /// The widget that displays the card's background image
+    /// </summary>
     public RawImage cardBackground;
 
     internal void SetPlayerDetails(Player player, string imageRes)
