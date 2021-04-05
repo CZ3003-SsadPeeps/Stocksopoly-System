@@ -2,7 +2,7 @@
 
 ///<summary>Class which contains the properties and methods of the tiles that make up the board
 ///<br></br>
-///Done by: Khairuddin and Yi Shen
+///Done by: Yi Shen
 ///</summary>
 public class Tile : MonoBehaviour
 {

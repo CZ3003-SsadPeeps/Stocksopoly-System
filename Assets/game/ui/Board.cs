@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+/// <summary>
+/// Created by Yi Shen
+/// </summary>
 public class Board : MonoBehaviour
 {
     // Adjust y value here to increase or decrease arc height (Smaller is higher)

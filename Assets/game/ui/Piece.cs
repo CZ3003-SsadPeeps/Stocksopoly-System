@@ -2,7 +2,7 @@
 
 ///<summary> Class of the pieces of Stocksopoly
 ///<br></br>
-///Done by: Khairuddin
+///Done by: Yi Shen
 ///</summary>
 
 public class Piece : MonoBehaviour

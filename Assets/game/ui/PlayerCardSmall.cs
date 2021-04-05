@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 ///<summary>Concrete class which inherits PlayerCard. Contains the properties and methods of the small player card displayed besides the big player card
 ///<br></br>
-///Done by: Khairuddin and Yi Shen
+///Done by: Yi Shen
 ///</summary>
 public class PlayerCardSmall : PlayerCard
 {

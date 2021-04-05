@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 ///<summary>Concrete class which inherits PlayerCard. Contains the properties and methods of the big player card displayed in the middle of the main user interface
 ///<br></br>
-///Done by: Khairuddin and Yi Shen
+///Done by: Yi Shen
 ///</summary>
 public class PlayerCardBig : PlayerCard
 {
