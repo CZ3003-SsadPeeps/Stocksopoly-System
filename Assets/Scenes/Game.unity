@@ -921,8 +921,7 @@ MonoBehaviour:
   canvas: {fileID: 1134043460}
   rollDiceButton: {fileID: 1162998037}
   endTurnButton: {fileID: 398047795}
-  endGameText: {fileID: 1042853063}
-  endGameBackground: {fileID: 1992580972}
+  stockMarketButton: {fileID: 1779476258}
   bigPlayerCard: {fileID: 1010555691}
   passedGoPopup: {fileID: 667464219}
   PlayerCardSmallPrefab: {fileID: 2336208187690542602, guid: d8a276fe357eec74bb51ef64543ddf2e,

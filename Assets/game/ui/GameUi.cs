@@ -47,6 +47,11 @@ public class GameUi : MonoBehaviour
     public Button endTurnButton;
 
     /// <summary>
+    /// The button that launches <c>StockListUi</c>
+    /// </summary>
+    public Button stockMarketButton;
+
+    /// <summary>
     /// The big card in the middle of the interface that displays the currently playing player's
     /// name, credit, & list of stocks they own.
     /// </summary>
@@ -177,6 +182,7 @@ public class GameUi : MonoBehaviour
         // Select player's piece
         board.SetSelectedPiece(currentPos);
         endTurnButton.interactable = false;
+        stockMarketButton.interactable = false;
     }
 
     private void ActivateQuiz()
@@ -289,6 +295,7 @@ public class GameUi : MonoBehaviour
 
         rollDiceButton.GetComponentInChildren<Text>().text = string.Empty;
         endTurnButton.interactable = true;
+        stockMarketButton.interactable = true;
 
         yield break;
     }
