@@ -62,9 +62,9 @@ public class Board : MonoBehaviour
         Vector3 startRelPosition = piece.transform.position - center;
         Vector3 endRelPosition = target - center;
 
-        while(elapsedTime < time)
+        while (elapsedTime < time)
         {
-            piece.transform.position = Vector3.Slerp(startRelPosition, endRelPosition, elapsedTime/time);
+            piece.transform.position = Vector3.Slerp(startRelPosition, endRelPosition, elapsedTime / time);
             piece.transform.position += center;
             elapsedTime += Time.deltaTime;
             yield return null;

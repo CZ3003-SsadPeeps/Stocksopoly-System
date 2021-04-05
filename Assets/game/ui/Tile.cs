@@ -1,5 +1,9 @@
 ﻿using UnityEngine;
 
+///<summary>Class which contains the properties and methods of the tiles that make up the board
+///<br></br>
+///Done by: Khairuddin and Yi Shen
+///</summary>
 public class Tile : MonoBehaviour
 {
     public TileType Type;
@@ -19,6 +23,8 @@ public class Tile : MonoBehaviour
         }
     }
 
+    ///<summary>Method that moves the piece into an empty spot on the tile if the current spot is taken</summary>
+    /// <param name="pos">Reference to the piece object just moved into a tile</param>
     internal Vector3 GetEmptySlotForPiece(Piece piece)
     {
         Vector3 pos = gameObject.transform.position;
