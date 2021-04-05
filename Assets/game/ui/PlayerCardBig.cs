@@ -2,13 +2,22 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+///<summary>Concrete class which inherits PlayerCard. Contains the properties and methods of the big player card displayed in the middle of the main user interface
+///<br></br>
+///Done by: Yi Shen
+///</summary>
 public class PlayerCardBig : PlayerCard
 {
+    ///<summary>References the scrollable area of the big player card</summary>
     public ScrollRect scrollView;
+
+    ///<summary>References the text displayed in the scrollable area</summary>
     public GameObject TextPrefab;
+
+    ///<summary>References the transform of the scrollable area</summary>
     public Transform content;
 
-    Color textColor = Color.white;
+    private Color textColor = Color.white;
 
     internal void SetVisible(bool isVisible)
     {
@@ -59,7 +68,7 @@ public class PlayerCardBig : PlayerCard
         scrollView.normalizedPosition = new Vector2(0, 1);
     }
 
-    Text CreateNewText()
+    private Text CreateNewText()
     {
         GameObject textObject = Instantiate(TextPrefab);
         textObject.transform.SetParent(content, false);
