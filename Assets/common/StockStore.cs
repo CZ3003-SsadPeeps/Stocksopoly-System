@@ -16,19 +16,15 @@ public class StockStore
         get { return Stocks[SelectedStockPos]; }
     }
 
-    public static bool IsStockLoaded()
-    {
-        return Stocks.Count > 0;
-    }
-
-    public static void LoadStocks()
-    {
-        StockDAO dao = new StockDAO();
-        Stocks.AddRange(dao.RetrieveStocks());
-    }
-
     public static void LoadPurchaseRecords()
     {
+        // Load stocks if not loaded
+        if (Stocks.Count == 0)
+        {
+            StockDAO dao = new StockDAO();
+            Stocks.AddRange(dao.RetrieveStocks());
+        }
+
         purchaseRecords.Clear();
 
         List<StockPurchaseRecord> stockPurchaseRecords;

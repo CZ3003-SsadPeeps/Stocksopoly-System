@@ -39,12 +39,6 @@ internal class NameInputController
     {
         GameStore.InitPlayers(names);
         NewsStore.ResetNews();
-
-        if (!StockStore.IsStockLoaded())
-        {
-            StockStore.LoadStocks();
-        }
-
         StockStore.LoadPurchaseRecords();
     }
 
