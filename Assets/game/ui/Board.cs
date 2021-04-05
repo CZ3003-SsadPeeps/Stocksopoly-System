@@ -16,6 +16,9 @@ public class Board : MonoBehaviour
         currentPieceIndex = index;
     }
 
+    ///<summary>This function moves a Piece object from its current position on the board to a new position on the board.</summary>
+    /// <param name="diceValue">The number of tiles to move the Piece</param>
+
     internal IEnumerator MovePiece(int diceValue)
     {
         Piece currentPiece = pieces[currentPieceIndex];
@@ -51,6 +54,11 @@ public class Board : MonoBehaviour
         return pieces[currentPieceIndex].NumLaps;
     }
 
+    ///<summary>This function moves a piece object from its current position to a target position using an arching motion.</summary>
+    /// <param name="piece">The Piece object to be moved</param>
+    /// <param name="target">The target 3D position</param>
+    /// <param name="time">Time taken for the piece to move to its target</param>
+
     IEnumerator HopTowards(Piece piece, Vector3 target, float time)
     {
         float elapsedTime = 0;
@@ -62,9 +70,9 @@ public class Board : MonoBehaviour
         Vector3 startRelPosition = piece.transform.position - center;
         Vector3 endRelPosition = target - center;
 
-        while(elapsedTime < time)
+        while (elapsedTime < time)
         {
-            piece.transform.position = Vector3.Slerp(startRelPosition, endRelPosition, elapsedTime/time);
+            piece.transform.position = Vector3.Slerp(startRelPosition, endRelPosition, elapsedTime / time);
             piece.transform.position += center;
             elapsedTime += Time.deltaTime;
             yield return null;
