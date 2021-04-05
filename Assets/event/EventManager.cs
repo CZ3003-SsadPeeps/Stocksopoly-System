@@ -2,6 +2,7 @@
 using UnityEngine;
 using Database;
 
+/// Created by Lau Zhen Jie and Ng Ching Ting
 class EventManager
 {
     internal EventRecord GetEvent()
