@@ -8,7 +8,7 @@ using Database;
 public class GameUi : MonoBehaviour
 {
     static readonly Vector2 POPUP_HIDDEN_POS = new Vector2(0, -800);
-    static readonly string PLAYER_CARDS_ROOT = "Cards";
+    static readonly string PLAYER_CARDS_ROOT = "Cards(Zeta)";
     static readonly string[] SMALL_CARD_RES = new string[4];
     static readonly string[] BIG_CARD_RES = new string[4];
 
