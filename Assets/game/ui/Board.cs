@@ -4,12 +4,12 @@ using UnityEngine;
 public class Board : MonoBehaviour
 {
     // Adjust y value here to increase or decrease arc height (Smaller is higher)
-    private static readonly Vector3 ARC_HEIGHT = new Vector3(0, 0.5f, 0);
+    static readonly Vector3 ARC_HEIGHT = new Vector3(0, 0.5f, 0);
 
     public Piece[] pieces;
     public Tile[] tiles;
 
-    private int currentPieceIndex = 0;
+    int currentPieceIndex = 0;
 
     internal void SetSelectedPiece(int index)
     {
@@ -51,7 +51,7 @@ public class Board : MonoBehaviour
         return pieces[currentPieceIndex].NumLaps;
     }
 
-    private IEnumerator HopTowards(Piece piece, Vector3 target, float time)
+    IEnumerator HopTowards(Piece piece, Vector3 target, float time)
     {
         float elapsedTime = 0;
 

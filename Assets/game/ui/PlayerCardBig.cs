@@ -8,7 +8,7 @@ public class PlayerCardBig : PlayerCard
     public GameObject TextPrefab;
     public Transform content;
 
-    private Color textColor = Color.white;
+    Color textColor = Color.white;
 
     internal void SetVisible(bool isVisible)
     {
@@ -59,7 +59,7 @@ public class PlayerCardBig : PlayerCard
         scrollView.normalizedPosition = new Vector2(0, 1);
     }
 
-    private Text CreateNewText()
+    Text CreateNewText()
     {
         GameObject textObject = Instantiate(TextPrefab);
         textObject.transform.SetParent(content, false);

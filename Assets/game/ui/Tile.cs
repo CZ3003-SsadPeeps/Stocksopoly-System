@@ -3,9 +3,9 @@
 public class Tile : MonoBehaviour
 {
     public TileType Type;
-    private readonly Piece[] pieceSlots = new Piece[4];
+    readonly Piece[] pieceSlots = new Piece[4];
 
-    private void OnTriggerExit(Collider other)
+    void OnTriggerExit(Collider other)
     {
         if (!other.gameObject.tag.Contains("Player")) return;
 

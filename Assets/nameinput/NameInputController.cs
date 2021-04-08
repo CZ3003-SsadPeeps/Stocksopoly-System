@@ -1,9 +1,6 @@
 ﻿using System.Collections.Generic;
 
-/// <summary>
-/// Created by Khairuddin Bin Ali
-/// </summary>
-internal class NameInputController
+class NameInputController
 {
     internal List<NameValidationError> SubmitNames(string[] names)
     {
@@ -48,7 +45,7 @@ internal class NameInputController
         StockStore.LoadPurchaseRecords();
     }
 
-    private bool ValidateName(string name)
+    bool ValidateName(string name)
     {
         return !string.IsNullOrWhiteSpace(name);
     }

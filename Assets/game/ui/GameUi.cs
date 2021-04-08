@@ -5,17 +5,12 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Database;
 
-/// <summary>
-/// This is the user interface that displays the gameplay and the end of game interface
-/// <br/><br/>
-/// Created by Khairuddin Bin Ali
-/// </summary>
 public class GameUi : MonoBehaviour
 {
-    private static readonly Vector2 POPUP_HIDDEN_POS = new Vector2(0, -800);
-    private static readonly string PLAYER_CARDS_ROOT = "Cards";
-    private static readonly string[] SMALL_CARD_RES = new string[4];
-    private static readonly string[] BIG_CARD_RES = new string[4];
+    static readonly Vector2 POPUP_HIDDEN_POS = new Vector2(0, -800);
+    static readonly string PLAYER_CARDS_ROOT = "Cards";
+    static readonly string[] SMALL_CARD_RES = new string[4];
+    static readonly string[] BIG_CARD_RES = new string[4];
 
     static GameUi()
     {
@@ -26,56 +21,21 @@ public class GameUi : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// The game board that holds the player's piece and moves them throughout the game.
-    /// </summary>
     public Board board;
-
-    /// <summary>
-    /// The root of the 2D user interface. Used to place the small player cards.
-    /// </summary>
     public Canvas canvas;
-
-    /// <summary>
-    /// The button that generates the number of tiles the player's piece moves.
-    /// </summary>
-    public Button rollDiceButton;
-
-    /// <summary>
-    /// The button that passes control from the current player to the next player.
-    /// </summary>
-    public Button endTurnButton;
-
-    /// <summary>
-    /// The big card in the middle of the interface that displays the currently playing player's
-    /// name, credit, & list of stocks they own.
-    /// </summary>
+    public Button rollDiceButton, endTurnButton;
+    public Text endGameText;
+    public Image endGameBackground;
     public PlayerCardBig bigPlayerCard;
+    public GameObject passedGoPopup, PlayerCardSmallPrefab;
 
-    /// <summary>
-    /// The popup that will be displayed when the player lands or passes the GO tile.
-    /// </summary>
-    public GameObject passedGoPopup;
-
-    /// <summary>
-    /// The template for creating the small player cards.
-    /// </summary>
-    public GameObject PlayerCardSmallPrefab;
-
-    /// <summary>
-    /// List of UI widgets that will be hidden when the game ends
-    /// </summary>
     public GameObject[] startGameObjects;
-
-    /// <summary>
-    /// List of UI widgets that will be shown when the game ends
-    /// </summary>
     public GameObject[] endGameObjects;
 
-    private GameController controller;
-    private readonly List<PlayerCardSmall> smallPlayerCards = new List<PlayerCardSmall>(4);
+    GameController controller;
+    readonly List<PlayerCardSmall> smallPlayerCards = new List<PlayerCardSmall>(4);
 
-    private void Start()
+    void Start()
     {
         // Uncomment when testing Game UI only
         controller = new GameController(new StockTrader(), new PlayerRecordDAO());
@@ -87,7 +47,7 @@ public class GameUi : MonoBehaviour
         LoadCurrentPlayer();
     }
 
-    private void Update()
+    void Update()
     {
         int currentPlayerCredit = controller.CurrentPlayer.Credit;
         smallPlayerCards[controller.CurrentPlayerPos].SetCredit(currentPlayerCredit);
@@ -100,19 +60,11 @@ public class GameUi : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Generates the number of tiles that the player's piece will move, then calles the <c>Board</c> object to
-    /// move the piece
-    /// </summary>
     public void RollDice()
     {
         StartCoroutine(PerformDiceRoll());
     }
 
-    /// <summary>
-    /// Checks if the player has reached the maximum number of laps. If true, display the end of game interface.
-    /// Otherwise passes control to the next player. If 4 turns have passed, <c>NewsUi</c> is launched.
-    /// </summary>
     public void EndTurn()
     {
         int numLaps = board.GetNumLapsForCurrentPiece();
@@ -129,39 +81,27 @@ public class GameUi : MonoBehaviour
         rollDiceButton.interactable = true;
     }
 
-    /// <summary>
-    /// Launch <c>NewsUi</c>.
-    /// </summary>
     public void ShowNewsList()
     {
         SceneManager.LoadScene("NewsList", LoadSceneMode.Additive);
     }
 
-    /// <summary>
-    /// Launches <c>StockListUi</c>.
-    /// </summary>
     public void ShowStockMarket()
     {
         SceneManager.LoadScene("StockList", LoadSceneMode.Additive);
     }
 
-    /// <summary>
-    /// Launches <c>LeaderboardUi</c>.
-    /// </summary>
     public void ShowLeaderBoard()
     {
         SceneManager.LoadScene("Leaderboard", LoadSceneMode.Additive);
     }
 
-    /// <summary>
-    /// Launches <c>HomeUi</c>.
-    /// </summary>
     public void ReturnHome()
     {
         SceneManager.LoadScene("Home");
     }
 
-    private void LoadCurrentPlayer()
+    void LoadCurrentPlayer()
     {
         int currentPos = controller.CurrentPlayerPos;
 
@@ -179,22 +119,22 @@ public class GameUi : MonoBehaviour
         endTurnButton.interactable = false;
     }
 
-    private void ActivateQuiz()
+    void ActivateQuiz()
     {
         SceneManager.LoadScene("DifficultySelection", LoadSceneMode.Additive);
     }
 
-    private void ActivateEvent()
+    void ActivateEvent()
     {
         SceneManager.LoadScene("EventPopup", LoadSceneMode.Additive);
     }
 
-    private void DisplayNews()
+    void DisplayNews()
     {
         SceneManager.LoadScene("News", LoadSceneMode.Additive);
     }
 
-    private void DisplayEndOfGame()
+    void DisplayEndOfGame()
     {
         bigPlayerCard.SetVisible(false);
 
@@ -228,7 +168,7 @@ public class GameUi : MonoBehaviour
         }
     }
 
-    private void GeneratePlayerCards()
+    void GeneratePlayerCards()
     {
         Player[] players = controller.Players;
 
@@ -251,7 +191,7 @@ public class GameUi : MonoBehaviour
     }
 
     // Must be performed in coroutine to wait for piece to move before performing additional operations
-    private IEnumerator PerformDiceRoll()
+    IEnumerator PerformDiceRoll()
     {
         rollDiceButton.interactable = false;
 
@@ -293,7 +233,7 @@ public class GameUi : MonoBehaviour
         yield break;
     }
 
-    private IEnumerator MovePopupToPos(RectTransform popupTransform, Vector2 targetPos)
+    IEnumerator MovePopupToPos(RectTransform popupTransform, Vector2 targetPos)
     {
         do
         {
