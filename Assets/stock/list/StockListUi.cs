@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-
+/// <summary>
+/// Places the stock into the Unity UI
+/// <br></br>
+/// Created by Chia Ze
+/// </summary>
 public class StockListUi : MonoBehaviour
 {
     public StockList stockList;
@@ -16,7 +20,9 @@ public class StockListUi : MonoBehaviour
 
         stockList.SetList(manager.GetAllStocks());
     }
-
+    /// <summary>
+    /// To load the Stock List when the button is clicked
+    /// </summary>
     public void OnBackButtonClick()
     {
         SceneManager.UnloadSceneAsync("StockList");

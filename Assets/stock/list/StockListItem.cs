@@ -1,7 +1,11 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
-
+/// <summary>
+/// Initializes each stock into the correct position in the list
+/// ///<br></br>
+/// Created by Khairuddin Bin Ali
+/// </summary>
 public class StockListItem : MonoBehaviour
 {
     public Text stockNameText;

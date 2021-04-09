@@ -1,5 +1,14 @@
-﻿public class NewsPopupManager
+﻿/// <summary>
+/// News pops up using this class
+/// <br></br>
+///  Created by Khairuddin Bin Ali
+/// </summary>
+public class NewsPopupManager
 {
+    /// <summary>
+    /// Used to get news from NewsStore
+    /// </summary>
+    /// <returns></returns>
     public News GetNews()
     {
         if (!NewsStore.IsNewsLoaded())
@@ -13,7 +22,11 @@
         return news;
     }
 
-    // function to change the stock affected by fluc rate, while randomizing the chanage for other stocks
+    /// <summary>
+    /// Updates the stock price using news, randomizes stock price for other stocks
+    /// </summary>
+    /// <param name="Cname"></param>
+    /// <param name="FlucRate"></param>
     void UpdateStockPrice(string Cname, int FlucRate)
     {
         GameStore.ShouldUpdatePlayerStock = true;

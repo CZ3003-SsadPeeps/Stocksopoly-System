@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Stores the stocks in a list
+/// ///<br></br>
+/// Created by Khairuddin Bin Ali
+/// </summary>
 public class StockList : MonoBehaviour
 {
     public GameObject stockListItemPrefab;

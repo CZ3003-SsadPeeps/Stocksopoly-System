@@ -1,7 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+/// <summary>
+/// In charge of displaying the stocks onto the UI itself
+///<br></br>
+/// Created by Khairuddin Bin Ali
+/// </summary>
 public class StockDetailsUi : MonoBehaviour
 {
     public Text stockNameText, buyAmountText, sellAmountText, playerDetails;
@@ -52,13 +56,17 @@ public class StockDetailsUi : MonoBehaviour
         Player player = manager.Player;
         playerDetails.text = $"{player.Name} - {player.Credit}C";
     }
-
+    /// <summary>
+    /// Brings user back to the list of stocks when clicked
+    /// </summary>
     public void OnBackButtonClick()
     {
         GameStore.ShouldUpdatePlayerStock = false;
         SceneManager.UnloadSceneAsync("StockDetails");
     }
-
+    /// <summary>
+    /// changes when user clicks on the button
+    /// </summary>
     public void OnBuySellButtonClick()
     {
         manager.SaveQuantityChange();

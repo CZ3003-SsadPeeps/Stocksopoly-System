@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-
+/// <summary>
+/// Code in charge of displaying the stock graphs
+/// ///<br></br>
+/// Created by Ting Qi
+/// </summary>
 public class Window_Graph : MonoBehaviour
 {
     static readonly Color32 COLOR_GRAPH_ELEMENTS = new Color32(110, 129, 160, 255);
@@ -10,7 +14,11 @@ public class Window_Graph : MonoBehaviour
     public RectTransform labelTemplateX;
     public RectTransform labelTemplateY;
 
-    //creates the circles that you see on the graph
+    /// <summary>
+    /// Creates the circles seen on the graoh
+    /// </summary>
+    /// <param name="anchoredPosition"></param>
+    /// <returns></returns>
     public GameObject CreateCircle(Vector2 anchoredPosition)
     {
         GameObject gameObject = new GameObject("circle", typeof(Image));
@@ -27,7 +35,10 @@ public class Window_Graph : MonoBehaviour
 
     }
 
-    //generates the graph
+   /// <summary>
+   /// code that generates the graph itself
+   /// </summary>
+   /// <param name="valueList"></param>
     public void ShowGraph(int[] valueList)
     {
         float graphHeight = graphContainer.sizeDelta.y;
@@ -67,7 +78,11 @@ public class Window_Graph : MonoBehaviour
         }
     }
 
-    //code for creating the line connecting the dots
+    /// <summary>
+    /// Creates the lines that connects with each dots in the graph
+    /// </summary>
+    /// <param name="dotPositionA"></param>
+    /// <param name="dotPositionB"></param>
     public void CreateDotConnection(Vector2 dotPositionA, Vector2 dotPositionB)
     {
         GameObject gameObject = new GameObject("dotConnection", typeof(Image));
@@ -83,7 +98,11 @@ public class Window_Graph : MonoBehaviour
         rectTransform.localEulerAngles = new Vector3(0, 0, GetAngleFromVectorFloat(dir));
     }
 
-    //angle to change a vector to a floating number
+    /// <summary>
+    /// Function to change vector to Angle
+    /// </summary>
+    /// <param name="dir"></param>
+    /// <returns> Returns an angle after putting in a float </returns>
     public static float GetAngleFromVectorFloat(Vector3 dir)
     {
         dir = dir.normalized;
