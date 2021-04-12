@@ -1,6 +1,10 @@
 ﻿using System.Collections.Generic;
 using Database;
-
+/// <summary>
+/// Where the stock information is pulled from database
+/// <br></br>
+/// Created by Khairrudin Bin Ali
+/// </summary>
 public class StockStore
 {
     //initializes the list of stocks and stores here

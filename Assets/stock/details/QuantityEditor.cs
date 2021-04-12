@@ -2,6 +2,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Sets stock price, quantity to be bought by the player in the stock purchase screen
+/// ///<br></br>
+/// Created by Chia Ze
+/// </summary>
 public class QuantityEditor : MonoBehaviour
 {
     public Text QuantityText;
@@ -16,6 +21,10 @@ public class QuantityEditor : MonoBehaviour
 
     Action<int> QuantityChangeListener;
 
+    /// <summary>
+    /// Changes the quantity of stocks purchased on screen
+    /// </summary>
+    /// <param name="isIncrease"></param>
     public void OnQuantityChange(bool isIncrease)
     {
         if (isIncrease)

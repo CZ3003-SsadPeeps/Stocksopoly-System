@@ -1,6 +1,10 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Class used to store each news into a list
+/// <br></br>
+/// Created by Ting Qi
+/// </summary>
 public class NewsList : MonoBehaviour
 {
     public GameObject newsItemPrefab;

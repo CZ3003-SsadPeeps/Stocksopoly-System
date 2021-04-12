@@ -1,7 +1,11 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using Database;
-
+/// <summary>
+/// Where the News is pulled from databse and stored
+/// <br></br>
+/// Made by Ting Qi
+/// </summary>
 public class NewsStore
 {
     //stores the list of news objects

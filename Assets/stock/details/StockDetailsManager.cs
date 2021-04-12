@@ -1,4 +1,9 @@
-﻿class StockDetailsManager
+﻿/// <summary>
+/// In charge of getting stock price for each player, and the stock purchased by the players.
+/// ///<br></br>
+/// Created by Khairuddin Bin Ali
+/// </summary>
+class StockDetailsManager
 {
     public Stock Stock { get; } = StockStore.SelectedStock;
     public Player Player { get; } = GameStore.CurrentPlayer;
