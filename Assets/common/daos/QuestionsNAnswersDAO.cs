@@ -7,6 +7,12 @@ using UnityEngine;
 
 namespace Database
 {
+    /// <summary>
+    /// This is a DAO class inherited from SqliteHelper and created for database interaction for QuestionsNAnswers.
+    /// This class can store and retrieve QuestionsNAnswers from database.
+    /// <br/><br/>
+    /// Created by Liew Zi Peng
+    /// </summary>
     public class QuestionsNAnswersDAO : SqliteHelper
     {
         static readonly int NUM_OPTIONS = 4;
@@ -22,6 +28,9 @@ namespace Database
         private const String KEY_Content = "Content";
         private const String KEY_OptionIndex = "OptionIndex";
 
+        /// <summary>
+        /// Constructs this class. Create a QuestionsNAnswers table in database if it hasn't exist yet.
+        /// </summary>
         public QuestionsNAnswersDAO() : base()
         {
             IDbCommand dbcmd = getDbCommand();
@@ -41,6 +50,10 @@ namespace Database
             dbcmd.ExecuteNonQuery();
         }
 
+        /// <summary>
+        /// Stores QuestionsNAnswers into database.
+        /// </summary>
+        /// <param name="quizRecord">QuestionsNAnswers needs to be stored</param>
         public void addData(QuestionsNAnswers quizRecord)
         {
             try
@@ -88,6 +101,10 @@ namespace Database
             }
         }
 
+        /// <summary>
+        /// Stores List of QuestionsNAnswers into database.
+        /// </summary>
+        /// <param name="qnas">List of QuestionsNAnswers needs to be stored</param>
         public void StoreQNARecords(List<QuestionsNAnswers> qnas)
         {
             foreach (QuestionsNAnswers qna in qnas)
@@ -96,6 +113,11 @@ namespace Database
             }
         }
 
+        /// <summary>
+        /// Retrieves QuestionsNAnswers from database.
+        /// </summary>
+        /// <param name="difficulty"></param>
+        /// <returns>List of QuestionsNAnswers from database</returns>
         public List<QuestionsNAnswers> RetrieveQuestions(string difficulty)
         {
             // Execute SQL statement to retrieve questions of a certain difficulty

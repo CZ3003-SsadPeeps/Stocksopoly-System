@@ -5,8 +5,15 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
+
 namespace Database
 {
+    /// <summary>
+    /// This is a DAO class inherited from SqliteHelper and created for database interaction for EventRecord.
+    /// This class can store and retrieve EventRecord from database.
+    /// <br/><br/>
+    /// Created by Liew Zi Peng
+    /// </summary>
     public class EventRecordDAO : SqliteHelper
     {
 
@@ -15,7 +22,9 @@ namespace Database
         private const String KEY_Content = "Content";
         private const String KEY_Amount = "Amount";
 
-
+        /// <summary>
+        /// Constructs this class. Create a EventRecord table in database if it hasn't exist yet.
+        /// </summary>
         public EventRecordDAO() : base()
         {
             IDbCommand dbcmd = getDbCommand();
@@ -26,6 +35,10 @@ namespace Database
             dbcmd.ExecuteNonQuery();
         }
 
+        /// <summary>
+        /// Stores EventRecord into database.
+        /// </summary>
+        /// <param name="eventRecord">Single EventRecord</param>
         public void addData(EventRecord eventRecord)
         {
             try
@@ -52,6 +65,10 @@ namespace Database
 
         }
 
+        /// <summary>
+        /// Stores List of EventRecord into database.
+        /// </summary>
+        /// <param name="eventRecords">List of EventRecord</param>
         public void StoreEventRecords(List<EventRecord> eventRecords)
         {
             foreach (EventRecord eventRecord in eventRecords)
@@ -60,6 +77,10 @@ namespace Database
             }
         }
 
+        /// <summary>
+        /// Retrieves EventRecord from database.
+        /// </summary>
+        /// <returns> List of EventRecord from database</returns>
         public List<EventRecord> RetrieveEventRecords()
         {
             IDbCommand dbcmd = getDbCommand();
