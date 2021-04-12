@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['quantity_164',['Quantity',['../class_stock_purchase_record.html#a62b5f498fef51cd99e687bc144dfb568',1,'StockPurchaseRecord.Quantity()'],['../class_player_stock.html#a836943bff462affccf8c1bf0c40d2b90',1,'PlayerStock.Quantity()']]],
+  ['quantitychange_165',['QuantityChange',['../class_stock_details_manager.html#a52422d8296d972588c1280ab5d1d8ac4',1,'StockDetailsManager.QuantityChange()'],['../class_quantity_editor.html#af8e3a009a0447955825d5c9c3dd21ff8',1,'QuantityEditor.QuantityChange()']]],
+  ['quantityeditor_166',['quantityEditor',['../class_stock_details_ui.html#a90677f92f273510c70930d01e2a70767',1,'StockDetailsUi']]],
+  ['quantityeditor_167',['QuantityEditor',['../class_quantity_editor.html',1,'']]],
+  ['quantityeditor_2ecs_168',['QuantityEditor.cs',['../_quantity_editor_8cs.html',1,'']]],
+  ['quantitytext_169',['QuantityText',['../class_quantity_editor.html#a20a4723bff5f6de8324777f086ae21b4',1,'QuantityEditor']]],
+  ['question_170',['Question',['../class_questions_n_answers.html#a6843f90acccf7c89ce46f2e4df2828c1',1,'QuestionsNAnswers.Question()'],['../class_quiz_record.html#aec417888485284d83e02714d3539d5ee',1,'QuizRecord.Question()']]],
+  ['questionoptionrecord_171',['QuestionOptionRecord',['../class_question_option_record.html',1,'QuestionOptionRecord'],['../class_question_option_record.html#a1bb1a029621a5b4cc80d197fc36e8d92',1,'QuestionOptionRecord.QuestionOptionRecord()']]],
+  ['questionoptionrecord_2ecs_172',['QuestionOptionRecord.cs',['../_question_option_record_8cs.html',1,'']]],
+  ['questionoptions_173',['QuestionOptions',['../class_quiz_record.html#ab1608a2c1551190d4e34e92be079bbe7',1,'QuizRecord']]],
+  ['questionsnanswers_174',['QuestionsNAnswers',['../class_questions_n_answers.html',1,'QuestionsNAnswers'],['../class_questions_n_answers.html#a76dc206d0e3726cc20c4f1f44bc47c95',1,'QuestionsNAnswers.QuestionsNAnswers()']]],
+  ['questionsnanswers_2ecs_175',['QuestionsNAnswers.cs',['../_questions_n_answers_8cs.html',1,'']]],
+  ['questionsnanswersdao_176',['QuestionsNAnswersDAO',['../class_database_1_1_questions_n_answers_d_a_o.html',1,'Database.QuestionsNAnswersDAO'],['../class_database_1_1_questions_n_answers_d_a_o.html#ad0635fc8c03f8b641ddd1b404f3ffe8c',1,'Database.QuestionsNAnswersDAO.QuestionsNAnswersDAO()']]],
+  ['questionsnanswersdao_2ecs_177',['QuestionsNAnswersDAO.cs',['../_questions_n_answers_d_a_o_8cs.html',1,'']]],
+  ['questiontext_178',['questionText',['../class_quiz_ui.html#ab6c5788569190579e2d56e7070229288',1,'QuizUi']]],
+  ['quiz_179',['Quiz',['../_tile_type_8cs.html#ac9e486ec80ccfdb28a4f4837d419c9f1aab458f4b361834dd802e4f40d31b5ebc',1,'TileType.cs']]],
+  ['quizid_180',['QuizID',['../class_questions_n_answers.html#aca2759fda80cbdbd1e458ad2daa182ef',1,'QuestionsNAnswers.QuizID()'],['../class_quiz_record.html#a407e05e34cab3eeba636288e726302ad',1,'QuizRecord.QuizID()']]],
+  ['quizmanager_181',['QuizManager',['../class_quiz_manager.html',1,'']]],
+  ['quizmanager_2ecs_182',['QuizManager.cs',['../_quiz_manager_8cs.html',1,'']]],
+  ['quizrecord_183',['QuizRecord',['../class_quiz_record.html',1,'QuizRecord'],['../class_quiz_record.html#ad729905fde8bd276e1c00d9b74d9d82b',1,'QuizRecord.QuizRecord()']]],
+  ['quizrecord_2ecs_184',['QuizRecord.cs',['../_quiz_record_8cs.html',1,'']]],
+  ['quizrecorddao_185',['QuizRecordDAO',['../class_database_1_1_quiz_record_d_a_o.html',1,'Database.QuizRecordDAO'],['../class_database_1_1_quiz_record_d_a_o.html#a844682bbcfb390a3bf73cbb27798d3ad',1,'Database.QuizRecordDAO.QuizRecordDAO()']]],
+  ['quizrecorddao_2ecs_186',['QuizRecordDAO.cs',['../_quiz_record_d_a_o_8cs.html',1,'']]],
+  ['quizui_187',['QuizUi',['../class_quiz_ui.html',1,'']]],
+  ['quizui_2ecs_188',['QuizUi.cs',['../_quiz_ui_8cs.html',1,'']]]
+];

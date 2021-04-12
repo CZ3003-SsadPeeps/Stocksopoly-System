@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['gamecontroller_2ecs_62',['GameController.cs',['../_game_controller_8cs.html',1,'']]],
+  ['gamestore_63',['GameStore',['../class_game_store.html',1,'']]],
+  ['gamestore_2ecs_64',['GameStore.cs',['../_game_store_8cs.html',1,'']]],
+  ['gameui_65',['GameUi',['../class_game_ui.html',1,'']]],
+  ['gameui_2ecs_66',['GameUi.cs',['../_game_ui_8cs.html',1,'']]],
+  ['getanglefromvectorfloat_67',['GetAngleFromVectorFloat',['../class_window___graph.html#a5b5c91336dbf6330a52517985747c47b',1,'Window_Graph']]],
+  ['getcorrectanswer_68',['GetCorrectAnswer',['../class_quiz_manager.html#a6659017a41215edf27a456c35750e80f',1,'QuizManager']]],
+  ['getdatabystring_69',['getDataByString',['../class_database_1_1_player_record_d_a_o.html#ad1e2a15d38d7210339eeae5764728ec0',1,'Database::PlayerRecordDAO']]],
+  ['getdbcommand_70',['getDbCommand',['../class_database_1_1_sqlite_helper.html#a11e0771e40b3aaacbfd1792a158d4f40',1,'Database::SqliteHelper']]],
+  ['getnews_71',['GetNews',['../class_news_popup_manager.html#a27e0902b300c06f960cf18bbb8e09d58',1,'NewsPopupManager']]],
+  ['getplayerpurchaserecord_72',['GetPlayerPurchaseRecord',['../class_stock_store.html#a7cef91bb173c986026987848eba54ae4',1,'StockStore']]],
+  ['getplayerstocks_73',['GetPlayerStocks',['../interface_i_stock_trader.html#aa13b20647eb1e9ce1f50c2dcf3cd9d25',1,'IStockTrader.GetPlayerStocks()'],['../class_stock_trader.html#a9abff96a697f63995b97d249db8185d5',1,'StockTrader.GetPlayerStocks()']]],
+  ['getpriceofstock_74',['GetPriceOfStock',['../class_stock_store.html#ab072804e8e1afa59cd8e19e93431c968',1,'StockStore']]],
+  ['getpurchaserecord_75',['GetPurchaseRecord',['../class_stock_store.html#aece5643886e0685e7e1a4fbc75ddb9f1',1,'StockStore']]],
+  ['getrandomnews_76',['GetRandomNews',['../class_news_store.html#afa050e95b36ed37e5218ba403230fa0a',1,'NewsStore']]],
+  ['go_77',['GO',['../_tile_type_8cs.html#ac9e486ec80ccfdb28a4f4837d419c9f1a3d6954dd72e53b9015d2a6e6546058f8',1,'TileType.cs']]],
+  ['graph_78',['graph',['../class_stock_details_ui.html#a113653111868f2995d2a07a5068d4699',1,'StockDetailsUi']]],
+  ['graphcontainer_79',['graphContainer',['../class_window___graph.html#a7a82e9bc477f43472417eb41704d3700',1,'Window_Graph']]]
+];

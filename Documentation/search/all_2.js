@@ -1,0 +1,24 @@
+var searchData=
+[
+  ['canvas_13',['canvas',['../class_game_ui.html#a0e1fe60cbaf020a6b96b3175ce997d71',1,'GameUi']]],
+  ['cardbackground_14',['cardBackground',['../class_player_card.html#ae9e0285f3e6d26b78ce74c32b45fe2ba',1,'PlayerCard']]],
+  ['changeprice_15',['ChangePrice',['../class_stock.html#af3a28ce6042b7b3467bd4d440f34e664',1,'Stock']]],
+  ['close_16',['close',['../class_database_1_1_sqlite_helper.html#a1722269a98d9ab50b3ae5cbbaa383570',1,'Database::SqliteHelper']]],
+  ['companyname_17',['CompanyName',['../class_news.html#a442fbae89f86f331f0b414f4e5dc4b49',1,'News.CompanyName()'],['../class_player_stock.html#a800e51379e69f5ed3c9e10125e7478ac',1,'PlayerStock.CompanyName()']]],
+  ['confirmbutton_18',['confirmButton',['../class_quiz_ui.html#abc8e1ff3db3a4357bc149f2e7ea631f9',1,'QuizUi']]],
+  ['content_19',['content',['../class_player_card_big.html#ad3a58ade732bb957bd6af4310464b3ff',1,'PlayerCardBig.content()'],['../class_stock_list.html#a9b845298accaafb5e54a4b4741bf65c5',1,'StockList.content()']]],
+  ['content_20',['Content',['../class_event_record.html#a87c8c236f8f1327e41755ac7a53d9065',1,'EventRecord.Content()'],['../class_news.html#a07c0a691a8fde5bfb901b77f5d99f80b',1,'News.Content()'],['../class_question_option_record.html#a553bc7285612f4e269b8399b33fc0f07',1,'QuestionOptionRecord.Content()']]],
+  ['contentroot_21',['contentRoot',['../class_news_list.html#a7f8cbc3df532ab8b873ee1d9c6413707',1,'NewsList']]],
+  ['contenttext_22',['contentText',['../class_event_popup_ui.html#a631ebde6fb53955c01f8937b387cef66',1,'EventPopupUi.contentText()'],['../class_event_ui.html#ae5027c48015b75b011dcfa5b2b433ae8',1,'EventUi.contentText()']]],
+  ['contenttextprefab_23',['contentTextPrefab',['../class_leaderboard_ui.html#a8ad64c8702e0f17ebab212f379d2b0cf',1,'LeaderboardUi']]],
+  ['converttolist_24',['convertToList',['../class_database_1_1_player_record_d_a_o.html#a67eebb68493d1d7b416a8ea76271e4f3',1,'Database::PlayerRecordDAO']]],
+  ['correctanswer_25',['CorrectAnswer',['../class_questions_n_answers.html#a6333ab260cda5c1f047dc761b93d8dba',1,'QuestionsNAnswers.CorrectAnswer()'],['../class_quiz_manager.html#ab814880c692b3c841f85dd3ac9a2d8cc',1,'QuizManager.CorrectAnswer()']]],
+  ['createcircle_26',['CreateCircle',['../class_window___graph.html#ac3f133bd28cd632233f7b47a8ac30ca5',1,'Window_Graph']]],
+  ['createdotconnection_27',['CreateDotConnection',['../class_window___graph.html#aaa368acb9c8ed6d3002f1287146be731',1,'Window_Graph']]],
+  ['credit_28',['Credit',['../class_player.html#afa3503f454a433ec153d9c873243bfe5',1,'Player.Credit()'],['../class_questions_n_answers.html#a62c4765a858666450fae75449ed0886b',1,'QuestionsNAnswers.Credit()']]],
+  ['creditearned_29',['CreditEarned',['../class_player_record.html#a67f169c88796f00c268af2ef820cf70e',1,'PlayerRecord']]],
+  ['credittext_30',['creditText',['../class_player_card.html#a554344fc0ee0cf0b0ba47d9b9795ae98',1,'PlayerCard']]],
+  ['currentplayer_31',['CurrentPlayer',['../class_game_store.html#a008ed93ba516b86abca69d91f46d81b3',1,'GameStore']]],
+  ['currentplayerpos_32',['CurrentPlayerPos',['../class_game_store.html#a4678bc9737002fb998e2b833e0598422',1,'GameStore']]],
+  ['currentstockprice_33',['CurrentStockPrice',['../class_player_stock.html#a8251c88efada66899ff477128754fbec',1,'PlayerStock.CurrentStockPrice()'],['../class_stock.html#afe8b6109890a8300617b6473c6d734bc',1,'Stock.CurrentStockPrice()']]]
+];
